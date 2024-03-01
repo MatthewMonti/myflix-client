@@ -10,7 +10,7 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-    fetch("https://cine-verse-b8832aa84c3e.herokuapp.com/movies", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
