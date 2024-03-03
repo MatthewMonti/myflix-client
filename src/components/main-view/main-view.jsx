@@ -1,36 +1,37 @@
 import { useState, useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card.jsx";
-import { MovieView } from "../movie-view/movie-view.jsx";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
+
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    if (!token) {
-      return;
-    }
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies")
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.map((movie) => {
+        const moviesFromApi = data.docs.map((doc) => {
           return {
-            id: movie._id,
-            title: movie.Title,
-            genre: movie.Genre,
-            description: movie.Description,
-            director: movie.Director,
+            id: doc.key,
+            Title: doc.Title,
+            Description: doc.Description,
+            Release: doc.Release,
+            Actor: [doc.Actors],
+            Rated: doc.Rated,
+            Rating: doc.Rating,
+            ImagePath: doc.ImagePath,
+            Featured: doc.Featured
           };
         });
+
         setMovies(moviesFromApi);
       });
-  }, [token]);
+  }, []);
 
   if (selectedMovie) {
     return (
-      <MovieView book={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
     );
   }
 
@@ -45,10 +46,10 @@ export const MainView = () => {
           key={movie.id}
           book={movie}
           onMovieClick={(newSelectedMovie) => {
-            setSelectedBook(newSelectedMovie);
+            setSelectedMovie(newSelectedMovie);
           }}
         />
       ))}
     </div>
-  ); 
+  );
 };
