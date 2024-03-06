@@ -26,7 +26,8 @@ export const MainView = () => {
               Description: doc.Genre.Description
             },
             Director: {
-              Name: doc.Director.Bio,
+              Name: doc.Director.Name,
+              Bio: doc.Director.Bio,
               Birth: doc.Director.Birth,
               Death: doc.Director.Death
             },
