@@ -35,7 +35,7 @@ MovieCard.propTypes = {
       Death: PropTypes.instanceOf(Date)
     }),
     ImagePath: PropTypes.string.isRequired,
-    Featured: PropTypes.bool
+    Featured: PropTypes.string
   }),
     onMovieClick: PropTypes.func.isRequired
 };

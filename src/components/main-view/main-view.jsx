@@ -21,16 +21,15 @@ export const MainView = () => {
             Rated: doc.Rated,
             Rating: doc.Rating,
             Description: doc.Description,
-            Genre: [
-              doc.Genre.Name,
-              doc.Genre.Description,
-            ],
-            Director: [
-              doc.Director.Name,
-              doc.Director.Bio,
-              doc.Director.Birth,
-              doc.Director.Death
-            ],
+            Genre: {
+              Name: doc.Genre.Name,
+              Description: doc.Genre.Description
+            },
+            Director: {
+              Name: doc.Director.Bio,
+              Birth: doc.Director.Birth,
+              Death: doc.Director.Death
+            },
             ImagePath: doc.ImagePath,
             Featured: doc.Featured
           };
