@@ -31,7 +31,7 @@ export const MainView = () => {
               Birth: doc.Director.Birth,
               Death: doc.Director.Death
             },
-            ImagePath: doc.ImagePath,
+            Image: doc.Image,
             Featured: doc.Featured
           };
         });

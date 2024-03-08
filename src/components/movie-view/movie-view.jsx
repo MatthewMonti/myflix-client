@@ -67,8 +67,8 @@ export const MovieView = ({ movie, onBackClick }) => {
           </ul>
       </ul>     
       <ul>
-        <span className="Label">ImagePath: </span>
-        <span>{movie.ImagePath}</span>
+        <span className="Label">Image: </span>
+        <span>{movie.Image}</span>
       </ul>
       <ul>
         <span className="Label">Featured: </span>
