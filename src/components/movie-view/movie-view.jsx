@@ -42,7 +42,10 @@ export const MovieView = ({ movie, onBackClick }) => {
        <span className="Label">Actors: </span>
       <span>{[movie.Actors.join(', ')]}</span>
       </ul>
-      x
+      
+      
+      
+      
       <ul>
         <div className="Label">Director: </div>
           <ul>
