@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
-export const MainView = () => {
-  const [movies, setMovies] = useState([
-  ]);
 
+export const MainView = () => {
+  const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies")
@@ -28,9 +28,9 @@ export const MainView = () => {
             Director: {
               Name: doc.Director.Name,
               Bio: doc.Director.Bio,
-              Birth: doc.Director.Birth,
-              Death: doc.Director.Death
-            },
+              Birth: doc.Director,
+              Death: doc.Director
+          },
             Image: doc.Image,
             Featured: doc.Featured
           };
@@ -38,6 +38,8 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, []);
+
+
 
   if (selectedMovie) {
     return (
