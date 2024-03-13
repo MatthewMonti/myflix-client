@@ -2,16 +2,16 @@ import React from "react";
 import React, { useEffect, useState } from "react";
 
 export const LoginView = ({ onLoggedIn }) => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [Username, setUsername] = useState("")
+  const [Password, setPassword] = useState("")
     const handleSubmit = (event) => {
         // this prevents the default behavior of the form which is to reload the entire page
         
         event.preventDefault();
 
         const data = {
-          access: username,
-          secret: password
+          access: Username,
+          secret: Password
         };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/login", {
@@ -19,7 +19,7 @@ export const LoginView = ({ onLoggedIn }) => {
       body: JSON.stringify(data)
     }).then((response) => {
       if (response.ok) {
-        onLoggedIn(username);
+        onLoggedIn(Username);
       } else {
         alert("Login failed");
       }
@@ -32,7 +32,7 @@ export const LoginView = ({ onLoggedIn }) => {
         Username:
         <input
           type="text"
-          value={username}
+          value={Username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
@@ -41,7 +41,7 @@ export const LoginView = ({ onLoggedIn }) => {
         Password:
         <input
           type="password"
-          value={password}
+          value={Password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
