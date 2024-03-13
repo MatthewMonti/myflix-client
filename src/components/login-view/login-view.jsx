@@ -1,16 +1,18 @@
 import React from "react";
+import React, { useEffect, useState } from "react";
 
-export const LoginView = () => {
-  const handleSubmit = (event) => {
-    // this prevents the default behavior of the form which is to reload the entire page
-const [username, setUsername] = useState("");
+export const LoginView = ({ onLoggedIn }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+    const handleSubmit = (event) => {
+        // this prevents the default behavior of the form which is to reload the entire page
+        
+        event.preventDefault();
 
-    event.preventDefault();
-
-    const data = {
-      access: username,
-      secret: password
-    };
+        const data = {
+          access: username,
+          secret: password
+        };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/login", {
       method: "POST",
@@ -22,27 +24,29 @@ const [username, setUsername] = useState("");
         alert("Login failed");
       }
     });
-  };
-
-  <input
-  type="text"
-  value={username}
-  onChange={(e) => setUsername(e.target.value)}
-/>
+  };     
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
         Username:
-        <input type="text" />
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
       </label>
       <label>
         Password:
-        <input type="password" />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
       </label>
-      <button type="submit">
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 };
