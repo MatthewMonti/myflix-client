@@ -31,7 +31,6 @@ export const LoginView = ({ onLoggedIn }) => {
       } else {
         alert("No such user");
       }
-
     })
     .catch((e) => {
       alert("Something went wrong");
