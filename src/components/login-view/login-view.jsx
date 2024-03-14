@@ -9,22 +9,31 @@ export const LoginView = ({ onLoggedIn }) => {
         
         event.preventDefault();
 
-        const data = {
-          access: Username,
-          secret: Password
-        };
+  const data = {
+    Username: Username,
+    Password: Password
+  };  
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/login", {
-      method: "POST",
-      body: JSON.stringify(data)
-    }).then((response) => {
-      if (response.ok) {
-        onLoggedIn(Username);
+  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Login response: ", data);
+      if (data.user) {
+        onLoggedIn(data.user, data.token);
       } else {
-        alert("Login failed");
+        alert("No such user");
       }
+    })
+    .catch((e) => {
+      alert("Something went wrong");
     });
-  };     
+  };
 
   return (
     <form onSubmit={handleSubmit}>
