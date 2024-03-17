@@ -7,8 +7,7 @@ import { Card } from "react-bootstrap";
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
     <Card>
-    <Card.Img className="movie-poster" variant="top" src={movie.Image} />
-
+    <Card.Img onClick={() => onMovieClick(movie)} className="movie-poster" variant="top" src={movie.Image} />
     </Card>
   );
 };
