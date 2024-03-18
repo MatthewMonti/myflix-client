@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 
 import { Card } from "react-bootstrap";
 
+
+
 // The MovieCard function component
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (

@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import Button from "react-bootstrap/Button";
 
 
 export const MainView = () => {
@@ -69,7 +70,7 @@ export const MainView = () => {
   if (selectedMovie) {
     return (
       <>
-   <tab onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</tab>
+   <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
         <MovieView 
         movie={selectedMovie} 
         onBackClick={() => setSelectedMovie(null)} 
@@ -81,7 +82,7 @@ export const MainView = () => {
   if (movies.length === 0) {
     return (
     <>
-      <tab onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout3</tab>
+      <Button variant="primary" type="submit" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
     <div>The list is empty!</div>
     </>
   );
@@ -90,8 +91,8 @@ export const MainView = () => {
 
   return (
   <>
-   <tab onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</tab>
-   <h1>Click on Film!!</h1>
+   <Button variant="primary" type="submit" onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+   <h1>Select Poster to learn more about Film!!</h1>
     <div>
       {movies.map((movie) => (
         <MovieCard
