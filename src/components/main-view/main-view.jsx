@@ -57,6 +57,7 @@ export const MainView = () => {
 
   return (
     <Row className="justify-content-md-center"> 
+        <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout8</Button>
       {!user ? (
         <>
           <LoginView onLoggedIn={(user) => setUser(user)} />
