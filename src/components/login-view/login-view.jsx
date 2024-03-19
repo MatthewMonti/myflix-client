@@ -44,6 +44,7 @@ export const LoginView = ({ onLoggedIn }) => {
       <Form.Group controlId="formUsername#1">
         <Form.Label>Username:</Form.Label>
         <Form.Control
+          className="input-bg"
           type="text"
           value={Username}
           onChange={(e) => setUsername(e.target.value)}
@@ -55,6 +56,7 @@ export const LoginView = ({ onLoggedIn }) => {
       <Form.Group controlId="formPassword#1">
         <Form.Label>Password:</Form.Label>
         <Form.Control
+          className="input-bg"
           type="password"
           value={Password}
           onChange={(e) => setPassword(e.target.value)}
@@ -62,7 +64,7 @@ export const LoginView = ({ onLoggedIn }) => {
         />
       </Form.Group>
       <Button variant="primary" type="submit">
-        Submit
+        Login
       </Button>
     </Form>
   );
