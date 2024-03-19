@@ -57,7 +57,7 @@ export const MainView = () => {
 
   return (
     <Row className="justify-content-md-center"> 
-        <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout8</Button>
+        
       {!user ? (
         <>
           <LoginView onLoggedIn={(user) => setUser(user)} />
@@ -65,18 +65,20 @@ export const MainView = () => {
           <SignupView />
         </>
       ) : selectedMovie ? (
-        <Col >
+        <>
+        <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
         <MovieView
           style={{ border: "1px solid green" }}
           movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
         />
-      </Col>
+      </>
       ) : movies.length === 0 ? (
         <div>The list is empty!</div>
         ) : (
         <>
              <h1>Select Film Poster to Learn More</h1>
+             <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
           {movies.map((movie) => (
             <MovieCard
             key={movie._id}

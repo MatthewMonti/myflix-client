@@ -1,5 +1,11 @@
-$color: blue;
 
+$primary: rgb(226, 11, 11);
+$body-bg: rgb(0, 0, 0);
+
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+$color: blue;
 .my-flix {
   color: $color;
   font-size: larger;
@@ -10,8 +16,8 @@ $color: blue;
 }
 
 .movie-poster{
-  width: 200px;
-  height: 300px;
+  width: 300px;
+  height: 400px;
 }
 
 
@@ -27,4 +33,35 @@ $color: blue;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+@font-face {
+  font-family: 'movie-poster';
+  src:  url('./movie_poster/Film Premieres.otf')
+}
+
+h1,span,Label{
+  font-family: 'movie-poster';
+  color:red;
+}
+
+Label, ul, div{
+  font-family: 'movie-poster';
+  color: red;
+}
+
+button{
+  font-family: 'movie-poster';
+}
+
+btn-primary{
+  font-family: 'movie-poster';
+  color: red;
+}
+
+html{
+  background-color: black;
+}
+.wallpaper{
+  background-color:black
 }
