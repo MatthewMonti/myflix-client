@@ -64,29 +64,27 @@ export const MainView = () => {
           <SignupView />
         </>
       ) : selectedMovie ? (
-        <Row md={8} style={{ border: "10px solid black" }}>
-        <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+        <Col >
         <MovieView
-          style={{ border: "10px solid green" }}
+          style={{ border: "1px solid green" }}
           movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
-          />
-      </Row>
+        />
+      </Col>
       ) : movies.length === 0 ? (
         <div>The list is empty!</div>
         ) : (
         <>
              <h1>Select Film Poster to Learn More</h1>
-        <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
           {movies.map((movie) => (
             <MovieCard
-              key={movie.id}
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
-                setSelectedMovie(newSelectedMovie);
-              }}
+            key={movie._id}
+            movie={movie}
+            onMovieClick={(newSelectedMovie) => {
+              setSelectedMovie(newSelectedMovie);
+            }}
             />
-          ))}
+            ))}
         </>
       )}
     </Row>

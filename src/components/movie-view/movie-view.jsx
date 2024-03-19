@@ -1,8 +1,11 @@
+import Button from "react-bootstrap/Button"
+import Row from "react-bootstrap/Row"
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
+    <Row>
+        <Button onClick={onBackClick}>Back</Button>
       <ul>
-        <img onClick={onBackClick} className="movie-poster2"src={movie.Image} />
+        <img className="movie-poster2"src={movie.Image} />
       </ul>      
       <ul>
         <span className="Label">Title: </span>
@@ -62,6 +65,6 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span className="Label">Featured: </span>
         <span>{movie.Featured}</span>
       </ul>
-    </div>
+    </Row>
   );
 };
