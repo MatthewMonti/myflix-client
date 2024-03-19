@@ -61,14 +61,14 @@ export const MainView = () => {
       {!user ? (
         <>
           <LoginView onLoggedIn={(user) => setUser(user)} />
-          or
+          OR
           <SignupView />
         </>
       ) : selectedMovie ? (
         <>
         <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
         <MovieView
-          style={{ border: "1px solid green" }}
+          style={{ border: "10px solid green" }}
           movie={selectedMovie}
           onBackClick={() => setSelectedMovie(null)}
         />
