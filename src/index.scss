@@ -5,7 +5,7 @@ $body-bg: rgb(0, 0, 0);
 
 
 @import '~bootstrap/scss/bootstrap.scss';
-$color: blue;
+$color:red;
 .my-flix {
   color: $color;
   font-size: larger;
@@ -40,32 +40,18 @@ $color: blue;
   src:  url('./movie_poster/Film Premieres.otf')
 }
 
-h1,span,Label{
-  font-family: 'movie-poster';
-  color:red;
-}
 
-Label, ul, div{
+
+Label, h1,ul, span{
   font-family: 'movie-poster';
   color: red;
 }
 
-button{
+button.btn.btn-primary{
   font-family: 'movie-poster';
+  color:white;
 }
 
-btn-primary{
-  font-family: 'movie-poster';
-  color: red;
-}
-
-html{
-  background-color: black;
-}
-.wallpaper{
-  background-color:black
-}
-
-.input-bg{
-  background-color: white;
+.input-bg,.form-control:focus, .input-bg:focus, .form-control{
+  background-color:white;
 }

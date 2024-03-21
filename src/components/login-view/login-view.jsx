@@ -4,8 +4,10 @@ import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 
 export const LoginView = ({ onLoggedIn }) => {
+  
   const [Username, setUsername] = useState("")
   const [Password, setPassword] = useState("")
+  const [showPassword, setShowPassword] = useState(false);
     const handleSubmit = (event) => {
         // this prevents the default behavior of the form which is to reload the entire page
         
@@ -41,7 +43,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername#1">
+      <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
           className="input-bg"
@@ -53,15 +55,26 @@ export const LoginView = ({ onLoggedIn }) => {
         />
       </Form.Group>
 
-      <Form.Group controlId="formPassword#1">
+      <Form.Group>
         <Form.Label>Password:</Form.Label>
         <Form.Control
-          className="input-bg"
-          type="password"
+         type={
+          showPassword ? "text" : "password"
+         }
           value={Password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <br />
+        <br />
+        <label>Show Password</label>
+          <input
+              type="checkbox"
+              value={showPassword}
+              onChange={() =>
+                  setShowPassword((prev) => !prev)
+              }
+          />
       </Form.Group>
       <Button variant="primary" type="submit">
         Login

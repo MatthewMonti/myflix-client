@@ -6,6 +6,7 @@ import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 export const SignupView = () => {
     const [Username, setUsername] = useState("");
     const [Password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [Email, setEmail] = useState("");
     const [Birthday, setBirthday] = useState("");
   
@@ -37,7 +38,7 @@ export const SignupView = () => {
   
     return (
       <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formUsername#2">
+      <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
           className="input-bg"
@@ -48,17 +49,26 @@ export const SignupView = () => {
           minLength="3" 
         />
       </Form.Group>
-      <Form.Group controlId="formPassword#2">
+      <Form.Group>
         <Form.Label>Password:</Form.Label>
         <Form.Control
-          className="input-bg"
-          type="password"
-          value={Password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          type={
+           showPassword ? "text" : "password"
+          }
+           value={Password}
+           onChange={(e) => setPassword(e.target.value)}
+           required
+         />
+         <label>Show Password</label>
+           <input
+               type="checkbox"
+               value={showPassword}
+               onChange={() =>
+                   setShowPassword((prev) => !prev)
+               }
+           />
       </Form.Group>
-      <Form.Group controlId="formEmail">
+      <Form.Group>
         <Form.Label>Email:</Form.Label>
         <Form.Control
             className="input-bg"
@@ -68,7 +78,7 @@ export const SignupView = () => {
             required
           />
       </Form.Group>
-        <Form.Group controlId="formBirthday">
+        <Form.Group>
           <Form.Label>Birthday:</Form.Label>
           <Form.Control
             className="input-bg"
