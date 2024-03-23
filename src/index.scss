@@ -47,7 +47,7 @@ Label, h1,ul, span, p, h2{
   color: red;
 }
 
-button.btn.btn-primary{
+button.btn.btn-primary, button.btn.btn-primary:hover{
   font-family: 'movie-poster';
   color:black;
 }
