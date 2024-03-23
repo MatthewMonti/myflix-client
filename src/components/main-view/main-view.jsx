@@ -66,7 +66,9 @@ export const MainView = () => {
         </>
       ) : selectedMovie ? (
         <>
+         &nbsp;
         <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+        &nbsp;
         <MovieView
           style={{ border: "10px solid green" }}
           movie={selectedMovie}
@@ -77,8 +79,11 @@ export const MainView = () => {
         <div>The list is empty!</div>
         ) : (
         <>
+             &nbsp;
              <h1>Select Film Poster to Learn More</h1>
+             &nbsp;
              <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+             &nbsp;
           {movies.map((movie) => (
             <MovieCard
             key={movie._id}
@@ -88,6 +93,7 @@ export const MainView = () => {
             }}
             />
             ))}
+
         </>
       )}
     </Row>
