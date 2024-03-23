@@ -61,7 +61,7 @@ export const MainView = () => {
       {!user ? (
         <>
           <LoginView onLoggedIn={(user) => setUser(user)} />
-          OR
+          <h2>OR</h2> 
           <SignupView />
         </>
       ) : selectedMovie ? (

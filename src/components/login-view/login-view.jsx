@@ -65,8 +65,6 @@ export const LoginView = ({ onLoggedIn }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <br />
-        <br />
         <label>Show Password</label>
           <input
               type="checkbox"
@@ -79,6 +77,8 @@ export const LoginView = ({ onLoggedIn }) => {
       <Button variant="primary" type="submit">
         Login
       </Button>
+      <br />
+        <br />
     </Form>
   );
 };
