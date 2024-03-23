@@ -57,6 +57,22 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
   color:black;
 }
 
+.grid-container {
+  display: inline-grid;
+}
+
+
+.movie-poster:hover {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  width: 300px;
+  height: 400px;
+}
+
  .movie-poster:hover {
   opacity: 0.70;
 }
