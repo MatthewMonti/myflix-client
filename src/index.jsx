@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
     return (
-        <Container className="film-info" style={{border: "1px solid red"}}>
+        <Container className="film-info">
           <MainView />
         </Container>
       );
