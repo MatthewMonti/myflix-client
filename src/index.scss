@@ -47,11 +47,16 @@ Label, h1,ul, span, p, h2{
   color: red;
 }
 
-button.btn.btn-primary, button.btn.btn-primary:focus{
+button.btn.btn-primary{
   font-family: 'movie-poster';
   color:black;
 }
 
 .input-bg,.form-control:focus, .input-bg:focus, .form-control{
   background-color:white;
+  color:black;
+}
+
+ .movie-poster:hover {
+  opacity: 0.70;
 }
