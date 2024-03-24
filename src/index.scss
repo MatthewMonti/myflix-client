@@ -1,11 +1,11 @@
 
-$primary: rgb(226, 11, 11);
+$primary:  rgba(255, 0, 0, 0.804);
 $body-bg: rgb(0, 0, 0);
 
 
 
 @import '~bootstrap/scss/bootstrap.scss';
-$color:red;
+$color:  rgba(255, 0, 0, 0.804);
 .my-flix {
   color: $color;
   font-size: larger;
@@ -44,7 +44,7 @@ $color:red;
 
 Label, h1,ul, span, p, h2{
   font-family: 'movie-poster';
-  color: red;
+  color:   rgba(255, 0, 0, 0.804);
 }
 
 button.btn.btn-primary, button.btn.btn-primary:hover{
@@ -57,16 +57,9 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
   color:black;
 }
 
-.grid-container {
-  display: inline-grid;
-}
-
 
 .movie-poster:hover {
   opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
   transition: .5s ease;
   backface-visibility: hidden;
   width: 300px;
@@ -75,4 +68,13 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
 
  .movie-poster:hover {
   opacity: 0.70;
+}
+
+
+.bob {
+  display: grid;
+  grid-template-columns: 20rem 20rem 20rem;
+  grid-template-rows: 20rm 20rem 20rem;
+  grid-gap: 3rem;
+  justify-content: center;
 }

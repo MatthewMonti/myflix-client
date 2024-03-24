@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 
 export const MainView = () => {
@@ -57,7 +58,7 @@ export const MainView = () => {
   }, [token]);
 
   return (
-    <Row className="justify-content-md-center"> 
+    <div> 
         
       {!user ? (
         <>
@@ -67,8 +68,10 @@ export const MainView = () => {
         </>
       ) : selectedMovie ? (
         <>
-         &nbsp;
+        &nbsp;
+        <Row>
         <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+        </Row>
         &nbsp;
         <MovieView
           style={{ border: "10px solid green" }}
@@ -83,8 +86,12 @@ export const MainView = () => {
              &nbsp;
              <h1>Select Film Poster to Learn More</h1>
              &nbsp;
+             <Row>
              <Button onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
+             </Row>
              &nbsp;
+             &nbsp;
+        <Container className="bob">
           {movies.map((movie) => (
             <MovieCard
             key={movie._id}
@@ -94,9 +101,10 @@ export const MainView = () => {
             }}
             />
             ))}
+        </Container>
 
         </>
       )}
-    </Row>
+    </div>
 );
 };

@@ -3,9 +3,11 @@ import Row from "react-bootstrap/Row"
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <>
-    &nbsp;
-    <Button onClick={onBackClick}>Back</Button>
-    &nbsp;
+    <Row>
+     <Button onClick={onBackClick}>Back</Button>
+     &nbsp;
+    </Row>
+ 
       <ul>
         <img className="movie-poster2"src={movie.Image} />
       </ul>      
