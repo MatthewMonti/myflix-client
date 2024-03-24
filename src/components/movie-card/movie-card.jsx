@@ -37,7 +37,6 @@ MovieCard.propTypes = {
       Death: PropTypes.string
     }),
     Image: PropTypes.string.isRequired,
-    contentUrl: PropTypes.string.isRequired,
     Featured: PropTypes.string.isRequired
   }),
     onMovieClick: PropTypes.func.isRequired
