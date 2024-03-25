@@ -15,9 +15,8 @@ function VideoPlayer() {
   return (
     <div>
       {videos.map(video => (
-        <div key={video.id}>
-          <h2>{video.title}</h2>
-          <YouTube videoId={video.id} />
+        <div key={video.url}>
+          <YouTube videoId={video.url} />
         </div>
       ))}
     </div>
