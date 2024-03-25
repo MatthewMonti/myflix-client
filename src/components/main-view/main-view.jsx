@@ -50,7 +50,8 @@ export const MainView = () => {
               Death: doc.Director.Death
           },
             Image: doc.Image,
-            Featured: doc.Featured
+            Featured: doc.Featured,
+            url: doc.url
           };
         });
         setMovies(moviesFromApi);

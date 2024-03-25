@@ -5,8 +5,8 @@ function VideoPlayer() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // Fetch video data from JSON file
-    fetch('videos.json')
+    // Fetch video data from JSON URL
+    fetch('https://example.com/videos.json')
       .then(response => response.json())
       .then(data => setVideos(data))
       .catch(error => console.error('Error fetching videos:', error));
@@ -14,9 +14,9 @@ function VideoPlayer() {
 
   return (
     <div>
-      {videos.map(video => (
-        <div key={video.url}>
-          <YouTube videoId={video.url} />
+      {videos.map(movie => (
+        <div key={movie.url}>
+          <YouTube videoId={movie.url} />
         </div>
       ))}
     </div>

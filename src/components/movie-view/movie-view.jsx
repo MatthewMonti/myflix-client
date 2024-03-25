@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button"
 import Row from "react-bootstrap/Row"
+import {VideoPlayer} from "../VideoPlayer/VideoPlayer.jsx"
+import ReactPlayer from 'react-player/youtube'
 export const MovieView = ({ movie, onBackClick }) => {
   return (
     <>
@@ -10,7 +12,13 @@ export const MovieView = ({ movie, onBackClick }) => {
  
       <ul>
         <img className="movie-poster2"src={movie.Image} />
-      </ul>      
+      </ul> 
+      <ul>
+      <ul>
+        <span className="Label">Trailer: </span>
+        <ReactPlayer className="Video" url={movie.url} /> 
+      </ul>
+      </ul>     
       <ul>
         <span className="Label">Title: </span>
         <span>{movie.Title}</span>
