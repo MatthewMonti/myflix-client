@@ -70,11 +70,41 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
   opacity: 0.70;
 }
 
+@media (min-width: 320px) {
+  .bob {
+    display: grid;
+    grid-template-columns: 20rem;
+    grid-template-rows: 20rm 20rem 20rem;
+    grid-gap: 3rem;
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) {
+  .bob {
+    display: grid;
+    grid-template-columns: 20rem 20rem;
+    grid-template-rows: 20rm 20rem 20rem;
+    grid-gap: 3rem;
+    justify-content: center;
+  }
+}
 
-.bob {
-  display: grid;
-  grid-template-columns: 20rem 20rem 20rem;
-  grid-template-rows: 20rm 20rem 20rem;
-  grid-gap: 3rem;
-  justify-content: center;
+@media (min-width: 992px) {
+  .bob {
+    display: grid;
+    grid-template-columns: 20rem 20rem 20rem;
+    grid-template-rows: 20rm 20rem 20rem;
+    grid-gap: 3rem;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1280px) {
+  .bob {
+    display: grid;
+    grid-template-columns: 20rem 20rem 20rem 20rem;
+    grid-template-rows: 20rm 20rem 20rem;
+    grid-gap: 3rem;
+    justify-content: center;
+  }
 }
