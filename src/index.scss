@@ -1,5 +1,5 @@
 
-$primary:  rgba(255, 0, 0, 0.804);
+$primary: rgba(255, 0, 0, 0.804);
 $body-bg: rgb(0, 0, 0);
 
 
@@ -47,6 +47,7 @@ Label, h1,ul, span, p, h2{
 button.btn.btn-primary, button.btn.btn-primary:hover{
   font-family: 'movie-poster';
   color:black;
+  background-color:  rgba(255, 0, 0, 0.804);
 }
 
 .input-bg,.form-control:focus, .input-bg:focus, .form-control{
@@ -64,7 +65,7 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
 }
 
  .movie-poster:hover {
-  opacity: 0.70;
+  opacity: 0.60;
 }
 
 @media (min-width: 320px) {
@@ -81,6 +82,16 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
+  .movie-poster:hover {
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    width: 200px;
+    height: 300px;
+    border: 10px solid  rgba(255, 0, 0, 0.804);
+    justify-content: center;
+    align-items: center;
+  }
 }
 @media (min-width: 768px) {
   .bob {
@@ -95,6 +106,16 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
+  }
+  .movie-poster:hover {
+    transition: .5s ease;
+    backface-visibility: hidden;
+    width: 250px;
+    height: 350px;
+    opacity: 1;
+    border: none;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -112,6 +133,15 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
+  .movie-poster:hover {
+    transition: .5s ease;
+    backface-visibility: hidden;
+    width: 250px;
+    height: 350px;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -127,5 +157,14 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
+  }
+  .movie-poster:hover {
+    transition: .5s ease;
+    backface-visibility: hidden;
+    width: 250px;
+    height: 350px;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
   }
 }
