@@ -39,7 +39,7 @@ $color:  rgba(255, 0, 0, 0.804);
 
 
 
-Label, h1,ul, span, p, h2{
+Label, ul, span, p, h2{
   font-family: 'movie-poster';
   color:   rgba(255, 0, 0, 0.804);
 }
@@ -172,4 +172,16 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
 .Video{
   margin-left:auto;
   margin-right:auto;
+}
+
+.text-center{
+  font-family: 'movie-poster';
+  color:   rgba(255, 0, 0, 0.804);
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.movie-box{
+justify-content: center;
+align-items:center;
 }
