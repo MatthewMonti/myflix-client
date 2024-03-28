@@ -62,7 +62,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
        &nbsp;
-        <h1 class="text-center"  >Select Poster for Film Info</h1>
+        <h1 className="text-center"  >Select Poster for Film Info</h1>
         &nbsp;
       <Container className="bob">
         <Routes>
@@ -106,7 +106,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView moives={movies} />
+                    <MovieView movies = {movies} />
                   </Col>
                 )}
               </>
@@ -123,7 +123,7 @@ export const MainView = () => {
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mx-auto" key={movie.id}>
+                      <Col className="mx-auto" key={movie._id}>
                         <MovieCard movie ={movie} />
                       </Col>
                     ))}
