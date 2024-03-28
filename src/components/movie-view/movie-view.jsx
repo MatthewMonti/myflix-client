@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
   
-    const movie = movies.find((movie) => movie._id === movieId);
+    const movie = movies.find((m) => m._id === movieId);
 
     if (!movie) {
       return <div>Movie not found</div>;
