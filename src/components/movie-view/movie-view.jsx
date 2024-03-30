@@ -21,67 +21,67 @@ export const MovieView = ({ movies }) => {
       <div>
         <img className="movie-poster2"src={movie.Image} />
       </div> 
+      <br></br>
       <div>
-        <span className="Label">Trailer: </span>
         <ReactPlayer className="Video" url={movie.url} /> 
       </div>  
       <div>
-        <span className="Label">Title: </span>
-        <span>{movie.Title}</span>
+        <br></br>
+        <h2>{movie.Title}</h2>
       </div>
       <div>
-        <span className="Label">Description: </span>
-        <span>{movie.Description}</span>
+        <h3 className="Label">Description: </h3>
+        <p>{movie.Description}</p>
       </div>
       <div>
-        <span className="Label">Release: </span>
-        <span>{movie.Release}</span>
+        <h3 className="Label">Release: </h3>
+        <p>{movie.Release}</p>
       </div>
       <div>
-        <div className="Label">Genre: </div>
+        <h3 className="Label">Genre: </h3>
           <div>
-          <span className="Label">Name:</span>
-          <span className="NO">{movie.Genre.Name}</span>
+          <h5 className="Label">Name:</h5>
+          <p className="NO">{movie.Genre.Name}</p>
           </div>
           <div>
-          <span className="Label">Description: </span>
-          <span className="NO">{movie.Genre.Description}</span>
+          <h5 className="Label">Description: </h5>
+          <p className="NO">{movie.Genre.Description}</p>
           </div>
      </div>
       <div>
-        <span className="Label">Rated: </span>
+        <h3 className="Label">Rated: </h3>
         <span>{movie.Rated}</span>
       </div>
       <div>
-        <span className="Label">Rating: </span>
-        <span>{movie.Rating}</span>
+        <h3 className="Label">Rating: </h3>
+        <p>{movie.Rating}</p>
       </div>
       <div>
-       <span className="Label">Actors: </span>
-      <span>{[movie.Actors.join(', ')]}</span>
+       <h3 className="Label">Actors: </h3>
+      <p>{[movie.Actors.join(', ')]}</p>
       </div>
       <div>
-        <div className="Label">Director: </div>
+        <h3 className="Label">Director: </h3>
           <div>
-          <span className="Label">Name:</span>
-          <span className="NO">{movie.Director.Name}</span>
+          <h5 className="Label">Name:</h5>
+          <p className="NO">{movie.Director.Name}</p>
           </div>
           <div>
-            <span className="Label">Bio: </span>
-            <span className="NO">{movie.Director.Bio}</span>
+            <h5 className="Label">Bio: </h5>
+            <p className="NO">{movie.Director.Bio}</p>
           </div>
           <div>
-            <span className="Label">Birth: </span>
-            <span className="NO">{movie.Director.Birth}</span>
+            <h5 className="Label">Birth: </h5>
+            <p className="NO">{movie.Director.Birth}</p>
           </div>
           <div>
-            <span className="Label">Death: </span>
-            <span className="NO">{movie.Director.Death}</span>
+            <h5 className="Label">Death: </h5>
+            <p className="NO">{movie.Director.Death}</p>
           </div>
       </div>    
       <div>
-        <span className="Label">Featured: </span>
-        <span>{movie.Featured}</span>
+        <h5 className="Label">Featured: </h5>
+        <p>{movie.Featured}</p>
       </div>
     </div>
   );
