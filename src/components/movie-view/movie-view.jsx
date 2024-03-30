@@ -4,7 +4,7 @@ import {VideoPlayer} from "../VideoPlayer/VideoPlayer.jsx"
 import ReactPlayer from 'react-player/youtube'
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 export const MovieView = ({ movies }) => {
@@ -17,7 +17,7 @@ export const MovieView = ({ movies }) => {
   }
 
   return (
-    <div>
+    <Row class="mx-auto">
       <div>
         <img className="movie-poster2"src={movie.Image} />
       </div> 
@@ -83,6 +83,6 @@ export const MovieView = ({ movies }) => {
         <h5 className="Label">Featured: </h5>
         <p>{movie.Featured}</p>
       </div>
-    </div>
+    </Row>
   );
 };

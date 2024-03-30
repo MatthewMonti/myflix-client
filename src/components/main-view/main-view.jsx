@@ -64,7 +64,7 @@ export const MainView = () => {
        &nbsp;
         <h1 className="text-center"  >Select Poster for Film Info</h1>
         &nbsp;
-      <Container className="bob">
+      <Row>
         <Routes>
           <Route
             path="/signup"
@@ -105,7 +105,7 @@ export const MainView = () => {
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col md={8}>
+                  <Col>
                     <MovieView movies = {movies} />
                   </Col>
                 )}
@@ -133,7 +133,7 @@ export const MainView = () => {
             }
           />
         </Routes>
-      </Container>
+      </Row>
     </BrowserRouter>
   );
 };
