@@ -18,9 +18,9 @@ export const MovieView = ({ movies }) => {
 
   return (
     <Row class="mx-auto">
-      <div>
-        <img className="movie-poster2"src={movie.Image} />
-      </div> 
+      <Link to={`/`}>
+        <img varient="link" className="movie-poster2"src={movie.Image} />
+      </Link> 
       <br></br>
       <div>
         <ReactPlayer className="Video" url={movie.url} /> 
