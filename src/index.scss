@@ -15,8 +15,34 @@ $color:  rgba(255, 0, 0, 0.804);
   font-weight: bold;
 }
 
+ .navbar-toggler-icon{
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+}
+
+.navbar, 
+.navbar:hover,
+.navbar:active,
+.navbar:visited,
+button.navbar-toggler, 
+button.navbar-toggler:hover,
+button.navbar-toggler.active,
+button.navbar-toggler.visited,
+.nav-link,
+.nav-link:hover, 
+.nav-link:active,
+.nav-link:visited,
+a.navbar-brand,
+a.navbar-brand:hover,
+a.navbar-brand:active,
+a.navbar-brand:visited,
 
 
+
+{
+  color: rgba(255, 0, 0, 0.804);
+  font-family: 'movie-poster';
+  background-color: black;
+}
 
 .movie-poster2{
   display: block;
@@ -37,7 +63,9 @@ $color:  rgba(255, 0, 0, 0.804);
   src:  url('./movie_poster/Film Premieres.otf')
 }
 
-
+.bs-navbar-color{
+  color:green
+}
 
 Label, ul, span, p, h2, h3, h5{
   font-family: 'movie-poster';

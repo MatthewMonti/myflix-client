@@ -6,9 +6,11 @@ import { SignupView } from "../signup-view/signup-view";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
+import '../../index.scss'
 
 
 export const MainView = () => {
@@ -61,11 +63,17 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
+        <NavigationBar
+          user={user}
+          onLoggedOut={() => {
+            setUser(null);
+          }}
+    />
        &nbsp;
         <h1 className="text-center"  >Select Poster for Film Info</h1>
         &nbsp;
       <Row>
-        <Routes>
+         <Routes>
           <Route
             path="/signup"
             element={

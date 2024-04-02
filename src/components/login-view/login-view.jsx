@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
+import '../../index.scss'
 
 export const LoginView = ({ onLoggedIn }) => {
   
