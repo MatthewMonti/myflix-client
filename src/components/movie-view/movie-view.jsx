@@ -17,7 +17,7 @@ export const MovieView = ({ movies }) => {
   }
 
   return (
-    <Row class="mx-auto">
+    <Row class="mx-5">
       <Link to={`/`}>
         <img varient="link" className="movie-poster2"src={movie.Image} />
       </Link> 
