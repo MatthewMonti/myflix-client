@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import Form from "react-bootstrap/Form"
+import Button from "react-bootstrap/Button"
+
+
 
 export const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({
@@ -32,28 +36,27 @@ export const UserProfile = () => {
   return (
     <div>
       <h2>User Profile</h2>
-      <form>
-        <label>Username:
-          <input type="text" name="username" value={userInfo.username} onChange={handleInputChange} />
-        </label><br />
-        <label>Birthday:
-          <input type="text" name="birthday" value={userInfo.birthday} onChange={handleInputChange} />
-        </label><br />
-        <label>Email:
-          <input type="email" name="email" value={userInfo.email} onChange={handleInputChange} />
-        </label><br />
-        <button type="button" onClick={handleAddFavoriteMovie}>Add Favorite Movie</button>
-      </form>
+      <Form>
+        <Form.Label>Username:
+          <Form.Control type="text" name="username" value={userInfo.username} onChange={handleInputChange} />
+        </Form.Label><br />
+        <Form.Label>Birthday:
+          <Form.Control type="text" name="birthday" value={userInfo.birthday} onChange={handleInputChange} />
+        </Form.Label><br />
+        <Form.Label>Email:
+          <Form.Control type="email" name="email" value={userInfo.email} onChange={handleInputChange} />
+        </Form.Label><br />
+        <Button className="fav">Update</Button>
+      </Form>
       
       <h3>Favorite Movies:</h3>
-      <ul>
-        {userInfo.favoriteMovies.map((movie, index) => (
-          <li key={index}>
-            {movie} 
-            <button onClick={() => handleDeleteFavoriteMovie(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <Form>
+      <Form.Label>Favorite Film:
+        <Form.Control type="text" name="text" value={userInfo.email} onChange={handleInputChange} />
+          <Button className="fav">Add:</Button> 
+        <Button className="fav">Delete</Button>
+      </Form.Label>
+      </Form>
     </div>
   );
 };
