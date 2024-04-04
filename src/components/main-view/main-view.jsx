@@ -76,11 +76,11 @@ export const MainView = () => {
       <Row>
          <Routes>
           <Route
-            path="/signup"
+            path="/api/user"
             element={
               <>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/api/movies" />
                 ) : (
                   <Col md={5}>
                     <SignupView />
@@ -91,11 +91,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/profile"
+            path="/api/user/:id"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/api/user/login" replace />
                 ) : user.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -107,11 +107,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/login"
+            path="/api/user/login/"
             element={
               <>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/api/movies" />
                 ) : (
                   <Col md={5}>
                     <LoginView onLoggedIn={(user) => setUser(user)} />
@@ -122,11 +122,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/movies/:movieId"
+            path="/api/movies/:movieId"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/api/user/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -138,11 +138,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/"
+            path="/api/movies"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/api/user/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
