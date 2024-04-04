@@ -80,7 +80,7 @@ export const MainView = () => {
             element={
               <>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/signup" />
                 ) : (
                   <Col md={5}>
                     <SignupView />
