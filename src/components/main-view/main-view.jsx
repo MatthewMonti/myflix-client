@@ -111,7 +111,7 @@ export const MainView = () => {
             element={
               <>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/movies" />
                 ) : (
                   <Col md={5}>
                     <LoginView onLoggedIn={(user) => setUser(user)} />
@@ -138,7 +138,7 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/"
+            path="/movies"
             element={
               <>
                 {!user ? (
