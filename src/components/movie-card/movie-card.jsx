@@ -11,7 +11,7 @@ export const MovieCard = ({ movie }) => {
 
   return (
     <Card>
-       <Link to={`/api/movies/${encodeURIComponent(movie._id)}`}>
+       <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
         <Card.Img className="movie-poster" variant="link" src={movie.Image} />
       </Link>
       <Card.Body>

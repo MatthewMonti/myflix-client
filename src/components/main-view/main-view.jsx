@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
-import {UserCard} from "../user-card/user-card.jsx";
-import {AboutView} from "../about-view/about-view.jsx";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
@@ -19,7 +17,7 @@ import '../../index.scss'
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [users, setUser] = useState(storedUser? storedUser : null);
+  const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -67,7 +65,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
         <NavigationBar
-          suser={users}
+          user={user}
           onLoggedOut={() => {
             setUser(null);
           }}
@@ -78,26 +76,11 @@ export const MainView = () => {
       <Row>
          <Routes>
           <Route
-            path="/api/about"
+            path="/signup"
             element={
               <>
-                {users ? (
-                  <Navigate to="/api/about" />
-                ) : (
-                  <Container>
-                    <AboutView />
-                  </Container>
-                )}
-              </>
-
-            }
-          />
-          <Route
-            path="/api/user"
-            element={
-              <>
-                {users ? (
-                  <Navigate to="/api/movies" />
+                {user ? (
+                  <Navigate to="/" />
                 ) : (
                   <Col md={5}>
                     <SignupView />
@@ -108,31 +91,27 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/api/user/:id"
+            path="/profile"
             element={
               <>
-                {!users ? (
-                  <Navigate to="/api/user/login" replace />
-                ) : users.length === 0 ? (
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : user.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <>
-                    {users.map((user) => (
-                      <Col className="mx-auto" key={user._id}>
-                        <UserCard user ={user} />
-                      </Col>
-                    ))}
-                  </>
+                  <Col>
+                    <UserProfile users = {user} />
+                  </Col>
                 )}
               </>
             }
           />
           <Route
-            path="/api/user/login/"
+            path="/login"
             element={
               <>
                 {user ? (
-                  <Navigate to="/api/movies" />
+                  <Navigate to="/" />
                 ) : (
                   <Col md={5}>
                     <LoginView onLoggedIn={(user) => setUser(user)} />
@@ -143,11 +122,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/api/movies/:movieId"
+            path="/movies/:movieId"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/api/user/login" replace />
+                  <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -159,11 +138,11 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/api/movies"
+            path="/"
             element={
               <>
                 {!user ? (
-                  <Navigate to="/api/user/login" replace />
+                  <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
