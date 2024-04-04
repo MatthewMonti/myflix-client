@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
+import {UserCard} from "../user-card/user-card.jsx";
+import {AboutView} from "../about-view/about-view.jsx";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
@@ -17,7 +19,7 @@ import '../../index.scss'
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null);
+  const [users, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -65,7 +67,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
         <NavigationBar
-          user={user}
+          suser={users}
           onLoggedOut={() => {
             setUser(null);
           }}
@@ -76,10 +78,25 @@ export const MainView = () => {
       <Row>
          <Routes>
           <Route
+            path="/api/about"
+            element={
+              <>
+                {users ? (
+                  <Navigate to="/api/about" />
+                ) : (
+                  <Container>
+                    <AboutView />
+                  </Container>
+                )}
+              </>
+
+            }
+          />
+          <Route
             path="/api/user"
             element={
               <>
-                {user ? (
+                {users ? (
                   <Navigate to="/api/movies" />
                 ) : (
                   <Col md={5}>
@@ -94,14 +111,18 @@ export const MainView = () => {
             path="/api/user/:id"
             element={
               <>
-                {!user ? (
+                {!users ? (
                   <Navigate to="/api/user/login" replace />
-                ) : user.length === 0 ? (
+                ) : users.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
-                  <Col>
-                    <UserProfile users = {user} />
-                  </Col>
+                  <>
+                    {users.map((user) => (
+                      <Col className="mx-auto" key={user._id}>
+                        <UserCard user ={user} />
+                      </Col>
+                    ))}
+                  </>
                 )}
               </>
             }

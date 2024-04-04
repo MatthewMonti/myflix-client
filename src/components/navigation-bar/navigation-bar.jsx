@@ -13,6 +13,9 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           <Nav className="me-auto">
             {!user && (
               <>
+                <Nav.Link as={Link} to="api/about">
+                  About
+                </Nav.Link>
                 <Nav.Link as={Link} to="api/user/login">
                   Login
                 </Nav.Link>
