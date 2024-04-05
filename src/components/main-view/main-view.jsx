@@ -95,7 +95,7 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/profile" replace />
                 ) : user.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
