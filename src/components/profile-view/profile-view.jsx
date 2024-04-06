@@ -1,62 +1,121 @@
-import React, { useState } from 'react';
-import Form from "react-bootstrap/Form"
-import Button from "react-bootstrap/Button"
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import CSS from 'bootstrap/dist/css/bootstrap.min.css';
+import '../../index.scss'
 
+export const ProfileView = ({ onLoggedIn }) => {
+  const [Username, setUsername] = useState("")
+  const [Password, setPassword] = useState("")
+  const [Email, setEmail] = useState("")
+  const [Birthday, setBirthday] = useState("")
+  const [showPassword, setShowPassword] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
+    const handleSubmit = (event) => {
+        // this prevents the default behavior of the form which is to reload the entire page
+        
+        event.preventDefault();
 
+  const data = {
+    Username: Username,
+    Password: Password,
+    Email: Email,
+    Birthday: Birthday
+  };  
 
-export const UserProfile = () => {
-  const [userInfo, setUserInfo] = useState({
-    username: '',
-    birthday: '',
-    email: '',
-    favoriteMovies: []
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
-
-  const handleAddFavoriteMovie = () => {
-    const newMovie = prompt('Enter your favorite movie:');
-    if (newMovie) {
-      setUserInfo({
-        ...userInfo,
-        favoriteMovies: [...userInfo.favoriteMovies, newMovie]
-      });
-    }
-  };
-
-  const handleDeleteFavoriteMovie = (index) => {
-    const updatedMovies = [...userInfo.favoriteMovies];
-    updatedMovies.splice(index, 1);
-    setUserInfo({ ...userInfo, favoriteMovies: updatedMovies });
+  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/:id", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Login response: ", data);
+      if (data.user) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
+        onLoggedIn(data.user, data.token);
+      } else {
+        alert("No such user");
+      }
+    })
+    .catch((e) => {
+      alert("Something went wrong");
+    });
   };
 
   return (
-    <div>
-      <h2>User Profile</h2>
-      <Form>
-        <Form.Label>Username:
-          <Form.Control type="text" name="username" value={userInfo.username} onChange={handleInputChange} />
-        </Form.Label><br />
-        <Form.Label>Birthday:
-          <Form.Control type="text" name="birthday" value={userInfo.birthday} onChange={handleInputChange} />
-        </Form.Label><br />
-        <Form.Label>Email:
-          <Form.Control type="email" name="email" value={userInfo.email} onChange={handleInputChange} />
-        </Form.Label><br />
-        <Button className="fav">Update</Button>
-      </Form>
-      
-      <h3>Favorite Movies:</h3>
-      <Form>
-      <Form.Label>Favorite Film:
-        <Form.Control type="text" name="text" value={userInfo.email} onChange={handleInputChange} />
-          <Button className="fav">Add:</Button> 
-        <Button className="fav">Delete</Button>
-      </Form.Label>
-      </Form>
-    </div>
+    <Form 
+    onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label>Username:</Form.Label>
+        <Form.Control
+          className="input-bg"
+          type="text"
+          value={Username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          minLength="3" 
+        />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
+         type={
+          showPassword ? "text" : "password"
+         }
+          value={Password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <label>Show Password</label>
+          <input
+              type="checkbox"
+              value={showPassword}
+              onChange={() =>
+                  setShowPassword((prev) => !prev)
+              }
+          />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control
+         type={
+          showEmail ? "text" : "password"
+         }
+          value={Email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <label>Show Email</label>
+          <input
+              type="checkbox"
+              value={showEmail}
+              onChange={() =>
+                  setShowEmail((prev) => !prev)
+              }
+          />
+      </Form.Group>
+
+      <Form.Group>
+        <Form.Label>Birthday:</Form.Label>
+        <Form.Control
+          className="input-bg"
+          type="date"
+          value={Birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+          required
+        />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Update
+      </Button>
+      <br />
+        <br />
+    </Form>
   );
 };
