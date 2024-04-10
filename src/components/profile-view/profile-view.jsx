@@ -23,7 +23,7 @@ export const ProfileView = ({ onLoggedIn }) => {
     Birthday: Birthday
   };  
 
-  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/:id", {
+  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/:identity", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
