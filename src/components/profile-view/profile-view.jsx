@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 import '../../index.scss'
 
-export const ProfileView = ({ onLoggedIn }) => {
+export const ProfileView = ({ updateUser }) => {
   const [Username, setUsername] = useState("")
   const [Password, setPassword] = useState("")
   const [Email, setEmail] = useState("")
@@ -23,7 +23,7 @@ export const ProfileView = ({ onLoggedIn }) => {
     Birthday: Birthday
   };  
 
-  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/:identity", {
+  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -36,7 +36,7 @@ export const ProfileView = ({ onLoggedIn }) => {
       if (data.user) {
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", data.token);
-        onLoggedIn(data.user, data.token);
+        updateUser(data.user, data.token);
       } else {
         alert("No such user");
       }
