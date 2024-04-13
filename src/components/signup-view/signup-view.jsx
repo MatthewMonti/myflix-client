@@ -36,61 +36,86 @@ export const SignupView = () => {
         });
       };
   
-    return (
-      <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          className="input-bg"
-          type="text"
-          value={Username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength="3" 
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type={
-           showPassword ? "text" : "password"
-          }
-           value={Password}
-           onChange={(e) => setPassword(e.target.value)}
-           required
-         />
-         <label>Show Password</label>
-           <input
-               type="checkbox"
-               value={showPassword}
-               onChange={() =>
-                   setShowPassword((prev) => !prev)
-               }
-           />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Email:</Form.Label>
-        <Form.Control
-            className="input-bg"
-            type="email"
-            value={Email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-      </Form.Group>
-        <Form.Group>
-          <Form.Label>Birthday:</Form.Label>
-          <Form.Control
-            className="input-bg"
-            type="date"
-            value={Birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            required
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-        Sign-up
-      </Button>
-      </Form>
-    );
-  };
+      return (
+        <Form 
+        onSubmit={handleSubmit}>
+          <Form.Group>
+            <Form.Label>Username:</Form.Label>
+            <Form.Control
+              className="input-bg"
+              type="text"
+              value={Username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              minLength="3" 
+            />
+          </Form.Group>
+    
+          <Form.Group>
+            <Form.Label>Password:</Form.Label>
+            <Form.Control
+             type={
+              showPassword ? "text" : "password"
+             }
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label>Show Password</label>
+              <input
+                  type="checkbox"
+                  value={showPassword}
+                  onChange={() =>
+                      setShowPassword((prev) => !prev)
+                  }
+              />
+          </Form.Group>
+    
+          <Form.Group>
+            <Form.Label>Email:</Form.Label>
+            <Form.Control
+             type={
+              showEmail ? "text" : "password"
+             }
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label>Show Email</label>
+              <input
+                  type="checkbox"
+                  value={showEmail}
+                  onChange={() =>
+                      setShowEmail((prev) => !prev)
+                  }
+              />
+          </Form.Group>
+    
+          <Form.Group>
+            <Form.Label>Birthday:</Form.Label>
+            <Form.Control
+             type={
+              showBirthday ? "date" : "password"
+             }
+              value={Birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+              required
+            />
+            <label>Show Birthday</label>
+              <input
+                  type="checkbox"
+                  value={showBirthday}
+                  onChange={() =>
+                      setShowBirthday((prev) => !prev)
+                  }
+              />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Update
+          </Button>
+          <br />
+            <br />
+        </Form>
+      );
+    };
+    

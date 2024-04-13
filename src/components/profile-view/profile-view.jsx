@@ -9,6 +9,7 @@ export const ProfileView = ({ updateUser }) => {
   const [Password, setPassword] = useState("")
   const [Email, setEmail] = useState("")
   const [Birthday, setBirthday] = useState("")
+  const [showBirthday, setShowBirthday] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
     const handleSubmit = (event) => {
@@ -104,12 +105,21 @@ export const ProfileView = ({ updateUser }) => {
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
-          className="input-bg"
-          type="date"
+         type={
+          showBirthday ? "date" : "password"
+         }
           value={Birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
+        <label>Show Birthday</label>
+          <input
+              type="checkbox"
+              value={showBirthday}
+              onChange={() =>
+                  setShowBirthday((prev) => !prev)
+              }
+          />
       </Form.Group>
       <Button variant="primary" type="submit">
         Update
