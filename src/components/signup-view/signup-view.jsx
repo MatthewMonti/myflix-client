@@ -4,13 +4,11 @@ import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 
 export const SignupView = () => {
-  const [Username, setUsername] = useState("")
-  const [Password, setPassword] = useState("")
-  const [Email, setEmail] = useState("")
-  const [Birthday, setBirthday] = useState("")
-  const [showBirthday, setShowBirthday] = useState(false)
-  const [showPassword, setShowPassword] = useState(false);
-  const [showEmail, setShowEmail] = useState(false);
+    const [Username, setUsername] = useState("");
+    const [Password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+    const [Email, setEmail] = useState("");
+    const [Birthday, setBirthday] = useState("");
   
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -113,7 +111,7 @@ export const SignupView = () => {
               />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Create Account
+            Update
           </Button>
           <br />
             <br />

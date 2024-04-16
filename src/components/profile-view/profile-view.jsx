@@ -12,8 +12,6 @@ export const ProfileView = ({ updateUser }) => {
   const [showBirthday, setShowBirthday] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
-  const storedToken = localStorage.getItem("token");
-  const [token, setToken] = useState(storedToken? storedToken : null);
     const handleSubmit = (event) => {
         // this prevents the default behavior of the form which is to reload the entire page
         
@@ -29,8 +27,7 @@ export const ProfileView = ({ updateUser }) => {
   fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/", {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}` 
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
   })
