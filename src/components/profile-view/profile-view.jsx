@@ -42,7 +42,7 @@ export const ProfileView = ({ updateUser }) => {
         localStorage.setItem("token", data.token);
         updateUser(data.user, data.token);
       } else {
-        alert("User updated");
+        alert("No such user");
       }
     })
     .catch((e) => {
