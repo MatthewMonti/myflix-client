@@ -8,7 +8,9 @@ export const SignupView = () => {
     const [Password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [Email, setEmail] = useState("");
+    const [showEmail, setShowEmail] = useState("")
     const [Birthday, setBirthday] = useState("");
+    const [showBirthday, setShowBirthday] = useState("")
   
     const handleSubmit = (event) => {
         event.preventDefault();
