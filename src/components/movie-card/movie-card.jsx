@@ -7,16 +7,16 @@ import { Link } from "react-router-dom";
 
 
 // The MovieCard function component
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movieInfo }) => {
 
   return (
     <Card>
-       <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-        <Card.Img className="movie-poster" variant="link" src={movie.Image} />
+       <Link to={`/movies/${encodeURIComponent(movieInfo._id)}`}>
+        <Card.Img className="movie-poster" variant="link" src={movieInfo.Image} />
       </Link>
       <Card.Body>
-        <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Director.Name}</Card.Text>
+        <Card.Title>{movieInfo.Title}</Card.Title>
+        <Card.Text>{movieInfo.Director.Name}</Card.Text>
     
       </Card.Body>
     </Card>

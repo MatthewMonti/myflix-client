@@ -25,7 +25,7 @@ export const MainView = () => {
 
   useEffect(() => {
     if (!token) {
-      return;
+      return <h1>Could not connect to database</h1>;
     }
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies",
@@ -97,7 +97,7 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/profile" replace />
                 ) : user.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col></Col>
                 ) : (
                   <Col>
                     <ProfileView users = {user} />
@@ -128,7 +128,7 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col></Col>
                 ) : (
                   <Col>
                     <MovieView movies = {movies} />
@@ -144,12 +144,12 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col></Col>
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mx-auto" key={movie.id}>
-                        <MovieCard movie ={movie} />
+                      <Col className="mx-auto" key={movie._id}>
+                        <MovieCard movieInfo ={movie} />
                       </Col>
                     ))}
                   </>
