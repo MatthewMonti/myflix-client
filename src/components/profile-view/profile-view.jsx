@@ -1,131 +1,48 @@
-import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import CSS from 'bootstrap/dist/css/bootstrap.min.css';
-import '../../index.scss'
+// UserInfoComponent.js
 
-export const ProfileView = ({ updateUser }) => {
-  const [Username, setUsername] = useState("")
-  const [Password, setPassword] = useState("")
-  const [Email, setEmail] = useState("")
-  const [Birthday, setBirthday] = useState("")
-  const [showBirthday, setShowBirthday] = useState(false)
-  const [showPassword, setShowPassword] = useState(false);
-  const [showEmail, setShowEmail] = useState(false);
-    const handleSubmit = (event) => {
-        // this prevents the default behavior of the form which is to reload the entire page
-        
-        event.preventDefault();
+import React, { useState, useEffect } from 'react';
 
-  const data = {
-    Username: Username,
-    Password: Password,
-    Email: Email,
-    Birthday: Birthday
-  };  
+export const UserInfoComponent = () => {
+  const [userInfo, setUserInfo] = useState(null);
 
-  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Login response: ", data);
-      if (data.user) {
-        localStorage.setItem("user", JSON.stringify(data.user));
-        localStorage.setItem("token", data.token);
-        updateUser(data.user, data.token);
-      } else {
-        alert("No such user");
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const token = localStorage.getItem('token'); // Assuming you store token in localStorage
+        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/api/user', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setUserInfo(data);
+      } catch (error) {
+        console.error('Error fetching user info:', error);
       }
-    })
-    .catch((e) => {
-      alert("Something went wrong");
-    });
-  };
+    };
+
+    fetchUserInfo();
+  }, []);
 
   return (
-    <Form 
-    onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Username:</Form.Label>
-        <Form.Control
-          className="input-bg"
-          type="text"
-          value={Username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-          minLength="3" 
-        />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-         type={
-          showPassword ? "text" : "password"
-         }
-          value={Password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <label>Show Password</label>
-          <input
-              type="checkbox"
-              value={showPassword}
-              onChange={() =>
-                  setShowPassword((prev) => !prev)
-              }
-          />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Email:</Form.Label>
-        <Form.Control
-         type={
-          showEmail ? "text" : "password"
-         }
-          value={Email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label>Show Email</label>
-          <input
-              type="checkbox"
-              value={showEmail}
-              onChange={() =>
-                  setShowEmail((prev) => !prev)
-              }
-          />
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Birthday:</Form.Label>
-        <Form.Control
-         type={
-          showBirthday ? "date" : "password"
-         }
-          value={Birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-          required
-        />
-        <label>Show Birthday</label>
-          <input
-              type="checkbox"
-              value={showBirthday}
-              onChange={() =>
-                  setShowBirthday((prev) => !prev)
-              }
-          />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Update
-      </Button>
-      <br />
-        <br />
-    </Form>
+    <div>
+      {userInfo && (
+        <div>
+          <h2>User Information</h2>
+          <p>Username: {userInfo.Username}</p>
+          <p>Password: {userInfo.Password}</p>
+          <p>Email: {userInfo.Email}</p>
+          <p>Birthday: {userInfo.Birthday} </p>
+          {/* <p>Birthday: {userInfo.instanceof(date)}</p> */}
+          <p></p>
+        </div>
+      )}
+    </div>
   );
 };
+
+
+
+              

@@ -3,8 +3,8 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import { ProfileView } from "../profile-view/profile-view";
-import Button from "react-bootstrap/Button";
+import { UserInfoComponent } from "../profile-view/profile-view";
+import button from "react-bootstrap/button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
@@ -96,11 +96,9 @@ export const MainView = () => {
               <>
                 {!user ? (
                   <Navigate to="/profile" replace />
-                ) : user.length === 0 ? (
-                  <Col>The list is empty!</Col>
                 ) : (
-                  <Col>
-                    <ProfileView users = {user} />
+                  <Col md={5}>
+                    <UserInfoComponent key={user._id} user={user} />
                   </Col>
                 )}
               </>
@@ -148,8 +146,8 @@ export const MainView = () => {
                 ) : (
                   <>
                     {movies.map((movie) => (
-                      <Col className="mx-auto" key={movie._id}>
-                        <MovieCard movie={movie} />
+                      <Col className="mx-auto" >
+                        <MovieCard key={movie._id} movie={movie} />
                       </Col>
                     ))}
                   </>
