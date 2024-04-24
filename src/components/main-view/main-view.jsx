@@ -70,9 +70,7 @@ export const MainView = () => {
             setUser(null);
           }}
     />
-       &nbsp;
-        <h1 className="text-center"  >Select Poster for Film Info</h1>
-        &nbsp;
+ 
       <Row>
          <Routes>
           <Route
@@ -123,6 +121,7 @@ export const MainView = () => {
             path="/movies/:movieId"
             element={
               <>
+                <h1 className="text-center"  >Select Poster for Film Info</h1>
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
@@ -139,6 +138,7 @@ export const MainView = () => {
             path="/movies"
             element={
               <>
+                <h1 className="text-center"  >Select Poster for Film Info</h1>
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
