@@ -46,6 +46,43 @@ export const UserInfoComponent = () => {
       }
     });
   };
+  
+
+  const handleReset = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: Username,
+      Password: Password,
+      Email: Email,
+      Birthday: Birthday
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user", {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.ok) {
+        alert("User account successfully deleted");
+        window.location.reload();
+      } else {
+        alert("User account failed to delete");
+      }
+    });
+  };
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -82,7 +119,10 @@ export const UserInfoComponent = () => {
         </div>
       )}
       <Form 
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      onReset={handleReset}
+    
+      >
         <Form.Group>
           <Form.Label>Username:</Form.Label>
           <Form.Control
@@ -155,7 +195,11 @@ export const UserInfoComponent = () => {
             />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Update
+          Update Account
+        </Button>
+        <Button
+          variant="secondary" type="reset">
+            Erase Account
         </Button>
         <br />
           <br />
