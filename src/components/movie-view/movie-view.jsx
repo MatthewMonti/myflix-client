@@ -1,7 +1,5 @@
 import Button from "react-bootstrap/Button"
-import Row from "react-bootstrap/Row"
-import {VideoPlayer} from "../VideoPlayer/VideoPlayer.jsx"
-import ReactPlayer from 'react-player/youtube'
+import Row from "react-bootstrap/Row" 
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
