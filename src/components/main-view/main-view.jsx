@@ -17,7 +17,7 @@ import '../../index.scss'
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -30,7 +30,7 @@ export const MainView = () => {
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies",
      {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -110,7 +110,12 @@ export const MainView = () => {
                   <Navigate to="/movies" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -141,8 +146,6 @@ export const MainView = () => {
                 <h1 className="text-center"  >Select Poster for Film Info</h1>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
                 ) : (
                   <>
                     {movies.map((movie) => (
