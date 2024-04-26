@@ -183,11 +183,12 @@ export const UserInfoComponent = () => {
                 }
             />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button  variant="primary" type="submit">
           Update Account
         </Button>
         <Button
-          variant="secondary" type="reset">
+          className="mt-2"
+          variant="primary" type="reset">
             Erase Account
         </Button>
       </Form>

@@ -22,8 +22,7 @@ export const MovieView = ({ movies }) => {
         <br></br>
       <div>
         <Link to={`/movies`}>
-        <br></br>
-          <Button>View More Films</Button>
+          <Button className="mt-4">View More Films</Button>
         </Link>
       </div>
    
