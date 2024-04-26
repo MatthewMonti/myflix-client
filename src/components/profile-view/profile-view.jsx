@@ -27,10 +27,10 @@ export const UserInfoComponent = () => {
       Username: Username,
       Password: Password,
       Email: Email,
-      Birthday: Birthday
+      Birthday: Birthday,
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/update", {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -58,7 +58,7 @@ export const UserInfoComponent = () => {
       Birthday: Birthday
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/delete", {
       method: "DELETE",
       body: JSON.stringify(data),
       headers: {
@@ -74,15 +74,6 @@ export const UserInfoComponent = () => {
       }
     });
   };
-
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -114,8 +105,6 @@ export const UserInfoComponent = () => {
           <p>Password: {userInfo.Password}</p>
           <p>Email: {userInfo.Email}</p>
           <p>Birthday: {userInfo.Birthday} </p>
-          {/* <p>Birthday: {userInfo.instanceof(date)}</p> */}
-          <p></p>
         </div>
       )}
       <Form 
@@ -201,8 +190,6 @@ export const UserInfoComponent = () => {
           variant="secondary" type="reset">
             Erase Account
         </Button>
-        <br />
-          <br />
       </Form>
     </div>
   );
