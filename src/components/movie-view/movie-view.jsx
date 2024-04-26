@@ -24,11 +24,7 @@ export const MovieView = ({ movies }) => {
         <Link to={`/movies`}>
           <Button className="mt-4">View More Films</Button>
         </Link>
-      </div>
-   
-      <div>
-        <ReactPlayer className="Video" url={movie.url} /> 
-      </div>  
+      </div> 
       <div>
         <br></br>
         <h2>{movie.Title}</h2>
