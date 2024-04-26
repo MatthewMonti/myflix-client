@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 
 // The MovieCard function component
@@ -16,8 +17,8 @@ export const MovieCard = ({ movie }) => {
       </Link>
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Director.Name}</Card.Text>
-    
+        <Card.Text>{movie.Director.Name}</Card.Text> 
+        <Button>Favorite: {}</Button>
       </Card.Body>
     </Card>
   );
