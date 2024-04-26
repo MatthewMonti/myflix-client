@@ -49,6 +49,11 @@ a.navbar-brand:visited
   width: 300px;
   height: 400px;
 }
+.home{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .film-info{
   display: block;
@@ -82,18 +87,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
 }
 
 
-.movie-poster:hover {
-  opacity: 1;
-  transition: .5s ease;
-  backface-visibility: hidden;
-  width: 300px;
-  height: 400px;
-}
-
- .movie-poster:hover {
-  opacity: 0.60;
-}
-
 @media (min-width: 320px) {
   .bob {
     display: grid;
@@ -107,16 +100,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 300px;
     margin-left:auto;
     margin-right:auto;
-  }
-  .movie-poster:hover {
-    opacity: 1;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 200px;
-    height: 300px;
-    border: 10px solid  rgba(255, 0, 0, 0.804);
-    justify-content: center;
-    align-items: center;
   }
 
   .Video{
@@ -139,16 +122,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
-  }
-  .movie-poster:hover {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 250px;
-    height: 350px;
-    opacity: 1;
-    border: none;
-    justify-content: center;
-    align-items: center;
   }
 
   .Video{
@@ -173,15 +146,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
-  .movie-poster:hover {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 290px;
-    height: 390px;
-    opacity: 1;
-    justify-content: center;
-    align-items: center;
-  }
   .Video{
     margin-left:auto;
     margin-right:auto;
@@ -203,15 +167,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
-  }
-  .movie-poster:hover {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 250px;
-    height: 350px;
-    opacity: 1;
-    justify-content: center;
-    align-items: center;
   }
 }
 
