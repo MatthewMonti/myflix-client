@@ -12,13 +12,13 @@ export const MovieCard = ({ movie }) => {
 
   return (
     <Card>
-        <Card.Img className="movie-poster"  src={movie.Image} />
+        <Card.Img className="movie-poster" src={movie.Image} />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Director.Name}</Card.Text> 
-        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-          <Button>Details</Button>
-        </Link>
+      <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+        <Button>Details</Button>
+      </Link>
       </Card.Body>
     </Card>
   );
