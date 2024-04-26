@@ -19,10 +19,10 @@ export const SignupView = () => {
           Username: Username,
           Password: Password,
           Email: Email,
-          Birthday: Birthday
+          Birthday: Birthday,
         };
     
-        fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user", {
+        fetch("https://movies-flex-6e317721b427.herokuapp.com/api/create", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {
@@ -113,7 +113,7 @@ export const SignupView = () => {
               />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Update
+            Create Account
           </Button>
           <br />
             <br />
