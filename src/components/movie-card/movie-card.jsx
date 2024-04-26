@@ -1,5 +1,6 @@
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
+import {useState} from "react";
 
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button"
@@ -8,7 +9,8 @@ import {Button} from "react-bootstrap";
 
 
 // The MovieCard function component
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie}) => {
+
 
   return (
     <Card>

@@ -23,7 +23,7 @@ export const MovieView = ({ movies }) => {
       <div>
         <Link to={`/movies`}>
         <br></br>
-          <Button className="home">View More Films</Button>
+          <Button>View More Films</Button>
         </Link>
       </div>
    
