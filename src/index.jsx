@@ -6,7 +6,11 @@ import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 
-const App = () => {
+const App = () => { 
+
+  const handleClick = ()=>{
+    console.log(item)
+  }
   return (
     <Container>
       <MainView />

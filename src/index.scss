@@ -94,6 +94,13 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
   margin-right: auto;
 }
 
+
+.card-text{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .input-bg,.form-control:focus, .input-bg:focus, .form-control{
   background-color:white;
   color:black;
@@ -114,13 +121,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
-
-  .Video{
-    margin-left:auto;
-    margin-right:auto;
-    width: 50%  !important;
-    height: auto   !important;
-  }
 }
 @media (min-width: 768px) {
   .bob {
@@ -135,13 +135,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
-  }
-
-  .Video{
-    margin-left:auto;
-    margin-right:auto;
-    width: 100%  !important;
-    height: 25rem   !important;
   }
 }
 
@@ -158,12 +151,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
-  }
-  .Video{
-    margin-left:auto;
-    margin-right:auto;
-    width: 75%  !important;
-    height: 25rem   !important;
   }
 }
 
@@ -183,11 +170,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
   }
 }
 
-.Video{
-  margin-left:auto;
-  margin-right:auto;
-}
-
 .text-center{
   font-family: 'movie-poster';
   color:   rgba(255, 0, 0, 0.804);
@@ -201,3 +183,4 @@ align-items:center;
 .fav{
   margin-right: ($spacer * .5) !important;
 }
+

@@ -62,6 +62,8 @@ export const MainView = () => {
       });
   }, [token]);
 
+console.log(movies)
+
   return (
     <BrowserRouter>
         <NavigationBar
@@ -78,7 +80,7 @@ export const MainView = () => {
             element={
               <>
                 {user ? (
-                  <Navigate to="/signup" />
+                  <Navigate to="/home" />
                 ) : (
                   <Col md={5}>
                     <SignupView />
@@ -93,7 +95,7 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to="/profile" replace />
+                  <Navigate to="/login" replace />
                 ) : (
                   <Col md={5}>
                     <UserInfoComponent key={user._id} user={user} />
@@ -144,15 +146,17 @@ export const MainView = () => {
             element={
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
-                {!user ? (
+               {!user ? (
                   <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <Col className="mx-auto">The list is empty!</Col>
                 ) : (
-                  <>
-                    {movies.map((movie) => (
-                      <Col className="mx-auto" >
-                        <MovieCard key={movie.id} movie={movie} />
+                <>
+                  {movies.map((movie) => (
+                      <Col className="mx-auto" key={movie._id} >
+                        <MovieCard movie={movie}/>
                       </Col>
-                    ))}
+                      ))}
                   </>
                 )}
               </>

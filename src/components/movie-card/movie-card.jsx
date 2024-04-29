@@ -1,7 +1,6 @@
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
-import {useState} from "react";
-import React from 'react';
+import React from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button"
 import { Link } from "react-router-dom";
@@ -9,19 +8,19 @@ import {Button} from "react-bootstrap";
 
 
 // The MovieCard function component
-export const MovieCard = ({ movie}) => {
+export const MovieCard = ({ movie}, {user}) => {
 
 
   return (
     <Card>
         <Card.Img className="movie-poster" src={movie.Image} />
       <Card.Body>
-        <Card.Title class="text-center">{movie.Title}</Card.Title>
-        <Card.Text class="text-center">{movie.Director.Name}</Card.Text> 
+        <Card.Title className="text-center">{movie.Title}</Card.Title>
+        <Card.Text className="text-center">{movie.Director.Name}</Card.Text> 
       <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
         <Button>Details</Button>
       </Link>
-        <Button className="mt-2">Favorite Toggle</Button>
+      <Card.Title className="text-center">Favorite:</Card.Title>
       </Card.Body>
     </Card>
   );
