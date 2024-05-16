@@ -14,6 +14,7 @@ export const UserInfoComponent = () => {
   const [showEmail, setShowEmail] = useState("")
   const [Birthday, setBirthday] = useState("");
   const [showBirthday, setShowBirthday] = useState("")
+  const [Favorite] = useState("");
   const [userInfo, setUserInfo] = useState(null);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -28,6 +29,7 @@ export const UserInfoComponent = () => {
       Password: Password,
       Email: Email,
       Birthday: Birthday,
+      Favorite: Favorite
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/update", {
@@ -55,7 +57,8 @@ export const UserInfoComponent = () => {
       Username: Username,
       Password: Password,
       Email: Email,
-      Birthday: Birthday
+      Birthday: Birthday,
+      Favorite: Favorite
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/api/delete", {
@@ -105,6 +108,7 @@ export const UserInfoComponent = () => {
           <p>Password: {userInfo.Password}</p>
           <p>Email: {userInfo.Email}</p>
           <p>Birthday: {userInfo.Birthday} </p>
+          <p>Favorite: {userInfo.Favorite}</p>
         </div>
       )}
       <Form 

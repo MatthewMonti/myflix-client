@@ -1,32 +1,92 @@
-// Here you import the PropTypes library
 import PropTypes from "prop-types";
 import React from "react";
-import { Card } from "react-bootstrap";
-import Button from "react-bootstrap/Button"
+import { Card, Button } from "react-bootstrap"; // Consolidate imports
 import { Link } from "react-router-dom";
-import {Button} from "react-bootstrap";
+import { useState } from "react";
+import Form from "react-bootstrap/Form";
 
 
-// The MovieCard function component
-export const MovieCard = ({ movie}, {user}) => {
+export const MovieCard = ({ movie, user, isFavorite, onAddFavorite, onRemoveFavorite }) => {
+  const [Favorite, setFavorite] = useState("");
+  const storedToken = localStorage.getItem("token");
+  const [token, setToken] = useState(storedToken? storedToken : null);
 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: user.Username, 
+      Favorite: movie.Title
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorite", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { 
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.ok) {
+        alert("Favorite added successful");
+        window.location.reload();
+      } else {
+        alert("Favorite Failed");
+      }
+    });
+  }; // Merge props into one object
+
+
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: user.Username, 
+      Favorite: movie.Title
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorite", {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: { 
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.ok) {
+        alert("Favorite was deleted");
+        window.location.reload();
+      } else {
+        alert("Favorite Failed");
+      }
+    });
+  }; // Merge props into one object
 
   return (
     <Card>
-        <Card.Img className="movie-poster" src={movie.Image} />
+      <Card.Img className="movie-poster" src={movie.Image} />
       <Card.Body>
         <Card.Title className="text-center">{movie.Title}</Card.Title>
         <Card.Text className="text-center">{movie.Director.Name}</Card.Text> 
-      <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-        <Button>Details</Button>
-      </Link>
-      <Card.Title className="text-center">Favorite:</Card.Title>
+        <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+          <Button>Details</Button>
+        </Link>
+        <Form onSubmit={handleSubmit}>
+        <Button variant="primary" type="submit">
+          Favorite Add
+        </Button>
+        </Form>
+        <Form onSubmit={handleDelete}>
+          <Button variant="primary" type="submit">
+            Favorite Delete
+          </Button>
+        </Form>
       </Card.Body>
     </Card>
   );
 };
-
-// Here is where we define all the props constraints for the MovieCard
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -48,6 +108,6 @@ MovieCard.propTypes = {
       Death: PropTypes.string
     }),
     Image: PropTypes.string.isRequired,
-    Featured: PropTypes.string.isRequired
+    Featured: PropTypes.string.isRequired,
   })
 };

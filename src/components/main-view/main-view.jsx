@@ -154,7 +154,9 @@ console.log(movies)
                 <>
                   {movies.map((movie) => (
                       <Col className="mx-auto" key={movie._id}>
-                        <MovieCard movie={movie} />
+                        <MovieCard 
+                        user={user}
+                        movie={movie} />
                       </Col>
                       ))}
                   </>
