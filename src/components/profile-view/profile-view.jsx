@@ -26,7 +26,6 @@ export const UserInfoComponent = () => {
 
     const data = {
       Username: Username,
-      Password: Password,
       Email: Email,
       Birthday: Birthday,
       Favorite: Favorite
