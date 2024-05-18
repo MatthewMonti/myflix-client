@@ -104,7 +104,6 @@ export const UserInfoComponent = () => {
         <div>
           <h2>User Information</h2>
           <p>Username: {userInfo.Username}</p>
-          <p>Password: {userInfo.Password}</p>
           <p>Email: {userInfo.Email}</p>
           <p>Birthday: {userInfo.Birthday} </p>
           <p>Favorite: {userInfo.Favorite}</p>
