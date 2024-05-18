@@ -49,8 +49,6 @@ a.navbar-brand,
 a.navbar-brand:hover,
 a.navbar-brand:active,
 a.navbar-brand:visited
-
-
 {
   color: rgba(255, 0, 0, 0.804);
   font-family: 'movie-poster';
@@ -85,7 +83,12 @@ Label, ul, span, p, h1, h2, h3, h4, h5{
   color:   rgba(255, 0, 0, 0.804);
 }
 
-button.btn.btn-primary, button.btn.btn-primary:hover{
+button.btn.btn-primary, 
+button.btn.btn-primary:hover,
+button.btn.btn-danger,
+button.btn.btn-danger:hover,
+button.btn.btn-success,
+button.btn.btn-success:hover{
   font-family: 'movie-poster';
   color:black;
   background-color:  rgba(255, 0, 0, 0.804);

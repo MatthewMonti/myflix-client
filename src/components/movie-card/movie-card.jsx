@@ -1,88 +1,98 @@
 import PropTypes from "prop-types";
-import React from "react";
-import { Card, Button } from "react-bootstrap"; // Consolidate imports
+import React, { useState, useEffect } from "react";
+import { Card, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import Form from "react-bootstrap/Form";
 
+export const MovieCard = ({ movie, user }) => {
+  const [token, setToken] = useState(null);
+  const [isToggled, setIsToggled] = useState(false);
 
-export const MovieCard = ({ movie, user, isFavorite, onAddFavorite, onRemoveFavorite }) => {
-  const [Favorite, setFavorite] = useState("");
-  const storedToken = localStorage.getItem("token");
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken ? storedToken : null);
+  }, []);
 
+  const handleToggle = () => {
+    setIsToggled((prevState) => !prevState); // Toggle the state
+  };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleFavoriteAction = () => {
+    if (isToggled) {
+      handleDeleteFavorite();
+    } else {
+      handleAddFavorite();
+    }
+  };
 
+  const handleAddFavorite = () => {
     const data = {
-      Username: user.Username, 
-      Favorite: movie.Title
+      Username: user.Username,
+      Favorite: movie.Title,
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites", {
       method: "POST",
       body: JSON.stringify(data),
-      headers: { 
+      headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        alert("Favorite added successful");
-        window.location.reload();
-      } else {
-        alert("Favorite Failed");
-      }
-    });
-  }; // Merge props into one object
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Favorite added successfully");
+          setIsToggled(true);
+        } else {
+          alert("Failed to add favorite");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding favorite:", error);
+      });
+  };
 
-
-
-  const handleDelete = (event) => {
-    event.preventDefault();
-
+  const handleDeleteFavorite = () => {
     const data = {
-      Username: user.Username, 
-      Favorite: movie.Title
+      Username: user.Username,
+      Favorite: movie.Title,
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites", {
       method: "DELETE",
       body: JSON.stringify(data),
-      headers: { 
+      headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      }
-    }).then((response) => {
-      if (response.ok) {
-        alert("Favorite was deleted");
-        window.location.reload();
-      } else {
-        alert("Favorite Failed");
-      }
-    });
-  }; // Merge props into one object
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Favorite deleted successfully");
+          setIsToggled(false);
+        } else {
+          alert("Failed to delete favorite");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting favorite:", error);
+      });
+  };
 
   return (
     <Card>
       <Card.Img className="movie-poster" src={movie.Image} />
       <Card.Body>
         <Card.Title className="text-center">{movie.Title}</Card.Title>
-        <Card.Text className="text-center">{movie.Director.Name}</Card.Text> 
+        <Card.Text className="text-center">{movie.Director.Name}</Card.Text>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button>Details</Button>
         </Link>
-        <Form onSubmit={handleSubmit}>
-        <Button variant="primary" type="submit">
-          Favorite Add
+        <Button
+          variant={isToggled ? "danger" : "success"}
+          onClick={handleFavoriteAction}
+        >
+          {isToggled ? "Remove from Favorites" : "Add to Favorites"}
         </Button>
-        </Form>
-        <Form onSubmit={handleDelete}>
-          <Button variant="primary" type="submit">
-            Favorite Delete
-          </Button>
-        </Form>
       </Card.Body>
     </Card>
   );
@@ -99,15 +109,18 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
       Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired
+      Description: PropTypes.string.isRequired,
     }),
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
       Birth: PropTypes.string.isRequired,
-      Death: PropTypes.string
+      Death: PropTypes.string,
     }),
     Image: PropTypes.string.isRequired,
     Featured: PropTypes.string.isRequired,
-  })
+  }),
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+  }),
 };
