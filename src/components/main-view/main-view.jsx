@@ -169,4 +169,3 @@ console.log(movies)
     </BrowserRouter>
   );
 };
-  
