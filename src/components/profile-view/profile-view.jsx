@@ -102,11 +102,9 @@ export const UserInfoComponent = () => {
     <div>
       {userInfo && (
         <div>
-          <h2>User Information</h2>
-          <p>Username: {userInfo.Username}</p>
-          <p>Email: {userInfo.Email}</p>
-          <p>Birthday: {userInfo.Birthday} </p>
-          <p>Favorite: {userInfo.Favorite}</p>
+          <h3>User Information</h3>
+          <h5>Username: </h5> <p>{userInfo.Username}</p>
+          <h5>Favorites: </h5> <p> {userInfo.Favorite && userInfo.Favorite.join(', ')}</p>
         </div>
       )}
       <Form 
