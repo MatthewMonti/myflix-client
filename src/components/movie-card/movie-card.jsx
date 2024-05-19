@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState(
+    localStorage.getItem(`isToggled-${movie._id}`) === 'true'
+  );
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -14,6 +16,7 @@ export const MovieCard = ({ movie, user }) => {
 
   const handleToggle = () => {
     setIsToggled((prevState) => !prevState); // Toggle the state
+    localStorage.setItem(`isToggled-${movie._id}`, !isToggled);
   };
 
   const handleFavoriteAction = () => {
@@ -42,6 +45,7 @@ export const MovieCard = ({ movie, user }) => {
         if (response.ok) {
           alert("Favorite added successfully");
           setIsToggled(true);
+          localStorage.setItem(`isToggled-${movie._id}`, true);
         } else {
           alert("Failed to add favorite");
         }
@@ -69,6 +73,7 @@ export const MovieCard = ({ movie, user }) => {
         if (response.ok) {
           alert("Favorite deleted successfully");
           setIsToggled(false);
+          localStorage.setItem(`isToggled-${movie._id}`, false);
         } else {
           alert("Failed to delete favorite");
         }
@@ -98,29 +103,3 @@ export const MovieCard = ({ movie, user }) => {
   );
 };
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Release: PropTypes.string.isRequired,
-    Actors: PropTypes.array.isRequired,
-    Rated: PropTypes.string.isRequired,
-    Rating: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string.isRequired,
-      Death: PropTypes.string,
-    }),
-    Image: PropTypes.string.isRequired,
-    Featured: PropTypes.string.isRequired,
-  }),
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-  }),
-};
