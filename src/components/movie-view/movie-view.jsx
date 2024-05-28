@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row"
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-
+import ReactPlayer from 'react-player/youtube'
 
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
@@ -22,6 +22,10 @@ export const MovieView = ({ movies }) => {
         <Link to={`/movies`}>
           <Button className="mt-4">View More Films</Button>
         </Link>
+              <br></br>
+      <div>
+        <ReactPlayer controls className="Video" url={movie.url} /> 
+      </div>  
       </div> 
       <div>
         <br></br>

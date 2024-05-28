@@ -2,6 +2,47 @@
 $primary: rgba(255, 0, 0, 0.804);
 $body-bg: rgb(0, 0, 0);
 
+@media (min-width: 320px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 50%  !important;
+    height: auto   !important;
+  }
+}
+@media (min-width: 768px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%  !important;
+    height: 25rem   !important;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 75%  !important;
+    height: 25rem   !important;
+  }
+}
+
+  
+.movie-box{
+  justify-content: center;
+  align-items:center;
+  }
+  
+
+.Video{
+  margin-left:auto;
+  margin-right:auto;
+}
+
 
 
 @import '~bootstrap/scss/bootstrap.scss';
