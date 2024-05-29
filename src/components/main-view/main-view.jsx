@@ -29,7 +29,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies",
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies",
      {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -148,6 +148,7 @@ console.log(movies)
             element={
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
+               <img src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif"/>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
                     Action

@@ -31,7 +31,7 @@ export const UserInfoComponent = () => {
       Favorite: Favorite
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/update", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/update", {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
