@@ -15,8 +15,11 @@ export const MovieCard = ({ movie, user }) => {
   }, []);
 
   const handleToggle = () => {
-    setIsToggled((prevState) => !prevState); // Toggle the state
-    localStorage.setItem(`isToggled-${movie._id}`, !isToggled);
+    setIsToggled((prevState) => {
+      const newState = !prevState; // Toggle the state
+      localStorage.setItem(`isToggled-${movie._id}`, newState); // Update localStorage
+      return newState; // Return the new state
+    });
   };
 
   const handleFavoriteAction = () => {
