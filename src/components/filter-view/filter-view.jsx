@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-export const MainView = () => {
+export const FilterView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser? storedUser : null);
@@ -29,7 +29,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies",
+    fetch("https://movies-flex-6e317721b427.herokuapp.com//api/movies/genre/:genreName",
      {
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -149,31 +149,31 @@ console.log(movies)
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
                 <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/movies/Action">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Action">
                     Action
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Adventure">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Adventure">
                     Adventure
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Anime">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Anime">
                     Anime
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Comedy">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Comedy">
                     Comedy
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Drama">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Drama">
                     Drama
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Family">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Family">
                     Family
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Horror">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Horror">
                     Horor
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Sci-Fi">
+                  <Nav.Link className="text-center" as={Link} to="/movies/Sci-Fi">
                     Sci-Fi
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/War">
+                  <Nav.Link className="text-center" as={Link} to="/movies/War">
                     War
                   </Nav.Link>
                 </Nav>
