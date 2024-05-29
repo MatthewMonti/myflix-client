@@ -8,12 +8,12 @@ import button from "react-bootstrap/button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
-
-
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -147,6 +147,38 @@ console.log(movies)
             element={
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/jhjh">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Horor
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    Sci-Fi
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/jhjh">
+                    War
+                  </Nav.Link>
+                </Nav>
                {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
