@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 import '../../index.scss'
+import { Link } from "react-router-dom";
+
 
 export const LoginView = ({ onLoggedIn }) => {
   
@@ -77,8 +79,11 @@ export const LoginView = ({ onLoggedIn }) => {
       </Form.Group>
       <Button variant="primary" type="submit">
         Login
-      </Button>
-      <br />
+      </Button>  
+      <br /> 
+      <Link to={`/signup`}>
+          <Button>Signup</Button>
+        </Link>
         <br />
     </Form>
   );

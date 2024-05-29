@@ -97,7 +97,7 @@ console.log(movies)
             element={
               <>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/" replace />
                 ) : (
                   <Col md={5}>
                     <UserInfoComponent key={user._id} user={user} />
@@ -107,9 +107,13 @@ console.log(movies)
             }
           />
           <Route
-            path="/login"
+            path="/"
             element={
               <>
+              <h1 className="text-left"  >Welcome to Reel Cinema Database</h1>
+              <img className="projector" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif"></img>
+
+              <h3>Login</h3>
                 {user ? (
                   <Navigate to="/movies" />
                 ) : (
@@ -132,7 +136,7 @@ console.log(movies)
               <>
                 <h1 className="text-center"  >Reel Cinema Database</h1>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -148,7 +152,7 @@ console.log(movies)
             element={
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
-               <img src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif"/>
+                <h5>Film Category</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
                     Action
@@ -169,20 +173,18 @@ console.log(movies)
                     Family
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/Horror">
-                    Horor
+                    Horror
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/Sci-Fi">
-                    Sci-Fi
+                    Science Fiction 
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/War">
                     War
                   </Nav.Link>
                 </Nav>
                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col className="mx-auto">The list is empty!</Col>
-                ) : (
+                  <Navigate to="/" />
+                ): (
                 <>
                   {movies.map((movie) => (
                       <Col className="mx-auto" key={movie._id}>

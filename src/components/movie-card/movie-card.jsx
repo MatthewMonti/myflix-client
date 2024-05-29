@@ -8,6 +8,14 @@ export const MovieCard = ({ movie, user }) => {
   const [isToggled, setIsToggled] = useState(
     localStorage.getItem(`isToggled-${movie._id}`) === 'true'
   );
+  // Retrieve token from local storage
+const retrievedToken = localStorage.getItem(`isToggled-${movie._id}`);
+
+// Store token in session storage
+sessionStorage.setItem(`isToggled-${movie._id}`, token);
+
+// Retrieve token from session storage
+const retrievedSessionToken = sessionStorage.getItem('movieToken');
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");

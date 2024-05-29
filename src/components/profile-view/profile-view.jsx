@@ -60,7 +60,7 @@ export const UserInfoComponent = () => {
       Favorite: Favorite
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/delete", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/delete", {
       method: "DELETE",
       body: JSON.stringify(data),
       headers: {
@@ -81,7 +81,7 @@ export const UserInfoComponent = () => {
     const fetchUserInfo = async () => {
       try {
         const token = localStorage.getItem('token'); // Assuming you store token in localStorage
-        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/api/user', {
+        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
