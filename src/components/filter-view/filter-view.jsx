@@ -29,7 +29,7 @@ export const FilterView = () => {
       return;
     }
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com//api/movies/genre/:genreName",
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies/genre/:genreName",
      {
       headers: { Authorization: `Bearer ${token}` },
     })
