@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
-import {FilterView} from "../filter-view/filter-view";
 import { SignupView } from "../signup-view/signup-view";
 import { UserInfoComponent } from "../profile-view/profile-view";
 import button from "react-bootstrap/button";
@@ -111,7 +110,7 @@ console.log(movies)
             element={
               <>
               <h1 className="text-left"  >Welcome to Reel Cinema Database</h1>
-              <img className="projector" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif"></img>
+              <img className="col-md-5" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif"/>
 
               <h3>Login</h3>
                 {user ? (
