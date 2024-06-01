@@ -174,11 +174,17 @@ console.log(movies)
                   <Nav.Link as={Link} to="/movies/Horror">
                     Horror
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/movies/Sci-Fi">
                     Science Fiction 
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/War">
                     War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
                   </Nav.Link>
                 </Nav>
                {!user ? (
