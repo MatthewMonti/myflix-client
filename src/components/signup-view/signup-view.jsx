@@ -44,21 +44,25 @@ export const SignupView = () => {
           <Form.Group>
             <Form.Label>Username:</Form.Label>
             <Form.Control
+              placeholder="Stevenson"
               className="input-bg"
               type="text"
               value={Username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              minLength="3" 
+              minLength="5" 
+              patterm="[A-Za-z]+"
             />
           </Form.Group>
     
           <Form.Group>
             <Form.Label>Password:</Form.Label>
             <Form.Control
+              placeholder="EmpireStar#384"
              type={
               showPassword ? "text" : "password"
              }
+
               value={Password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -76,6 +80,8 @@ export const SignupView = () => {
           <Form.Group>
             <Form.Label>Email:</Form.Label>
             <Form.Control
+               placeholder="stevenson@gmail.com"
+               pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
              type={
               showEmail ? "text" : "password"
              }
@@ -96,22 +102,13 @@ export const SignupView = () => {
           <Form.Group>
             <Form.Label>Birthday:</Form.Label>
             <Form.Control
-             type={
-              showBirthday ? "date" : "password"
-             }
+              type="date"
               value={Birthday}
               onChange={(e) => setBirthday(e.target.value)}
               required
             />
-            <label>Show Birthday</label>
-              <input
-                  type="checkbox"
-                  value={showBirthday}
-                  onChange={() =>
-                      setShowBirthday((prev) => !prev)
-                  }
-              />
           </Form.Group>
+          <br />
           <Button variant="primary" type="submit">
             Create Account
           </Button>

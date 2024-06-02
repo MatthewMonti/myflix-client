@@ -120,13 +120,15 @@ export const UserInfoComponent = () => {
             value={Username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            minLength="3" 
+            minLength="5" 
+            placeholder="Stevenson"
           />
         </Form.Group>
   
         <Form.Group>
           <Form.Label>Password:</Form.Label>
           <Form.Control
+          placeholder="EmpireStar#384"
            type={
             showPassword ? "text" : "password"
            }
@@ -147,6 +149,8 @@ export const UserInfoComponent = () => {
         <Form.Group>
           <Form.Label>Email:</Form.Label>
           <Form.Control
+            placeholder="stevenson@gmail.com"
+            pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
            type={
             showEmail ? "text" : "password"
            }
@@ -167,25 +171,17 @@ export const UserInfoComponent = () => {
         <Form.Group>
           <Form.Label>Birthday:</Form.Label>
           <Form.Control
-           type={
-            showBirthday ? "date" : "password"
-           }
+            type="date"
             value={Birthday}
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
-          <label>Show Birthday</label>
-            <input
-                type="checkbox"
-                value={showBirthday}
-                onChange={() =>
-                    setShowBirthday((prev) => !prev)
-                }
-            />
         </Form.Group>
+        <br />
         <Button  variant="primary" type="submit">
           Update Account
         </Button>
+        <br />
         <Button
           className="mt-2"
           variant="primary" type="reset">
