@@ -40,7 +40,9 @@ export const SignupView = () => {
   
       return (
         <Form 
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        enctype="multipart/form-data"
+        >
           <Form.Group>
             <Form.Label>Username:</Form.Label>
             <Form.Control

@@ -110,7 +110,7 @@ export const UserInfoComponent = () => {
       <Form 
       onSubmit={handleSubmit}
       onReset={handleReset}
-    
+      enctype="multipart/form-data"
       >
         <Form.Group>
           <Form.Label>Username:</Form.Label>
