@@ -110,7 +110,7 @@ console.log(movies)
             element={
               <Col md={5}>
               <h3 id="intro">Welcome to Reel Cinema Database</h3>
-              <img className="col-md-12" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
+              <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
 
               <h4>Login</h4>
                 {user ? (

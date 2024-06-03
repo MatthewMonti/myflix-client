@@ -10,6 +10,12 @@ $body-bg: rgb(0, 0, 0);
     width: 50%  !important;
     height: auto   !important;
   }
+
+  .icon{
+    margin:center;
+    height:275px;
+    width:275px;
+  }
 }
 @media (min-width: 768px) {
 
@@ -29,8 +35,28 @@ $body-bg: rgb(0, 0, 0);
     width: 75%  !important;
     height: 25rem   !important;
   }
-}
 
+  .icon{
+    margin:center;
+    height:375px;
+    width:375px;
+  }
+}
+@media (min-width: 1200px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 75%  !important;
+    height: 25rem   !important;
+  }
+
+  .icon{
+    margin:center;
+    height:450px;
+    width:450px;
+  }
+}
   
 .movie-box{
   justify-content: center;
