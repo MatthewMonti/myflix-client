@@ -120,7 +120,15 @@ a.navbar-brand:visited
   color:green
 }
 
-Label, ul, span, p, h1, h2, h3, h4, h5{
+h3{
+  border: 2px dotted yellow;
+  border-width: 3px;
+  padding:6px;
+  justify-content: center;
+  font-family: 'movie-poster';
+  color:   rgba(255, 0, 0, 0.804);
+}
+Label, ul, span, p, h1, h2, h4, h5{
   font-family: 'movie-poster';
   color:   rgba(255, 0, 0, 0.804);
 }
