@@ -80,6 +80,7 @@ console.log(movies)
             path="/signup"
             element={
               <>
+              <h4>Create Account</h4>
                 {user ? (
                   <Navigate to="/home" />
                 ) : (
