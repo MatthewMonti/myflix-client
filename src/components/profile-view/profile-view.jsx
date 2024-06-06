@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import './index.scss';
+import '../../index.scss';
 
 export const UserInfoComponent = () => {
   const [Username, setUsername] = useState("");

@@ -1,6 +1,6 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './index.scss';
+import '../../index.scss';
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar bg="black" expand="lg">

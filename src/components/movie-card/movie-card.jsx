@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import './index.scss';
+import '../../index.scss';
+
 
 export const MovieCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
