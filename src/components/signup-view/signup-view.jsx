@@ -10,7 +10,6 @@ export const SignupView = () => {
     const [Email, setEmail] = useState("");
     const [showEmail, setShowEmail] = useState("")
     const [Birthday, setBirthday] = useState("");
-    const [showBirthday, setShowBirthday] = useState("")
   
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -53,7 +52,6 @@ export const SignupView = () => {
               onChange={(e) => setUsername(e.target.value)}
               required
               minLength="5" 
-              patterm="[A-Za-z]+"
             />
           </Form.Group>
     
