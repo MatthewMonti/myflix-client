@@ -539,7 +539,7 @@ console.log(movies)
               </>
             }
           />
-          <Route
+            <Route
             path="/movies"
             element={
               <>
@@ -589,17 +589,18 @@ console.log(movies)
                {!user ? (
                   <Navigate to="/" />
                 ): (
-                <>
-                  {movies.map((movie) => (
+                  <>
+                  {movies
+                    .filter(movie => movie.Title) // Filter out movies with no title (you can adjust this condition as needed)
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) // Sort movies alphabetically by title
+                    .map((movie) => (
                       <Col className="mx-auto" key={movie._id}>
-                        <MovieCard 
-                        user={user}
-                        movie={movie} />
+                        <MovieCard user={user} movie={movie} />
                       </Col>
-                      ))}
-                  </>
-                )}
-              </>
+                    ))}
+                </>
+              )}
+          </>
             }
           />
         </Routes>
