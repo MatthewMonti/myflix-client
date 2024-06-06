@@ -105,7 +105,9 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
       .then(data => {
         setToggleState(data.state);
       })
-      .catch(error => console.error('Error fetching toggle state:', error));
+      .catch((error) => {
+        console.error("Error fetching toggle state:", error);
+      });
   }
 
   const saveToggleState = (state) => {
@@ -121,8 +123,10 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
         throw new Error('Failed to save toggle state');
       }
     })
-    .catch(error => console.error('Error saving toggle state:', error));
-  }
+    .catch((error) => {
+      console.error("Error saving toggle state:", error);
+  });
+}
 
   const handleToggleChange = (e) => {
     const isChecked = e.target.checked;
