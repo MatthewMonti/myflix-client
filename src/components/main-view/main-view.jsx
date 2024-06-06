@@ -5,12 +5,11 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { UserInfoComponent } from "../profile-view/profile-view";
-import Button from "react-bootstrap/Button";
+import './index.scss';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
 import { Navbar, Container, Nav } from "react-bootstrap";

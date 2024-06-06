@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import ReactPlayer from 'react-player/youtube'
-
+import './index.scss';
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
   
