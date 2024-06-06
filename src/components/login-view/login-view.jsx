@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 import '../../index.scss'
 import { Link } from "react-router-dom";
-import './index.scss';
 
 export const LoginView = ({ onLoggedIn }) => {
   
