@@ -166,6 +166,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Action")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -193,6 +194,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Adventure")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -220,6 +222,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Anime")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -247,6 +250,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Comedy")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -273,6 +277,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Drama")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -299,6 +304,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Family")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -325,6 +331,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Family")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -351,6 +358,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Historical")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -377,6 +385,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Horror")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -403,6 +412,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Musical")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -429,6 +439,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Mystery")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -455,6 +466,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Sci-Fi")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -481,6 +493,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "War")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -507,6 +520,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Western")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
