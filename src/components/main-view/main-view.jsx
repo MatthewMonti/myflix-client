@@ -83,7 +83,7 @@ console.log(movies)
               <>
               <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/home" />
+                  <Navigate to="/movies" />
                 ) : (
                   <Col md={5}>
                     <SignupView />
