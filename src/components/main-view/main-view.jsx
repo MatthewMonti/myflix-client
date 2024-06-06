@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
+import {FilterCard} from "../filter-card/filter-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
@@ -131,6 +132,397 @@ console.log(movies)
             }
           />
           <Route
+            path="/"
+            element={
+              <Col md={5}>
+              <h3 id="intro">Welcome to Reel Cinema Database</h3>
+              <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
+
+              <h4>Login</h4>
+                {user ? (
+                  <Navigate to="/movies" />
+                ) : (
+                  <>
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }}
+                    />
+                  </>
+                )}
+              </Col>
+
+            }
+          />   
+          <Route
+          path="/movies/Action"
+          element={
+            <>
+            <h3 id="intro">Action Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Action")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        
+        <Route
+          path="/movies/Adventure"
+          element={
+            <>
+            <h3 id="intro">Adventure Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Adventure")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+
+          }
+        />
+            <Route
+          path="/movies/Anime"
+          element={
+            <>
+            <h3 id="intro">Anime Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Anime")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+
+          }
+        />
+        <Route
+          path="/movies/Comedy"
+          element={
+            <>
+            <h3 id="intro">Comedy Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Comedy")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Drama"
+          element={
+            <>
+            <h3 id="intro">Drama Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Drama")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Family"
+          element={
+            <>
+            <h3 id="intro">Family Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Family")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Family"
+          element={
+            <>
+            <h3 id="intro">Family Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Family")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+           <Route
+          path="/movies/Historical"
+          element={
+            <>
+            <h3 id="intro">Historical Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Historical")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Horror"
+          element={
+            <>
+            <h3 id="intro">Horror Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Horror")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+            <Route
+          path="/movies/Musical"
+          element={
+            <>
+            <h3 id="intro">Musical Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Musical")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+             <Route
+          path="/movies/Mystery"
+          element={
+            <>
+            <h3 id="intro">Mystery Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Mystery")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+               <Route
+          path="/movies/Sci-Fi"
+          element={
+            <>
+            <h3 id="intro">Sci-Fi Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Sci-Fi")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+                      <Route
+          path="/movies/War"
+          element={
+            <>
+            <h3 id="intro">War Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "War")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Western"
+          element={
+            <>
+            <h3 id="intro">Western Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Western")
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+          <Route
             path="/movies/:movieId"
             element={
               <>
@@ -172,8 +564,14 @@ console.log(movies)
                   <Nav.Link as={Link} to="/movies/Family">
                     Family
                   </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
                   <Nav.Link as={Link} to="/movies/Horror">
                     Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/Mystery">
                     Mystery 
