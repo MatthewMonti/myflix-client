@@ -85,7 +85,7 @@ console.log(movies)
                 {user ? (
                   <Navigate to="/movies" />
                 ) : (
-                  <Col md={5}>
+                  <Col>
                     <SignupView />
                   </Col>
                 )}
@@ -100,7 +100,7 @@ console.log(movies)
                 {!user ? (
                   <Navigate to="/" replace />
                 ) : (
-                  <Col md={5}>
+                  <Col>
                     <UserInfoComponent key={user._id} user={user} />
                   </Col>
                 )}
@@ -110,7 +110,7 @@ console.log(movies)
           <Route
             path="/"
             element={
-              <Col md={5}>
+              <>
               <h3 id="intro">Welcome to Reel Cinema Database</h3>
               <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
 
@@ -118,16 +118,16 @@ console.log(movies)
                 {user ? (
                   <Navigate to="/movies" />
                 ) : (
-                  <>
+                  <Col>
                     <LoginView
                       onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
                       }}
                     />
-                  </>
+                  </Col>
                 )}
-              </Col>
+              </>
 
             }
           />
