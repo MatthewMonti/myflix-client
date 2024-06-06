@@ -83,7 +83,6 @@ export const SignupView = () => {
             <Form.Label>Email:</Form.Label>
             <Form.Control
                placeholder="stevenson@gmail.com"
-               pattern="/^[^\s@]+@[^\s@]+\.[^\s@]+$/"
              type={
               showEmail ? "text" : "password"
              }
