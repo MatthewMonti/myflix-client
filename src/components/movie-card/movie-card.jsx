@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
+  const [toggleState, setToggleState] = useState(false);
   const [isToggled, setIsToggled] = useState(
     localStorage.getItem(`isToggled-${movie._id}`) === 'true'
   );
@@ -20,7 +21,10 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken ? storedToken : null);
+    fetchToggleState();
   }, []);
+
+
 
   const handleToggle = () => {
     setIsToggled((prevState) => {
@@ -94,6 +98,37 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
       });
   };
 
+  const fetchToggleState = () => {
+    fetch('/toggleState')
+      .then(response => response.json())
+      .then(data => {
+        setToggleState(data.state);
+      })
+      .catch(error => console.error('Error fetching toggle state:', error));
+  }
+
+  const saveToggleState = (state) => {
+    fetch('/saveToggleState', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ state }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to save toggle state');
+      }
+    })
+    .catch(error => console.error('Error saving toggle state:', error));
+  }
+
+  const handleToggleChange = (e) => {
+    const isChecked = e.target.checked;
+    setToggleState(isChecked);
+    saveToggleState(isChecked);
+  }
+
   return (
     <Card>
       <Card.Img className="movie-poster" src={movie.Image} />
@@ -106,6 +141,10 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
         <Button
           variant={isToggled ? "danger" : "success"}
           onClick={handleFavoriteAction}
+          type="checkbox"
+          id="toggle"
+          checked={toggleState}
+          onChange={handleToggleChange}
         >
           {isToggled ? "Remove from Favorites" : "Add to Favorites"}
         </Button>
