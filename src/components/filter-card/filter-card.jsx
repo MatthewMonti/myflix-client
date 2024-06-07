@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+
+
 export const FilterCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
   const [isToggled, setIsToggled] = useState(
