@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
 
 export const MovieCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
@@ -10,22 +9,12 @@ export const MovieCard = ({ movie, user }) => {
   const [isToggled, setIsToggled] = useState(
     localStorage.getItem(`isToggled-${movie._id}`) === 'true'
   );
-  // Retrieve token from local storage
-const retrievedToken = localStorage.getItem(`isToggled-${movie._id}`);
-
-// Store token in session storage
-sessionStorage.setItem(`isToggled-${movie._id}`, token);
-
-// Retrieve token from session storage
-const retrievedSessionToken = sessionStorage.getItem('movieToken');
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
-    setToken(storedToken ? storedToken : null);
+    setToken(storedToken || null);
     fetchToggleState();
   }, []);
-
-
 
   const handleToggle = () => {
     setIsToggled((prevState) => {
@@ -61,7 +50,7 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
         if (response.ok) {
           alert("Favorite added successfully");
           setIsToggled(true);
-          localStorage.setItem(`isToggled-${movie._id}`, true);
+          saveToggleState(true);
         } else {
           alert("Failed to add favorite");
         }
@@ -89,7 +78,7 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
         if (response.ok) {
           alert("Favorite deleted successfully");
           setIsToggled(false);
-          localStorage.setItem(`isToggled-${movie._id}`, false);
+          saveToggleState(false);
         } else {
           alert("Failed to delete favorite");
         }
@@ -125,14 +114,40 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
     })
     .catch((error) => {
       console.error("Error saving toggle state:", error);
-  });
-}
+    });
+  }
 
   const handleToggleChange = (e) => {
     const isChecked = e.target.checked;
     setToggleState(isChecked);
     saveToggleState(isChecked);
   }
+
+  const saveToggleStateToServer = (isChecked) => {
+    // Send an HTTP request to the server to save the toggle state
+    fetch('/saveToggleState', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        movieId: movie._id, // Include the movie ID so the server knows which movie's state to update
+        state: isChecked,
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to save toggle state');
+      }
+    })
+    .catch((error) => {
+      console.error("Error saving toggle state:", error);
+      // Optionally, revert the local state if there was an error
+      setToggleState(!isChecked);
+      // Display an error message to the user
+      alert("Failed to save toggle state. Please try again later.");
+    });
+  };
 
   return (
     <Card>
@@ -158,3 +173,7 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
   );
 };
 
+MovieCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+};
