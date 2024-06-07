@@ -44,7 +44,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <Form onSubmit={handleSubmit}
-    enctype="multipart/form-data"
+    encType="multipart/form-data"
     >
       <Form.Group>
         <Form.Label>Username:</Form.Label>
