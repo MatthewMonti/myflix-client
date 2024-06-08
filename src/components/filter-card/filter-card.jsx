@@ -24,22 +24,6 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
     setToken(storedToken ? storedToken : null);
   }, []);
 
-  const handleToggle = () => {
-    setIsToggled((prevState) => {
-      const newState = !prevState; // Toggle the state
-      localStorage.setItem(`isToggled-${movie._id}`, newState); // Update localStorage
-      return newState; // Return the new state
-    });
-  };
-
-  const handleFavoriteAction = () => {
-    if (isToggled) {
-      handleDeleteFavorite();
-    } else {
-      handleAddFavorite();
-    }
-  };
-
   const handleAddFavorite = () => {
     const data = {
       Username: user.Username,
@@ -109,10 +93,16 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
           <Button>Details</Button>
         </Link>
         <Button
-          variant={isToggled ? "danger" : "success"}
-          onClick={handleFavoriteAction}
+          onClick={handleAddFavorite}
+          type="checkbox"
         >
-          {isToggled ? "Remove from Favorites" : "Add to Favorites"}
+          Add To Favorites
+        </Button>
+        <Button
+          onClick={handleDeleteFavorite}
+          type="checkbox"
+        >
+          Remove from Favorites
         </Button>
       </Card.Body>
     </Card>

@@ -85,16 +85,12 @@ export const MovieCard = ({ movie, user }) => {
           onClick={handleAddFavorite}
           type="checkbox"
           id="toggle"
-          checked={toggleState}
         >
           Add To Favorites
         </Button>
         <Button
-          variant={isToggled ? "danger" : "success"}
           onClick={handleDeleteFavorite}
           type="checkbox"
-          id="toggle"
-          checked={toggleState}
         >
           Remove from Favorites
         </Button>
