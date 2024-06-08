@@ -6,20 +6,20 @@ import { Link } from "react-router-dom";
 export const MovieCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
   const [toggleState, setToggleState] = useState(false);
+
   const [isToggled, setIsToggled] = useState(
-    localStorage.getItem(`isToggled-${movie._id}`) === 'true'
+    localStorage.getItem(`isToggled-${user.Favorite}`) === 'false'
   );
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken || null);
-    fetchToggleState();
   }, []);
 
   const handleToggle = () => {
     setIsToggled((prevState) => {
       const newState = !prevState; // Toggle the state
-      localStorage.setItem(`isToggled-${movie._id}`, newState); // Update localStorage
+      localStorage.setItem(`isToggled-${user.Favorite}`, newState); // Update localStorage
       return newState; // Return the new state
     });
   };
@@ -50,7 +50,6 @@ export const MovieCard = ({ movie, user }) => {
         if (response.ok) {
           alert("Favorite added successfully");
           setIsToggled(true);
-          saveToggleState(true);
         } else {
           alert("Failed to add favorite");
         }
@@ -78,7 +77,6 @@ export const MovieCard = ({ movie, user }) => {
         if (response.ok) {
           alert("Favorite deleted successfully");
           setIsToggled(false);
-          saveToggleState(false);
         } else {
           alert("Failed to delete favorite");
         }
@@ -88,66 +86,6 @@ export const MovieCard = ({ movie, user }) => {
       });
   };
 
-  const fetchToggleState = () => {
-    fetch('/toggleState')
-      .then(response => response.json())
-      .then(data => {
-        setToggleState(data.state);
-      })
-      .catch((error) => {
-        console.error("Error fetching toggle state:", error);
-      });
-  }
-
-  const saveToggleState = (state) => {
-    fetch('/saveToggleState', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ state }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to save toggle state');
-      }
-    })
-    .catch((error) => {
-      console.error("Error saving toggle state:", error);
-    });
-  }
-
-  const handleToggleChange = (e) => {
-    const isChecked = e.target.checked;
-    setToggleState(isChecked);
-    saveToggleState(isChecked);
-  }
-
-  const saveToggleStateToServer = (isChecked) => {
-    // Send an HTTP request to the server to save the toggle state
-    fetch('/saveToggleState', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        movieId: movie._id, // Include the movie ID so the server knows which movie's state to update
-        state: isChecked,
-      }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to save toggle state');
-      }
-    })
-    .catch((error) => {
-      console.error("Error saving toggle state:", error);
-      // Optionally, revert the local state if there was an error
-      setToggleState(!isChecked);
-      // Display an error message to the user
-      alert("Failed to save toggle state. Please try again later.");
-    });
-  };
 
   return (
     <Card>
@@ -164,7 +102,6 @@ export const MovieCard = ({ movie, user }) => {
           type="checkbox"
           id="toggle"
           checked={toggleState}
-          onChange={handleToggleChange}
         >
           {isToggled ? "Remove from Favorites" : "Add to Favorites"}
         </Button>
