@@ -8,7 +8,7 @@ export const MovieCard = ({ movie, user }) => {
   const [toggleState, setToggleState] = useState(false);
 
   const [isToggled, setIsToggled] = useState(
-    localStorage.getItem(`isToggled-${user.Favorite}`) === 'false'
+    localStorage.getItem(`isToggled-${user.Favorite}`) === 'True'
   );
 
   useEffect(() => {
@@ -16,21 +16,6 @@ export const MovieCard = ({ movie, user }) => {
     setToken(storedToken || null);
   }, []);
 
-  const handleToggle = () => {
-    setIsToggled((prevState) => {
-      const newState = !prevState; // Toggle the state
-      localStorage.setItem(`isToggled-${user.Favorite}`, newState); // Update localStorage
-      return newState; // Return the new state
-    });
-  };
-
-  const handleFavoriteAction = () => {
-    if (isToggled) {
-      handleDeleteFavorite();
-    } else {
-      handleAddFavorite();
-    }
-  };
 
   const handleAddFavorite = () => {
     const data = {
@@ -97,13 +82,21 @@ export const MovieCard = ({ movie, user }) => {
           <Button>Details</Button>
         </Link>
         <Button
-          variant={isToggled ? "danger" : "success"}
-          onClick={handleFavoriteAction}
+          onClick={handleAddFavorite}
           type="checkbox"
           id="toggle"
           checked={toggleState}
         >
-          {isToggled ? "Remove from Favorites" : "Add to Favorites"}
+          Add To Favorites
+        </Button>
+        <Button
+          variant={isToggled ? "danger" : "success"}
+          onClick={handleDeleteFavorite}
+          type="checkbox"
+          id="toggle"
+          checked={toggleState}
+        >
+          Remove from Favorites
         </Button>
       </Card.Body>
     </Card>
