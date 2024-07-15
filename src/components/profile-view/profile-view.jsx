@@ -103,7 +103,6 @@ export const UserInfoComponent = () => {
         <div>
           <h3>User Information</h3>
           <h5>Username: </h5> <p>{userInfo.Username}</p>
-          <h5>Birthday: </h5><p>{userInfo.Birthday}</p>
           <h5>Favorites: </h5> <p> {userInfo.Favorite && userInfo.Favorite.join(', ')}</p>
         </div>
       )}
