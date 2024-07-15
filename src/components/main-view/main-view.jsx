@@ -192,7 +192,7 @@ console.log(movies)
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Adventure")
-                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .sort((a, b) => a.Release.localeCompare(b.Release)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
