@@ -559,6 +559,7 @@ console.log(movies)
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
                 <br />
+                <br /> 
                 <SearchBar />
                 <br />
                 <br />
