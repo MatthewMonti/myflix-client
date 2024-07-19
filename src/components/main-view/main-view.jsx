@@ -1,4 +1,6 @@
+import React from "react";
 import { useState, useEffect } from "react";
+import SearchBar from "../search-bar/search-bar"; // Corrected import statement
 import { MovieCard } from "../movie-card/movie-card";
 import {FilterCard} from "../filter-card/filter-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -556,6 +558,10 @@ console.log(movies)
             element={
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
+                <br />
+                <SearchBar />
+                <br />
+                <br />
                 <h5>Film Category</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
