@@ -134,7 +134,7 @@ const MoviesView = ({ movies, filterText, user, onFilterTextChange }) => {
   return (
     <>
       <h1 className="text-center">Reel Cinema Database</h1>
-      <SearchBar filterText={filterText} onFilterTextChange={onFilterTextChange} />
+      <SearchBar className="text-center" filterText={filterText} onFilterTextChange={onFilterTextChange} />
       <Row>
         {movies.map(movie => (
           <Col key={movie._id} className="mx-auto">
