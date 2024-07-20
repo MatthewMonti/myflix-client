@@ -144,26 +144,10 @@ button.navbar-toggler.visited,
 a.navbar-brand,
 a.navbar-brand:hover,
 a.navbar-brand:active,
-a.navbar-brand:visited,
-
-.container,
-div.container,
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+a.navbar-brand:visited
 {
   color: rgba(255, 0, 0, 0.804);
-  overflow: hidden; 
   font-family: 'movie-poster';
-  background-color: black;
-}
-
-.navbar-toggler,
-.navbar-toggler-collapsed
-{
-  color: rgba(255, 0, 0, 0.804);
-  border: solid rgba(255, 0, 0, 0.804);
-  overflow: hidden; 
-  font-family: 'movie-poster';
-  background-color: black;
 }
 
 .movie-poster2{

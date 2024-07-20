@@ -1,17 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const SearchBar = ({ filterText, onFilterTextChange }) => {
+const SearchBar = () => {
   return (
     <form>
-      <br />
-      <input
-        className="searchbar"
-        type="text"
-        value={filterText}
-        placeholder="Search..."
-        onChange={(e) => onFilterTextChange(e.target.value)}
-      />
-      <br />
+      <input className="searchbar"type="text" placeholder="Search..." />
     </form>
   );
 };

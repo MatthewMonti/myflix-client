@@ -82,7 +82,7 @@ export const MovieView = ({ movies }) => {
       </div>    
       <div>
         <h5 className="Label">Featured: </h5>
-        <p>'{movie.Featured ? 'Yes' : 'No'}'</p>
+        <p>{movie.Featured}</p>
       </div>
     </Row>
   );
