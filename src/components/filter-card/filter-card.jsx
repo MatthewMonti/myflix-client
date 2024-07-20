@@ -109,3 +109,4 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
   );
 };
 
+export default FilterCard

@@ -22,7 +22,9 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  
+  const [filterText, setFilterText] = useState('');
+
+
 
   useEffect(() => {
     if (!token) {
@@ -62,6 +64,16 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       });
   }, [token]);
+
+  const handleFilterTextChange = (text) => {
+    setFilterText(text);
+  };
+
+  // Filter movies based on filterText
+  const filteredMovies = movies.filter((movie) =>
+    movie.Title.toLowerCase().includes(filterText.toLowerCase())
+  );
+
 
 console.log(movies)
 
@@ -560,7 +572,10 @@ console.log(movies)
                 <h1 className="text-center">Reel Cinema Database</h1>
                 <br />
                 <br /> 
-                <SearchBar />
+                <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+                />
                 <br />
                 <br />
                 <h5>Film Category</h5>
@@ -609,7 +624,7 @@ console.log(movies)
                   <Navigate to="/" />
                 ): (
                   <>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Title) // Filter out movies with no title (you can adjust this condition as needed)
                     .sort((a, b) => a.Title.localeCompare(b.Title)) // Sort movies alphabetically by title
                     .map((movie) => (

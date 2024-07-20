@@ -87,3 +87,5 @@ export const MovieView = ({ movies }) => {
     </Row>
   );
 };
+
+export default MovieView

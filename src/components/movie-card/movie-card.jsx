@@ -103,3 +103,5 @@ MovieCard.propTypes = {
   movie: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 };
+
+export default MovieCard

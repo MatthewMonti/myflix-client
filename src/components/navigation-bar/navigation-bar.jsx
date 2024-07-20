@@ -35,3 +35,5 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     </Navbar>
   );
 };
+
+export default NavigationBar

@@ -189,4 +189,5 @@ export const UserInfoComponent = () => {
     </div>
   );
 };
-    
+
+export default UserInfoComponent;
