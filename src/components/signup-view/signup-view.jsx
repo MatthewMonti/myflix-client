@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useHistory } from "react-router-dom"; // Assuming you're using React Router for navigation
+import { useHistory } from "react-router-dom";
 
 export const SignupView = () => {
   const history = useHistory();
