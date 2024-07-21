@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useHistory } from "react-router-dom"; // Assuming you're using React Router for navigation
 
 export const SignupView = () => {
-  const [Username, setUsername] = useState("");
-  const [Password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState("");
-  const [Email, setEmail] = useState("");
-  const [showEmail, setShowEmail] = useState(""); // Corrected to boolean
-  const [Birthday, setBirthday] = useState("");
+  const history = useHistory();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [showEmail, setShowEmail] = useState(false);
+  const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
-      Username: Username,
-      Password: Password,
-      Email: Email,
-      Birthday: Birthday,
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/create", {
@@ -30,14 +33,14 @@ export const SignupView = () => {
       .then((response) => {
         if (response.ok) {
           alert("Signup successful");
-          window.location.href = "/"; // Redirect upon successful signup
+          history.push("/login"); // Redirect to login page after successful signup
         } else {
           alert("Signup failed");
         }
       })
       .catch((error) => {
         console.error("Error:", error);
-        alert("Signup failed"); // Basic error handling
+        alert("Signup failed");
       });
   };
 
@@ -46,59 +49,59 @@ export const SignupView = () => {
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
-          placeholder="Stevenson"
-          className="input-bg"
           type="text"
-          value={Username}
+          placeholder="Enter your username"
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
+          minLength={5}
           required
-          minLength="5"
         />
       </Form.Group>
 
       <Form.Group>
         <Form.Label>Password:</Form.Label>
         <Form.Control
-          placeholder="EmpireStar#384"
           type={showPassword ? "text" : "password"}
-          value={Password}
+          placeholder="Enter your password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <input
+        <Form.Check
           type="checkbox"
+          label="Show Password"
           checked={showPassword}
-          onChange={() => setShowPassword((prev) => !prev)}
+          onChange={() => setShowPassword(!showPassword)}
         />
-        <label>Show Password</label>
       </Form.Group>
 
       <Form.Group>
         <Form.Label>Email:</Form.Label>
         <Form.Control
-          placeholder="stevenson@gmail.com"
           type={showEmail ? "text" : "email"}
-          value={Email}
+          placeholder="Enter your email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
+        <Form.Check
           type="checkbox"
+          label="Show Email"
           checked={showEmail}
-          onChange={() => setShowEmail((prev) => !prev)}
+          onChange={() => setShowEmail(!showEmail)}
         />
-        <label>Show Email</label>
       </Form.Group>
 
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
           type="date"
-          value={Birthday}
+          value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
       </Form.Group>
+
       <Button variant="primary" type="submit">
         Create Account
       </Button>
