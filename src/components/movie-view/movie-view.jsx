@@ -51,7 +51,7 @@ export const MovieView = ({ movies }) => {
      </div>
       <div>
         <h3 className="Label">Rated: </h3>
-        <span>{movie.Rated}</span>
+        <p>{movie.Rated}</p>
       </div>
       <div>
         <h3 className="Label">Rating: </h3>

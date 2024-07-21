@@ -69,13 +69,34 @@ export const MainView = () => {
     setFilterText(text);
   };
 
-  // Filter movies based on filterText
-  const filteredMovies = movies.filter((movie) =>
-    movie.Title.toLowerCase().includes(filterText.toLowerCase())
-  );
+  const filteredMovies = movies.filter((movie) => {
+
+// Without help of ChatGPT from React Docs created filters that allow for accurate search results
+const GenreMovies = movies.filter(movie => movie.Genre.Name === (filterText));
+
+const RatedMovies = movies.filter(movie => movie.Rated === (filterText) );
+
+const ReleaseYRSMovies = movies.filter(movies=> movies.Release === (filterText));
+
+const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
 
 
-console.log(movies)
+
+// Check if Title, Director's Name, or any Actor's Name matches filterText
+if (
+  (movie.Genre && movie.Genre.Name && movie.Genre.Name.includes(filterText)) ||
+  movie.Title ===(filterText) ||
+  (movie.Director && movie.Director.Name && movie.Director.Name === (filterText)) ||
+  (movie.Actors && movie.Actors.some(actor => actor === (filterText))) ||
+  (movie.Rated && (Array.isArray(movie.Rated) ? movie.Rated === (filterText) : movie.Rated === (filterText))) ||
+  (movie.Release && movie.Release === (filterText)) ||
+  (movie.Rating && movie.Rating === (filterText))
+) {
+  return true; // Include movie if any of the above conditions match
+}
+
+return false; // Exclude movie if none of the conditions match
+});
 
   return (
     <BrowserRouter>
@@ -468,16 +489,16 @@ console.log(movies)
           }
         />
                <Route
-          path="/movies/Sci-Fi"
+          path="/movies/Science Fiction"
           element={
             <>
-            <h3 id="intro">Sci-Fi Films</h3>
+            <h3 id="intro">Science Fiction Films</h3>
             {!user ? (
                   <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Sci-Fi")
+                    .filter(movie => movie.Genre.Name === "Science Fiction")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -610,8 +631,8 @@ console.log(movies)
                   <Nav.Link as={Link} to="/movies/Mystery">
                     Mystery 
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Sci-Fi">
-                    Science Fiction 
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/War">
                     War
