@@ -116,7 +116,7 @@ return false; // Exclude movie if none of the conditions match
               <>
               <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app" />
                 ) : (
                   <Col>
                     <SignupView />
@@ -131,7 +131,7 @@ return false; // Exclude movie if none of the conditions match
             element={
               <>
                 {!user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="https://reel-cinema.netlify.app" replace />
                 ) : (
                   <Col>
                     <UserInfoComponent key={user._id} user={user} />
@@ -194,7 +194,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Action Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -222,7 +222,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Adventure Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app" />
                 ): (
                   <Row>
                   {movies
@@ -250,7 +250,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Anime Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app" />
                 ): (
                   <Row>
                   {movies
@@ -278,7 +278,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Comedy Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -305,7 +305,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Drama Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -332,7 +332,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Family Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -359,7 +359,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Family Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -386,7 +386,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Historical Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app" />
                 ): (
                   <Row>
                   {movies
@@ -413,7 +413,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Horror Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -440,7 +440,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Musical Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -467,7 +467,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Mystery Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -494,7 +494,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Science Fiction Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -521,7 +521,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">War Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -548,7 +548,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Western Films</h3>
             {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <Row>
                   {movies
@@ -575,7 +575,7 @@ return false; // Exclude movie if none of the conditions match
               <>
                 <h1 className="text-center"  >Reel Cinema Database</h1>
                 {!user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="https://reel-cinema.netlify.app/" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -642,7 +642,7 @@ return false; // Exclude movie if none of the conditions match
                   </Nav.Link>
                 </Nav>
                {!user ? (
-                  <Navigate to="/" />
+                  <Navigate to="https://reel-cinema.netlify.app/" />
                 ): (
                   <>
                   {filteredMovies
