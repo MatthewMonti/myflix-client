@@ -5,9 +5,9 @@ import Form from "react-bootstrap/Form";
 export const SignupView = () => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState("");
   const [Email, setEmail] = useState("");
-  const [showEmail, setShowEmail] = useState(false); // Corrected to boolean
+  const [showEmail, setShowEmail] = useState(""); // Corrected to boolean
   const [Birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
