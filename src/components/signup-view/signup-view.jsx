@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useHistory } from "react-router-dom"; 
-
+import { Navigate} from "react-router-dom";
 export const SignupView = () => {
-  const history = useHistory("");
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +14,7 @@ export const SignupView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = { 
+    const data = {
       Username: username,
       Password: password,
       Email: email,
@@ -33,7 +31,7 @@ export const SignupView = () => {
       .then((response) => {
         if (response.ok) {
           alert("Signup successful");
-          history.push("/"); // Redirect to login page after successful signup
+          <Navigate to="/" replace/>
         } else {
           alert("Signup failed");
         }
