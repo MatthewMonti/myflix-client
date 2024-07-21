@@ -57,38 +57,46 @@ export const SignupView = () => {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Password:</Form.Label>
-        <Form.Control
-          type={showPassword ? "text" : "password"}
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <Form.Check
-          type="checkbox"
-          label="Show Password"
-          checked={showPassword}
-          onChange={() => setShowPassword(!showPassword)}
-        />
-      </Form.Group>
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+          placeholder="EmpireStar#384"
+           type={
+            showPassword ? "text" : "password"
+           }
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <label>Show Password</label>
+            <input
+                type="checkbox"
+                value={showPassword}
+                onChange={() =>
+                    setShowPassword((prev) => !prev)
+                }
+            />
+        </Form.Group>
 
-      <Form.Group>
-        <Form.Label>Email:</Form.Label>
-        <Form.Control
-          type={showEmail ? "text" : "email"}
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <Form.Check
-          type="checkbox"
-          label="Show Email"
-          checked={showEmail}
-          onChange={() => setShowEmail(!showEmail)}
-        />
-      </Form.Group>
+        <Form.Group>
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            placeholder="stevenson@gmail.com"
+           type={
+            showEmail ? "text" : "password"
+           }
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label>Show Email</label>
+            <input
+                type="checkbox"
+                value={showEmail}
+                onChange={() =>
+                    setShowEmail((prev) => !prev)
+                }
+            />
+        </Form.Group>
 
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
