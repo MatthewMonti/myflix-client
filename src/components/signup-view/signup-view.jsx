@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useHistory } from "react-router-dom"; // Assuming you're using React Router for navigation
 
 export const SignupView = () => {
+  const history = useHistory();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -31,7 +33,7 @@ export const SignupView = () => {
       .then((response) => {
         if (response.ok) {
           alert("Signup successful");
-          history.push("/login"); // Redirect to login page after successful signup
+          history.push("/"); // Redirect to login page after successful signup
         } else {
           alert("Signup failed");
         }
