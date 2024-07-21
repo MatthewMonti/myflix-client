@@ -8,7 +8,7 @@ export const SignupView = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
-  const [showEmail, setShowEmail] = useState(false);
+  const [showEmail, setShowEmail] = useState("")
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
@@ -76,15 +76,17 @@ export const SignupView = () => {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Email:</Form.Label>
-        <Form.Control
-          type={showEmail ? "text" : "email"}
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <label>Show Email</label>
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
+            placeholder="stevenson@gmail.com"
+           type={
+            showEmail ? "text" : "password"
+           }
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <label>Show Email</label>
             <input
                 type="checkbox"
                 value={showEmail}
@@ -92,7 +94,7 @@ export const SignupView = () => {
                     setShowEmail((prev) => !prev)
                 }
             />
-      </Form.Group>
+        </Form.Group>
 
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
