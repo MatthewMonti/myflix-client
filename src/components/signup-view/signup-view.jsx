@@ -106,8 +106,8 @@ export const SignupView = () => {
         />
       </Form.Group>
     
-    
- <Button variant="primary" type="submit" href="https://reel-cinema.netlify.app/">
+<br />
+ <Button variant="primary" md={5} className="cd-flex justify-content-center" type="submit" href="https://reel-cinema.netlify.app/">
     Create Account
   </Button>
     </Form>

@@ -77,10 +77,12 @@ export const LoginView = ({ onLoggedIn }) => {
               }
           />
       </Form.Group>
+         <br />
       <Button variant="primary" type="submit">
         Login
       </Button>  
       <br /> 
+      <br />
       <Link to={`/signup`}>
           <Button>Signup</Button>
         </Link>

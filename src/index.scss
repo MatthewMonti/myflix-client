@@ -226,13 +226,15 @@ button.btn.btn-primary:hover,
 button.btn.btn-danger,
 button.btn.btn-danger:hover,
 button.btn.btn-success,
-button.btn.btn-success:hover{
+button.btn.btn-success:hover,
+a.btn.btn-primary{
   font-family: 'movie-poster';
   color:black;
   background-color:  rgba(255, 0, 0, 0.804);
   display: block;
   margin-left: auto;
   margin-right: auto;
+  display:inline;
 }
 
 
