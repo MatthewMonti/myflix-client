@@ -87,7 +87,7 @@ if (
   (movie.Genre && movie.Genre.Name && movie.Genre.Name.includes(filterText)) ||
   movie.Title ===(filterText) ||
   (movie.Director && movie.Director.Name && movie.Director.Name === (filterText)) ||
-  (movie.Actors && movie.Actors.some(actor => actor === (filterText))) ||
+  (movie.Actors && (Array.isArray(movie.Actors) ? movie.Actors === (filterText) : movie.Actors === (filterText))) ||
   (movie.Rated && (Array.isArray(movie.Rated) ? movie.Rated === (filterText) : movie.Rated === (filterText))) ||
   (movie.Release && movie.Release === (filterText)) ||
   (movie.Rating && movie.Rating === (filterText))
@@ -116,7 +116,7 @@ return false; // Exclude movie if none of the conditions match
               <>
               <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/"/>
+                  <Navigate to="/" replace/>
                 ) : (
                   <Col>
                     <SignupView />
