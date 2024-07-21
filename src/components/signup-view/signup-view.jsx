@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Navigate} from "react-router-dom";
+import { Link } from 'react-router-dom';
 export const SignupView = () => {
 
   const [username, setUsername] = useState("");
@@ -31,7 +31,6 @@ export const SignupView = () => {
       .then((response) => {
         if (response.ok) {
           alert("Signup successful");
-          <Navigate to="/" replace/>
         } else {
           alert("Signup failed");
         }
@@ -47,6 +46,7 @@ export const SignupView = () => {
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
+          className="input-bg"
           type="text"
           placeholder="Enter your username"
           value={username}
@@ -65,12 +65,14 @@ export const SignupView = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <Form.Check
-          type="checkbox"
-          label="Show Password"
-          checked={showPassword}
-          onChange={() => setShowPassword(!showPassword)}
-        />
+        <label>Show Password</label>
+            <input
+                type="checkbox"
+                value={showPassword}
+                onChange={() =>
+                    setShowPassword((prev) => !prev)
+                }
+            />
       </Form.Group>
 
       <Form.Group>
@@ -82,12 +84,14 @@ export const SignupView = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <Form.Check
-          type="checkbox"
-          label="Show Email"
-          checked={showEmail}
-          onChange={() => setShowEmail(!showEmail)}
-        />
+        <label>Show Email</label>
+            <input
+                type="checkbox"
+                value={showEmail}
+                onChange={() =>
+                    setShowEmail((prev) => !prev)
+                }
+            />
       </Form.Group>
 
       <Form.Group>
@@ -99,10 +103,11 @@ export const SignupView = () => {
           required
         />
       </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Create Account
-      </Button>
+    
+    
+ <Button variant="primary" type="submit" href="https://reel-cinema.netlify.app/">
+    Create Account
+  </Button>
     </Form>
   );
 };

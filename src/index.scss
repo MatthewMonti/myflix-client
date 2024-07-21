@@ -242,9 +242,7 @@ button.btn.btn-success:hover{
   margin-right: auto;
 }
 
-
-.form-control:focus, 
-.form-control{
+.input-bg,.form-control:focus, .input-bg:focus, .form-control{
   background-color:white;
   color:black;
 }
