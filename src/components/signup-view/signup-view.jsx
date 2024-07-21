@@ -29,7 +29,7 @@ export const SignupView = () => {
         }).then((response) => {
           if (response.ok) {
             alert("Signup successful");
-            window.location.href = "https://reel-cinema.netlify.app"
+            window.location.href = "https://reel-cinema.netlify.app/movies"
           } else {
             alert("Signup failed");
           }
