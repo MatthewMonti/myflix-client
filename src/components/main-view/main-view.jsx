@@ -110,20 +110,19 @@ return false; // Exclude movie if none of the conditions match
  
       <Row>
          <Routes>
-          <Route
+         <Route
             path="/signup"
             element={
               <>
-              <h4>Create Account</h4>
+                <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/" replace/>
+                  <Navigate.Link to="/" replace />
                 ) : (
                   <Col>
                     <SignupView />
                   </Col>
                 )}
               </>
-
             }
           />
           <Route

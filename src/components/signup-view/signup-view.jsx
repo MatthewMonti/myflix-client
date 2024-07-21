@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from 'react-router-dom';
-export const SignupView = () => {
 
+export const SignupView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
-  const [showEmail, setShowEmail] = useState("")
+  const [showEmail, setShowEmail] = useState(false);
   const [birthday, setBirthday] = useState("");
 
   const handleSubmit = (event) => {
@@ -30,7 +29,8 @@ export const SignupView = () => {
     })
       .then((response) => {
         if (response.ok) {
-          alert("Signup successful");
+          alert("Signup successful!"); // Optional alert for success
+          window.location.href = '/'; // Redirect to homepage or another route
         } else {
           alert("Signup failed");
         }
@@ -65,36 +65,30 @@ export const SignupView = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <label>Show Password</label>
-            <input
-                type="checkbox"
-                value={showPassword}
-                onChange={() =>
-                    setShowPassword((prev) => !prev)
-                }
-            />
+        <Form.Check
+          type="checkbox"
+          label="Show Password"
+          checked={showPassword}
+          onChange={() => setShowPassword(!showPassword)}
+        />
       </Form.Group>
 
       <Form.Group>
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
-            placeholder="stevenson@gmail.com"
-           type={
-            showEmail ? "text" : "password"
-           }
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <label>Show Email</label>
-            <input
-                type="checkbox"
-                value={showEmail}
-                onChange={() =>
-                    setShowEmail((prev) => !prev)
-                }
-            />
-        </Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control
+          type={showEmail ? "text" : "email"}
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Form.Check
+          type="checkbox"
+          label="Show Email"
+          checked={showEmail}
+          onChange={() => setShowEmail(!showEmail)}
+        />
+      </Form.Group>
 
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
@@ -105,11 +99,10 @@ export const SignupView = () => {
           required
         />
       </Form.Group>
-    
-<br />
- <Button variant="primary" md={5} className="cd-flex justify-content-center" type="submit" href="https://reel-cinema.netlify.app/">
-    Create Account
-  </Button>
+
+      <Button variant="primary" type="submit">
+        Create Account
+      </Button>
     </Form>
   );
 };
