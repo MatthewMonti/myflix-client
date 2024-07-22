@@ -90,7 +90,7 @@ const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
 if (
   (movie.Genre && movie.Genre.Name && movie.Genre.Name.toLowerCase().includes(filterLowerCase)) ||
   movie.Title.toLowerCase().includes(filterLowerCase) ||
-  (movie.Director && movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
+  (movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
   (movie.Actors && movie.Actors.some(actor => actor.toLowerCase().includes(filterLowerCase))) ||
   (movie.Rated && movie.Rated.toLowerCase() === filterLowerCase) ||
   (movie.Release && movie.Release.toString() === filterLowerCase) || // Convert Release to string for comparison
