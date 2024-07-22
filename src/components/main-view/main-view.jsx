@@ -13,8 +13,10 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Route, Navigate } from 'react-router-dom'; 
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -120,7 +122,7 @@ return false; // Exclude movie if none of the conditions match
               <>
                 <h4>Create Account</h4>
                 {user ? (
-                  <Navigate.Link to="/" replace />
+                  <Navigate to="/" replace />
                 ) : (
                   <Col>
                     <SignupView />
