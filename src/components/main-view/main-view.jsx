@@ -23,7 +23,9 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [filterText, setFilterText] = useState('');
-
+  const userInput = "SearchTerm";
+  const filteredText = userInput.toLowerCase();
+  
 
 
   useEffect(() => {
@@ -71,6 +73,8 @@ export const MainView = () => {
 
   const filteredMovies = movies.filter((movie) => {
 
+const filterLowerCase = filterText.toLowerCase();
+
 // Without help of ChatGPT from React Docs created filters that allow for accurate search results
 const GenreMovies = movies.filter(movie => movie.Genre.Name === (filterText));
 
@@ -84,13 +88,13 @@ const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
 
 // Check if Title, Director's Name, or any Actor's Name matches filterText
 if (
-  (movie.Genre && movie.Genre.Name && movie.Genre.Name.includes(filterText)) ||
-  movie.Title ===(filterText) ||
-  (movie.Director && movie.Director.Name && movie.Director.Name === (filterText)) ||
-  (movie.Actors && (Array.isArray(movie.Actors) ? movie.Actors === (filterText) : movie.Actors === (filterText))) ||
-  (movie.Rated && (Array.isArray(movie.Rated) ? movie.Rated === (filterText) : movie.Rated === (filterText))) ||
-  (movie.Release && movie.Release === (filterText)) ||
-  (movie.Rating && movie.Rating === (filterText))
+  (movie.Genre && movie.Genre.Name && movie.Genre.Name.toLowerCase().includes(filterLowerCase)) ||
+  movie.Title.toLowerCase().includes(filterLowerCase) ||
+  (movie.Director && movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
+  (movie.Actors && movie.Actors.some(actor => actor.toLowerCase().includes(filterLowerCase))) ||
+  (movie.Rated && movie.Rated.toLowerCase() === filterLowerCase) ||
+  (movie.Release && movie.Release.toString() === filterLowerCase) || // Convert Release to string for comparison
+  (movie.Rating && movie.Rating.toString() === filterLowerCase) // Convert Rating to string for comparison
 ) {
   return true; // Include movie if any of the above conditions match
 }
