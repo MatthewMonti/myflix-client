@@ -122,7 +122,7 @@ return false; // Exclude movie if none of the conditions match
               <>
                 <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="/movies" replace />
                 ) : (
                   <Col>
                     <SignupView />
@@ -291,33 +291,6 @@ return false; // Exclude movie if none of the conditions match
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Drama")
-                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
-                    .map((movie) => (
-                      <Col key={movie._id}>
-                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
-                          <FilterCard
-                            user={user}
-                            movie={movie}
-                          />
-                        )}
-                      </Col>
-                    ))}
-                </Row>
-                )}
-            </>
-          }
-        />
-        <Route
-          path="/movies/Family"
-          element={
-            <>
-            <h3 id="intro">Family Films</h3>
-            {!user ? (
-                  <Navigate to="/index.html" />
-                ): (
-                  <Row>
-                  {movies
-                    .filter(movie => movie.Genre.Name === "Family")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
