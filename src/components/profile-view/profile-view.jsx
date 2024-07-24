@@ -36,9 +36,9 @@ export const UserInfoComponent = () => {
 
     const data = {
       Username: Username,
+      Password: Password,
       Email: Email,
-      Birthday: Birthday,
-      Favorite: Favorite
+      Birthday: Birthday
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/update", {
