@@ -27,7 +27,11 @@ export const MainView = () => {
   const [filterText, setFilterText] = useState('');
   const userInput = "SearchTerm";
   const filteredText = userInput.toLowerCase();
-  
+  const path = require('path');
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
 
 
   useEffect(() => {
