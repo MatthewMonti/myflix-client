@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 export const UserInfoComponent = () => {
-  const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [Email, setEmail] = useState("");
@@ -15,6 +14,18 @@ export const UserInfoComponent = () => {
   const [showBirthday, setShowBirthday] = useState("")
   const [Favorite] = useState("");
   const [userInfo, setUserInfo] = useState(null);
+  const [Username, setUsername] = useState("");
+
+    useEffect(() => {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      if (storedUser) {
+        setUserInfo(storedUser);
+        setUsername(storedUser.Username || ""); //
+        setPassword(storedUser.Password || "");
+        setEmail(storedUser.Email ||"");
+        setBirthday(storedUser.Birthday || "")
+      }
+    }, []);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(null);
@@ -104,6 +115,8 @@ export const UserInfoComponent = () => {
           <h3>User Information</h3>
           <h5>Username: </h5> <p>{userInfo.Username}</p>
           <h5>Favorites: </h5> <p> {userInfo.Favorite && userInfo.Favorite.join(', ')}</p>
+          <h5>Email: </h5> <p>{userInfo.Email}</p>
+          <h5>Birthday: </h5> <p>{userInfo.Birthday}</p>
         </div>
       )}
       <Form 
@@ -165,15 +178,25 @@ export const UserInfoComponent = () => {
                 }
             />
         </Form.Group>
-  
         <Form.Group>
           <Form.Label>Birthday:</Form.Label>
           <Form.Control
-            type="date"
+            placeholder="####-##-##"
+           type={
+            showBirthday ? "text" : "date"
+           }
             value={Birthday}
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
+          <label>Show Birthday</label>
+            <input
+                type="checkbox"
+                value={showBirthday}
+                onChange={() =>
+                    setShowBirthday((prev) => !prev)
+                }
+            />
         </Form.Group>
         <br />
         <Button  variant="primary" type="submit">
