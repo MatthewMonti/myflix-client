@@ -77,10 +77,11 @@ export const MainView = () => {
 
 const filterLowerCase = filterText.toLowerCase();
 
-// Without help of ChatGPT from React Docs created filters that allow for accurate search results
-const GenreMovies = movies.filter(movie => movie.Genre.Name === (filterText));
 
-const RatedMovies = movies.filter(movie => movie.Rated === (filterText) );
+
+
+
+const RatedMovies = movies.filter(movie => movie.Rated === filterText);
 
 const ReleaseYRSMovies = movies.filter(movies=> movies.Release === (filterText));
 
@@ -92,10 +93,10 @@ const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
 if (
   (movie.Genre && movie.Genre.Name && movie.Genre.Name.toLowerCase().includes(filterLowerCase)) ||
   movie.Title.toLowerCase().includes(filterLowerCase) ||
-  (movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
   (movie.Actors && movie.Actors.some(actor => actor.toLowerCase().includes(filterLowerCase))) ||
+  (movie.Release.includes( filterText)) || // Convert Release to string for comparison
+  (movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
   (movie.Rated && movie.Rated.toLowerCase() === filterLowerCase) ||
-  (movie.Release && movie.Release.toString() === filterLowerCase) || // Convert Release to string for comparison
   (movie.Rating && movie.Rating.toString() === filterLowerCase) // Convert Rating to string for comparison
 ) {
   return true; // Include movie if any of the above conditions match
@@ -122,7 +123,7 @@ return false; // Exclude movie if none of the conditions match
               <>
                 <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="/movies" replace />
                 ) : (
                   <Col>
                     <SignupView />
@@ -146,7 +147,7 @@ return false; // Exclude movie if none of the conditions match
             }
           />
           <Route
-            path=""
+            path="/"
             element={
               <Col md={5}>
               <h3 id="intro">Welcome to Reel Cinema Database</h3>
@@ -291,33 +292,6 @@ return false; // Exclude movie if none of the conditions match
                   <Row>
                   {movies
                     .filter(movie => movie.Genre.Name === "Drama")
-                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
-                    .map((movie) => (
-                      <Col key={movie._id}>
-                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
-                          <FilterCard
-                            user={user}
-                            movie={movie}
-                          />
-                        )}
-                      </Col>
-                    ))}
-                </Row>
-                )}
-            </>
-          }
-        />
-        <Route
-          path="/movies/Family"
-          element={
-            <>
-            <h3 id="intro">Family Films</h3>
-            {!user ? (
-                  <Navigate to="/" />
-                ): (
-                  <Row>
-                  {movies
-                    .filter(movie => movie.Genre.Name === "Family")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -580,7 +554,7 @@ return false; // Exclude movie if none of the conditions match
                 />
                 <br />
                 <br />
-                <h5>Film Category</h5>
+                <h5>Film Genre</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
                     Action

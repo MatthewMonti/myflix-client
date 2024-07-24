@@ -78,11 +78,9 @@ export const MovieCard = ({ movie, user }) => {
       <Card.Body>
         <Card.Title className="text-center">{movie.Title}</Card.Title>
         <Card.Text className="text-center">{movie.Director.Name}</Card.Text>
-        <br />
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button>Details</Button>
         </Link>
-        <br />
         <Button
           onClick={handleAddFavorite}
           type="checkbox"
@@ -90,7 +88,6 @@ export const MovieCard = ({ movie, user }) => {
         >
           Add To Favorites
         </Button>
-        <br />
         <Button
           onClick={handleDeleteFavorite}
           type="checkbox"
