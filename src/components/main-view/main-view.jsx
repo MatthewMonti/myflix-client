@@ -136,7 +136,7 @@ return false; // Exclude movie if none of the conditions match
             element={
               <>
                 {!user ? (
-                  <Navigate to="/index.html" replace />
+                  <Navigate to="/" replace />
                 ) : (
                   <Col>
                     <UserInfoComponent key={user._id} user={user} />
@@ -146,7 +146,7 @@ return false; // Exclude movie if none of the conditions match
             }
           />
           <Route
-            path="/index.html"
+            path="/"
             element={
               <Col md={5}>
               <h3 id="intro">Welcome to Reel Cinema Database</h3>
@@ -175,7 +175,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Action Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -203,7 +203,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Adventure Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -231,7 +231,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Anime Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -259,7 +259,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Comedy Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -286,7 +286,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Drama Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -313,7 +313,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Family Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -340,7 +340,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Historical Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -367,7 +367,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Horror Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -394,7 +394,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Musical Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -421,7 +421,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Mystery Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -448,7 +448,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Science Fiction Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -475,7 +475,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">War Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -502,7 +502,7 @@ return false; // Exclude movie if none of the conditions match
             <>
             <h3 id="intro">Western Films</h3>
             {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
@@ -529,7 +529,7 @@ return false; // Exclude movie if none of the conditions match
               <>
                 <h1 className="text-center"  >Reel Cinema Database</h1>
                 {!user ? (
-                  <Navigate to="/index.html" replace />
+                  <Navigate to="/" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -596,7 +596,7 @@ return false; // Exclude movie if none of the conditions match
                   </Nav.Link>
                 </Nav>
                {!user ? (
-                  <Navigate to="/index.html" />
+                  <Navigate to="/" />
                 ): (
                   <>
                   {filteredMovies
