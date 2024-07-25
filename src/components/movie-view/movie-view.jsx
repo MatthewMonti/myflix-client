@@ -19,7 +19,7 @@ export const MovieView = ({ movies }) => {
         <br></br>
       <div>
         <Link to={`/movies`}>
-          <Button className="mt-4">View More Films</Button>
+          <Button className="d-flex align-items-center">View More Films</Button>
         </Link>
               <br></br>
       <div>
