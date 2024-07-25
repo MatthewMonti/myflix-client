@@ -14,6 +14,7 @@ export const MovieCard = ({ movie, user }) => {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken || null);
+    
   }, []);
 
 
@@ -80,7 +81,7 @@ export const MovieCard = ({ movie, user }) => {
         <Card.Text className="text-center">{movie.Director.Name}</Card.Text>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
           <Button
-            className="d-flex align-items-center"
+           className="d-flex align-items-center"
           >Details</Button>
         </Link>
         <br />

@@ -18,10 +18,11 @@ export const MovieView = ({ movies }) => {
         <img className="movie-poster2"src={movie.Image} />
         <br></br>
       <div>
+      <br></br>
         <Link to={`/movies`}>
           <Button className="d-flex align-items-center">View More Films</Button>
         </Link>
-              <br></br>
+      <br></br>
       <div>
         <ReactPlayer controls className="Video" url={movie.url} /> 
       </div>  
