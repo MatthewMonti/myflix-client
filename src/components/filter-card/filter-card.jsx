@@ -86,21 +86,25 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
       <Card.Body>
         <Card.Title className="text-center">{movie.Title}</Card.Title>
         <Card.Text className="text-center">{movie.Director.Name}</Card.Text>
-        <Link to={`/movies/`}>
-          <Button>Return to menu</Button>
-        </Link>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-          <Button>Details</Button>
+          <Button
+           className="d-flex align-items-center"
+          >Details</Button>
         </Link>
+        <br />
         <Button
           onClick={handleAddFavorite}
           type="checkbox"
+          id="toggle"
+          className="d-flex align-items-center"
         >
           Add To Favorites
         </Button>
+        <br />
         <Button
           onClick={handleDeleteFavorite}
           type="checkbox"
+          className="d-flex align-items-center"
         >
           Remove from Favorites
         </Button>
