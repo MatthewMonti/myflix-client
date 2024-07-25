@@ -552,6 +552,7 @@ return false; // Exclude movie if none of the conditions match
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
                 />
+                <h9 className="text-center">Input Category then item to search</h9>
                 <br />
                 <br />
                 <h5>Film Genre</h5>
