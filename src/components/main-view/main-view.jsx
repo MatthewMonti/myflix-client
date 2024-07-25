@@ -535,7 +535,7 @@ return false; // Exclude movie if none of the conditions match
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col>
-                    <MovieView movies = {movies} />
+                    <MovieView user= {user} movies = {movies} />
                   </Col>
                 )}
               </>
