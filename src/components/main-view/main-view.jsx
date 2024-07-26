@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import SearchBar from "../search-bar/search-bar"; // Corrected import statement
 import { MovieCard } from "../movie-card/movie-card";
@@ -10,7 +11,6 @@ import { UserInfoComponent } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
 import { Nav } from "react-bootstrap";
