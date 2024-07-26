@@ -12,10 +12,10 @@ export const UserInfoComponent = () => {
   const [showEmail, setShowEmail] = useState("")
   const [Birthday, setBirthday] = useState("");
   const [showBirthday, setShowBirthday] = useState("")
-  const [Favorite] = useState("");
   const [userInfo, setUserInfo] = useState(null);
   const [Username, setUsername] = useState("");
-
+  const [Favorite, setFavorite] = useState("");
+  const [showFavorite, setShowFavorite] = useState("")
     useEffect(() => {
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser) {
@@ -24,12 +24,69 @@ export const UserInfoComponent = () => {
         setPassword(storedUser.Password || "");
         setEmail(storedUser.Email ||"");
         setBirthday(storedUser.Birthday || "")
+        setFavorite(storedUser.Favorite || "")
       }
     }, []);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(storedToken? storedToken : null);
+
+
+  const handleAddFavorite = () => {
+    const data = {
+      Username: user.Username,
+      Favorite: movie.Title,
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Favorite added successfully");
+          setIsToggled(true);
+        } else {
+          alert("Failed to add favorite");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding favorite:", error);
+      });
+  };
+
+  const handleDeleteFavorite = () => {
+    const data = {
+      Username: user.Username,
+      Favorite: movie.Title,
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites", {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Favorite deleted successfully");
+          setIsToggled(false);
+        } else {
+          alert("Failed to delete favorite");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting favorite:", error);
+      });
+  };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -122,6 +179,8 @@ export const UserInfoComponent = () => {
       <Form 
       onSubmit={handleSubmit}
       onReset={handleReset}
+      addFavorite={handleAddFavorite}
+      deleteFavorite={handleAddFavorite}
       encType="multipart/form-data"
       >
         <Form.Group>
@@ -197,6 +256,18 @@ export const UserInfoComponent = () => {
                     setShowBirthday((prev) => !prev)
                 }
             />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Favorite:</Form.Label>
+          <Form.Control
+            className="input-bg"
+            type="text"
+            value={Favorite}
+            onChange={(e) => setFavorite(e.target.value)}
+            required
+            minLength="5" 
+            placeholder="Stevenson"
+          />
         </Form.Group>
         <br />
         <Button  variant="primary" type="submit">
