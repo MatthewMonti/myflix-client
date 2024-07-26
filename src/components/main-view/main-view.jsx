@@ -124,7 +124,7 @@ return false; // Exclude movie if none of the conditions match
               <>
                 <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/movies" replace />
+                  <Navigate to="/movies" />
                 ) : (
                   <Col>
                     <SignupView />
@@ -138,7 +138,7 @@ return false; // Exclude movie if none of the conditions match
             element={
               <>
                 {!user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="/" />
                 ) : (
                   <Col>
                     <UserInfoComponent key={user._id} user={user} />
