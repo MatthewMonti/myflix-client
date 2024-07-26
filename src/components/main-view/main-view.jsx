@@ -605,8 +605,8 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-               {user ? (
-                  <Navigate to="/movies" />
+               {!user ? (
+                  <Navigate to="/" />
                 ): (
                   <>
                   {filteredMovies
