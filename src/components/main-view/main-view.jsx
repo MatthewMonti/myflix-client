@@ -607,7 +607,9 @@ return false; // Exclude movie if none of the conditions match
                 </Nav>
                {!user ? (
                   <Navigate to="/" />
-                ): (
+                ): ( user ? (
+                  <Navigate to="/movies"/>
+                ) : (
                   <>
                   {filteredMovies
                     .filter(movie => movie.Title) // Filter out movies with no title (you can adjust this condition as needed)
@@ -618,7 +620,7 @@ return false; // Exclude movie if none of the conditions match
                       </Col>
                     ))}
                 </>
-              )}
+              ))}
           </>
             }
           />
