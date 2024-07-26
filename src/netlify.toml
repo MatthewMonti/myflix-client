@@ -1,4 +1,8 @@
+[build]
+  publish = "dist" # or the directory where your build output is located
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
