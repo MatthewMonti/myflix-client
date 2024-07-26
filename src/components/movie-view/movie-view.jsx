@@ -1,9 +1,12 @@
 import Button from "react-bootstrap/Button"
-import Row from "react-bootstrap/Row" 
+import Row from "react-bootstrap/Row"
+import {VideoPlayer} from "../VideoPlayer/VideoPlayer.jsx"
+import ReactPlayer from 'react-player/youtube'
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import ReactPlayer from 'react-player/youtube'
+
+
 export const MovieView = ({ movies }) => {
     const { movieId } = useParams();
   
@@ -14,18 +17,14 @@ export const MovieView = ({ movies }) => {
   }
 
   return (
-    <Row className="mx-5">
-        <img className="movie-poster2"src={movie.Image} />
-        <br></br>
+    <Row class="mx-5">
+      <Link to={`/`}>
+        <img varient="link" className="movie-poster2"src={movie.Image} />
+      </Link> 
+      <br></br>
       <div>
-        <Link to={`/movies`}>
-          <Button className="mt-4">View More Films</Button>
-        </Link>
-              <br></br>
-      <div>
-        <ReactPlayer controls className="Video" url={movie.url} /> 
+        <ReactPlayer className="Video" url={movie.url} /> 
       </div>  
-      </div> 
       <div>
         <br></br>
         <h2>{movie.Title}</h2>
@@ -51,7 +50,7 @@ export const MovieView = ({ movies }) => {
      </div>
       <div>
         <h3 className="Label">Rated: </h3>
-        <p>{movie.Rated}</p>
+        <span>{movie.Rated}</span>
       </div>
       <div>
         <h3 className="Label">Rating: </h3>
@@ -87,5 +86,3 @@ export const MovieView = ({ movies }) => {
     </Row>
   );
 };
-
-export default MovieView
