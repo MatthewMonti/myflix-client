@@ -2,14 +2,14 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import CSS from 'bootstrap/dist/css/bootstrap.min.css';
-import '../../index.scss'
+import { Link } from "react-router-dom";
 
 export const LoginView = ({ onLoggedIn }) => {
   
   const [Username, setUsername] = useState("")
   const [Password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false);
-    const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
         // this prevents the default behavior of the form which is to reload the entire page
         
         event.preventDefault();
@@ -19,7 +19,7 @@ export const LoginView = ({ onLoggedIn }) => {
     Password: Password
   };  
 
-  fetch("https://movies-flex-6e317721b427.herokuapp.com/api/user/login", {
+  fetch("https://movies-flex-6e317721b427.herokuapp.com/user/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -43,7 +43,9 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}
+    enctype="multipart/form-data"
+    >
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -77,8 +79,11 @@ export const LoginView = ({ onLoggedIn }) => {
       </Form.Group>
       <Button variant="primary" type="submit">
         Login
-      </Button>
-      <br />
+      </Button>  
+      <br /> 
+      <Link to={`/signup`}>
+          <Button>Signup</Button>
+        </Link>
         <br />
     </Form>
   );

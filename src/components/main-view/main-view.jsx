@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
+import {FilterCard} from "../filter-card/filter-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import Button from "react-bootstrap/Button";
+import { UserInfoComponent } from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
-
-
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -20,16 +20,16 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-
+  
 
   useEffect(() => {
     if (!token) {
       return;
     }
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/api/movies",
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies",
      {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -61,27 +61,29 @@ export const MainView = () => {
       });
   }, [token]);
 
+console.log(movies)
+
   return (
     <BrowserRouter>
         <NavigationBar
           user={user}
           onLoggedOut={() => {
             setUser(null);
+            localStorage.removeItem('token');
           }}
     />
-       &nbsp;
-        <h1 className="text-center"  >Select Poster for Film Info</h1>
-        &nbsp;
+ 
       <Row>
          <Routes>
           <Route
             path="/signup"
             element={
               <>
+              <h4>Create Account</h4>
                 {user ? (
                   <Navigate to="/" />
                 ) : (
-                  <Col md={5}>
+                  <Col>
                     <SignupView />
                   </Col>
                 )}
@@ -90,14 +92,37 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/login"
+            path="/profile"
             element={
               <>
-                {user ? (
-                  <Navigate to="/" />
+                {!user ? (
+                  <Navigate to="/" replace />
                 ) : (
-                  <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                  <Col>
+                    <UserInfoComponent key={user._id} user={user} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+              <h3 id="intro">Welcome to Reel Cinema Database</h3>
+              <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
+
+              <h4>Login</h4>
+                {user ? (
+                  <Navigate to="/movies" />
+                ) : (
+                  <Col>
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }}
+                    />
                   </Col>
                 )}
               </>
@@ -105,11 +130,417 @@ export const MainView = () => {
             }
           />
           <Route
+            path="/"
+            element={
+              <Col md={5}>
+              <h3 id="intro">Welcome to Reel Cinema Database</h3>
+              <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
+
+              <h4>Login</h4>
+                {user ? (
+                  <Navigate to="/movies" />
+                ) : (
+                  <>
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }}
+                    />
+                  </>
+                )}
+              </Col>
+
+            }
+          />   
+          <Route
+          path="/movies/Action"
+          element={
+            <>
+            <h3 id="intro">Action Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Action")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        
+        <Route
+          path="/movies/Adventure"
+          element={
+            <>
+            <h3 id="intro">Adventure Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Adventure")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+
+          }
+        />
+            <Route
+          path="/movies/Anime"
+          element={
+            <>
+            <h3 id="intro">Anime Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Anime")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+
+          }
+        />
+        <Route
+          path="/movies/Comedy"
+          element={
+            <>
+            <h3 id="intro">Comedy Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Comedy")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Drama"
+          element={
+            <>
+            <h3 id="intro">Drama Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Drama")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Family"
+          element={
+            <>
+            <h3 id="intro">Family Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Family")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Family"
+          element={
+            <>
+            <h3 id="intro">Family Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Family")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+           <Route
+          path="/movies/Historical"
+          element={
+            <>
+            <h3 id="intro">Historical Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Historical")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Horror"
+          element={
+            <>
+            <h3 id="intro">Horror Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Horror")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+            <Route
+          path="/movies/Musical"
+          element={
+            <>
+            <h3 id="intro">Musical Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Musical")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+             <Route
+          path="/movies/Mystery"
+          element={
+            <>
+            <h3 id="intro">Mystery Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Mystery")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+               <Route
+          path="/movies/Sci-Fi"
+          element={
+            <>
+            <h3 id="intro">Sci-Fi Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Sci-Fi")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+                      <Route
+          path="/movies/War"
+          element={
+            <>
+            <h3 id="intro">War Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "War")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+        <Route
+          path="/movies/Western"
+          element={
+            <>
+            <h3 id="intro">Western Films</h3>
+            {!user ? (
+                  <Navigate to="/" />
+                ): (
+                  <Row>
+                  {movies
+                    .filter(movie => movie.Genre.Name === "Western")
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .map((movie) => (
+                      <Col key={movie._id}>
+                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
+                          <FilterCard
+                            user={user}
+                            movie={movie}
+                          />
+                        )}
+                      </Col>
+                    ))}
+                </Row>
+                )}
+            </>
+          }
+        />
+          <Route
             path="/movies/:movieId"
             element={
               <>
+                <h1 className="text-center"  >Reel Cinema Database</h1>
                 {!user ? (
-                  <Navigate to="/login" replace />
+                  <Navigate to="/" replace />
                 ) : movies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
@@ -120,24 +551,68 @@ export const MainView = () => {
               </>
             }
           />
-          <Route
-            path="/"
+            <Route
+            path="/movies"
             element={
               <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
+                <h1 className="text-center">Reel Cinema Database</h1>
+                <h5>Film Category</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Sci-Fi">
+                    Science Fiction 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
+               {!user ? (
+                  <Navigate to="/" />
+                ): (
                   <>
-                    {movies.map((movie) => (
+                  {movies
+                    .filter(movie => movie.Title) // Filter out movies with no title (you can adjust this condition as needed)
+                    .sort((a, b) => a.Title.localeCompare(b.Title)) // Sort movies alphabetically by title
+                    .map((movie) => (
                       <Col className="mx-auto" key={movie._id}>
-                        <MovieCard movie ={movie} />
+                        <MovieCard user={user} movie={movie} />
                       </Col>
                     ))}
-                  </>
-                )}
-              </>
+                </>
+              )}
+          </>
             }
           />
         </Routes>
@@ -145,4 +620,3 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
-  

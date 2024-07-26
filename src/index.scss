@@ -2,6 +2,95 @@
 $primary: rgba(255, 0, 0, 0.804);
 $body-bg: rgb(0, 0, 0);
 
+@media (min-width: 320px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 50%  !important;
+    height: auto   !important;
+  }
+
+  .icon{
+    margin:center;
+    height:275px;
+    width:275px;
+  }
+}
+@media (min-width: 768px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 100%  !important;
+    height: 25rem   !important;
+  }
+
+  .icon{
+    margin:center;
+    height:275px;
+    width:275px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 75%  !important;
+    height: 25rem   !important;
+  }
+
+  .icon{
+    margin:center;
+    height:375px;
+    width:375px;
+  }
+}
+@media (min-width: 1200px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 75%  !important;
+    height: 25rem   !important;
+  }
+
+  .icon{
+    margin:center;
+    height:450px;
+    width:450px;
+  }
+}
+  
+@media (min-width: 1406px) {
+
+  .Video{
+    margin-left:auto;
+    margin-right:auto;
+    width: 75%  !important;
+    height: 25rem   !important;
+  }
+
+  .icon{
+    margin:center;
+    height:375px;
+    width:525px;
+  }
+}
+.movie-box{
+  justify-content: center;
+  align-items:center;
+  }
+  
+
+.Video{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
 
 
 @import '~bootstrap/scss/bootstrap.scss';
@@ -9,6 +98,20 @@ $color:  rgba(255, 0, 0, 0.804);
 .my-flix {
   color: $color;
   font-size: larger;
+}
+
+div.text-center {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  font-size:20px;
+}
+
+h1.text.center{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  font-size:50px;
 }
 
 .Label{
@@ -34,14 +137,10 @@ button.navbar-toggler.visited,
 a.navbar-brand,
 a.navbar-brand:hover,
 a.navbar-brand:active,
-a.navbar-brand:visited,
-
-
-
+a.navbar-brand:visited
 {
   color: rgba(255, 0, 0, 0.804);
   font-family: 'movie-poster';
-  background-color: black;
 }
 
 .movie-poster2{
@@ -51,6 +150,7 @@ a.navbar-brand:visited,
   width: 300px;
   height: 400px;
 }
+
 
 .film-info{
   display: block;
@@ -67,15 +167,64 @@ a.navbar-brand:visited,
   color:green
 }
 
-Label, ul, span, p, h2, h3, h5{
+#intro{
+  border: 2px dotted yellow;
+  border-width: 3px;
+  border-radius: 10px;
+  padding:6px;
+  text-align: center;
+  font-family: 'movie-poster';
+  color:   rgba(255, 0, 0, 0.804);
+  animation-name: glow;
+  animation-duration: 2s;
+  animation-iteration-count: 3;
+  text-shadow: 3px 3px 5px rgba(255, 255, 0, 0.463);
+}
+
+h1{
+  font-family: 'movie-poster';
+  color:   rgba(255, 0, 0, 0.804);
+  animation-name: glow2;
+  animation-duration: 2s;
+  animation-iteration-count: 3;
+  text-shadow: 3px 3px 5px rgba(255, 255, 0, 0.463);
+}
+@keyframes glow2{
+  50%{text-shadow:  0px 0px 50px rgba(255, 255, 0, 0.657)}
+}
+
+@keyframes glow{
+  50%{text-shadow:  0px 0px 50px rgba(255, 255, 0, 0.657)}
+  50%{box-shadow:  0px 0px 50px  rgba(255, 255, 0, 0.657)}
+}
+
+
+
+
+Label, ul, span, p, h1, h2, h3, h4, h5{
   font-family: 'movie-poster';
   color:   rgba(255, 0, 0, 0.804);
 }
 
-button.btn.btn-primary, button.btn.btn-primary:hover{
+button.btn.btn-primary, 
+button.btn.btn-primary:hover,
+button.btn.btn-danger,
+button.btn.btn-danger:hover,
+button.btn.btn-success,
+button.btn.btn-success:hover{
   font-family: 'movie-poster';
   color:black;
   background-color:  rgba(255, 0, 0, 0.804);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.card-text{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .input-bg,.form-control:focus, .input-bg:focus, .form-control{
@@ -83,18 +232,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
   color:black;
 }
 
-
-.movie-poster:hover {
-  opacity: 1;
-  transition: .5s ease;
-  backface-visibility: hidden;
-  width: 300px;
-  height: 400px;
-}
-
- .movie-poster:hover {
-  opacity: 0.60;
-}
 
 @media (min-width: 320px) {
   .bob {
@@ -110,23 +247,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
-  .movie-poster:hover {
-    opacity: 1;
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 200px;
-    height: 300px;
-    border: 10px solid  rgba(255, 0, 0, 0.804);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .Video{
-    margin-left:auto;
-    margin-right:auto;
-    width: 50%  !important;
-    height: auto   !important;
-  }
 }
 @media (min-width: 768px) {
   .bob {
@@ -141,23 +261,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     height: 400px;
     margin-left:auto;
     margin-right:auto;
-  }
-  .movie-poster:hover {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 250px;
-    height: 350px;
-    opacity: 1;
-    border: none;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .Video{
-    margin-left:auto;
-    margin-right:auto;
-    width: 100%  !important;
-    height: 25rem   !important;
   }
 }
 
@@ -175,21 +278,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
-  .movie-poster:hover {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 290px;
-    height: 390px;
-    opacity: 1;
-    justify-content: center;
-    align-items: center;
-  }
-  .Video{
-    margin-left:auto;
-    margin-right:auto;
-    width: 75%  !important;
-    height: 25rem   !important;
-  }
 }
 
 @media (min-width: 1280px) {
@@ -206,20 +294,6 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
     margin-left:auto;
     margin-right:auto;
   }
-  .movie-poster:hover {
-    transition: .5s ease;
-    backface-visibility: hidden;
-    width: 250px;
-    height: 350px;
-    opacity: 1;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.Video{
-  margin-left:auto;
-  margin-right:auto;
 }
 
 .text-center{
@@ -231,3 +305,8 @@ button.btn.btn-primary, button.btn.btn-primary:hover{
 justify-content: center;
 align-items:center;
 }
+
+.fav{
+  margin-right: ($spacer * .5) !important;
+}
+
