@@ -1,4 +1,6 @@
+import React from "react";
 import { useState, useEffect } from "react";
+import SearchBar from "../search-bar/search-bar"; // Corrected import statement
 import { MovieCard } from "../movie-card/movie-card";
 import {FilterCard} from "../filter-card/filter-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -11,8 +13,10 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Route, Navigate } from 'react-router-dom'; 
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
@@ -20,7 +24,11 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [filterText, setFilterText] = useState('');
+  const userInput = "SearchTerm";
+  const filteredText = userInput.toLowerCase();
   
+
 
   useEffect(() => {
     if (!token) {
@@ -61,7 +69,41 @@ export const MainView = () => {
       });
   }, [token]);
 
-console.log(movies)
+  const handleFilterTextChange = (text) => {
+    setFilterText(text);
+  };
+
+  const filteredMovies = movies.filter((movie) => {
+
+const filterLowerCase = filterText.toLowerCase();
+
+
+
+
+
+const RatedMovies = movies.filter(movie => movie.Rated === filterText);
+
+const ReleaseYRSMovies = movies.filter(movies=> movies.Release === (filterText));
+
+const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
+
+
+
+// Check if Title, Director's Name, or any Actor's Name matches filterText
+if (
+  (movie.Genre && movie.Genre.Name && movie.Genre.Name.toLowerCase().includes(filterLowerCase)) ||
+  movie.Title.toLowerCase().includes(filterLowerCase) ||
+  (movie.Actors && movie.Actors.some(actor => actor.toLowerCase().includes(filterLowerCase))) ||
+  (movie.Release.includes( filterText)) || // Convert Release to string for comparison
+  (movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
+  (movie.Rated && movie.Rated.toLowerCase() === filterLowerCase) ||
+  (movie.Rating && movie.Rating.toString() === filterLowerCase) // Convert Rating to string for comparison
+) {
+  return true; // Include movie if any of the above conditions match
+}
+
+return false; // Exclude movie if none of the conditions match
+});
 
   return (
     <BrowserRouter>
@@ -70,25 +112,25 @@ console.log(movies)
           onLoggedOut={() => {
             setUser(null);
             localStorage.removeItem('token');
+            localStorage.removeItem('user')
           }}
     />
  
       <Row>
          <Routes>
-          <Route
+         <Route
             path="/signup"
             element={
               <>
-              <h4>Create Account</h4>
+                <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/" />
+                  <Navigate to="/movies" replace />
                 ) : (
                   <Col>
                     <SignupView />
                   </Col>
                 )}
               </>
-
             }
           />
           <Route
@@ -103,30 +145,6 @@ console.log(movies)
                   </Col>
                 )}
               </>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <>
-              <h3 id="intro">Welcome to Reel Cinema Database</h3>
-              <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
-
-              <h4>Login</h4>
-                {user ? (
-                  <Navigate to="/movies" />
-                ) : (
-                  <Col>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
-                  </Col>
-                )}
-              </>
-
             }
           />
           <Route
@@ -163,7 +181,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Action")
+                    .filter(movie => movie.Genre.Name === "Genre Action")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -191,8 +209,8 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Adventure")
-                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
+                    .filter(movie => movie.Genre.Name === "Genre Adventure")
+                    .sort((a, b) => a.Release.localeCompare(b.Release)) //
                     .map((movie) => (
                       <Col key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
@@ -219,7 +237,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Anime")
+                    .filter(movie => movie.Genre.Name === "Genre Anime")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -247,7 +265,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Comedy")
+                    .filter(movie => movie.Genre.Name === "Genre Comedy")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -274,7 +292,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Drama")
+                    .filter(movie => movie.Genre.Name === "Genre Drama")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -301,34 +319,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Family")
-                    .sort((a, b) => a.Title.localeCompare(b.Title)) //
-                    .map((movie) => (
-                      <Col key={movie._id}>
-                        {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
-                          <FilterCard
-                            user={user}
-                            movie={movie}
-                          />
-                        )}
-                      </Col>
-                    ))}
-                </Row>
-                )}
-            </>
-          }
-        />
-        <Route
-          path="/movies/Family"
-          element={
-            <>
-            <h3 id="intro">Family Films</h3>
-            {!user ? (
-                  <Navigate to="/" />
-                ): (
-                  <Row>
-                  {movies
-                    .filter(movie => movie.Genre.Name === "Family")
+                    .filter(movie => movie.Genre.Name === "Genre Family")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -355,7 +346,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Historical")
+                    .filter(movie => movie.Genre.Name === "Genre Historical")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -382,7 +373,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Horror")
+                    .filter(movie => movie.Genre.Name === "Genre Horror")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -409,7 +400,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Musical")
+                    .filter(movie => movie.Genre.Name === "Genre Musical")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -436,7 +427,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Mystery")
+                    .filter(movie => movie.Genre.Name === "Genre Mystery")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -454,16 +445,16 @@ console.log(movies)
           }
         />
                <Route
-          path="/movies/Sci-Fi"
+          path="/movies/Science Fiction"
           element={
             <>
-            <h3 id="intro">Sci-Fi Films</h3>
+            <h3 id="intro">Science Fiction Films</h3>
             {!user ? (
                   <Navigate to="/" />
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Sci-Fi")
+                    .filter(movie => movie.Genre.Name === "Genre Science Fiction")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -490,7 +481,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "War")
+                    .filter(movie => movie.Genre.Name === "Genre War")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -517,7 +508,7 @@ console.log(movies)
                 ): (
                   <Row>
                   {movies
-                    .filter(movie => movie.Genre.Name === "Western")
+                    .filter(movie => movie.Genre.Name === "Genre Western")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
                       <Col key={movie._id}>
@@ -545,7 +536,7 @@ console.log(movies)
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col>
-                    <MovieView movies = {movies} />
+                    <MovieView user= {user} movies = {movies} />
                   </Col>
                 )}
               </>
@@ -556,7 +547,16 @@ console.log(movies)
             element={
               <>
                 <h1 className="text-center">Reel Cinema Database</h1>
-                <h5>Film Category</h5>
+                <br />
+                <br /> 
+                <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+                />
+                <h6 className="text-center">Input Category then search item</h6>
+                <br />
+                <br />
+                <h5>Film Genre</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
                     Action
@@ -588,8 +588,8 @@ console.log(movies)
                   <Nav.Link as={Link} to="/movies/Mystery">
                     Mystery 
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Sci-Fi">
-                    Science Fiction 
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
                   </Nav.Link>
                   <Nav.Link as={Link} to="/movies/War">
                     War
@@ -602,7 +602,7 @@ console.log(movies)
                   <Navigate to="/" />
                 ): (
                   <>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Title) // Filter out movies with no title (you can adjust this condition as needed)
                     .sort((a, b) => a.Title.localeCompare(b.Title)) // Sort movies alphabetically by title
                     .map((movie) => (

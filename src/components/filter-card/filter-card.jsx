@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+
+
 export const FilterCard = ({ movie, user }) => {
   const [token, setToken] = useState(null);
   const [isToggled, setIsToggled] = useState(
@@ -20,22 +23,6 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
     const storedToken = localStorage.getItem("token");
     setToken(storedToken ? storedToken : null);
   }, []);
-
-  const handleToggle = () => {
-    setIsToggled((prevState) => {
-      const newState = !prevState; // Toggle the state
-      localStorage.setItem(`isToggled-${movie._id}`, newState); // Update localStorage
-      return newState; // Return the new state
-    });
-  };
-
-  const handleFavoriteAction = () => {
-    if (isToggled) {
-      handleDeleteFavorite();
-    } else {
-      handleAddFavorite();
-    }
-  };
 
   const handleAddFavorite = () => {
     const data = {
@@ -99,20 +86,31 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
       <Card.Body>
         <Card.Title className="text-center">{movie.Title}</Card.Title>
         <Card.Text className="text-center">{movie.Director.Name}</Card.Text>
-        <Link to={`/movies/`}>
-          <Button>Return to menu</Button>
-        </Link>
         <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-          <Button>Details</Button>
+          <Button
+           className="d-flex align-items-center"
+          >Details</Button>
         </Link>
+        <br />
         <Button
-          variant={isToggled ? "danger" : "success"}
-          onClick={handleFavoriteAction}
+          onClick={handleAddFavorite}
+          type="checkbox"
+          id="toggle"
+          className="d-flex align-items-center"
         >
-          {isToggled ? "Remove from Favorites" : "Add to Favorites"}
+          Add To Favorites
+        </Button>
+        <br />
+        <Button
+          onClick={handleDeleteFavorite}
+          type="checkbox"
+          className="d-flex align-items-center"
+        >
+          Remove from Favorites
         </Button>
       </Card.Body>
     </Card>
   );
 };
 
+export default FilterCard

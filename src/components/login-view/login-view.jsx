@@ -44,7 +44,7 @@ export const LoginView = ({ onLoggedIn }) => {
 
   return (
     <Form onSubmit={handleSubmit}
-    enctype="multipart/form-data"
+    encType="multipart/form-data"
     >
       <Form.Group>
         <Form.Label>Username:</Form.Label>
@@ -77,10 +77,12 @@ export const LoginView = ({ onLoggedIn }) => {
               }
           />
       </Form.Group>
+         <br />
       <Button variant="primary" type="submit">
         Login
       </Button>  
       <br /> 
+      <br />
       <Link to={`/signup`}>
           <Button>Signup</Button>
         </Link>
@@ -88,3 +90,5 @@ export const LoginView = ({ onLoggedIn }) => {
     </Form>
   );
 };
+
+export default LoginView
