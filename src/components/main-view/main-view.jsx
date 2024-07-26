@@ -85,7 +85,7 @@ const RatedMovies = movies.filter(movie => movie.Rated === filterText);
 
 const ReleaseYRSMovies = movies.filter(movies=> movies.Release == (filterText));
 
-const RatingofMovies = movies.filter(movies => movies.Rating == (filterText))
+const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
 
 
 
@@ -97,7 +97,7 @@ if (
   (movie.Release.includes( filterText)) || // Convert Release to string for comparison
   (movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
   (movie.Rated && movie.Rated.toLowerCase() === filterLowerCase) ||
-  (movie.Rating && movie.Rating.toString() == filterLowerCase) // Convert Rating to string for comparison
+  (movie.Rating && movie.Rating.toLowerCase === filterLowerCase) // Convert Rating to string for comparison
 ) {
   return true; // Include movie if any of the above conditions match
 }
