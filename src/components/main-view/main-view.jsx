@@ -14,8 +14,7 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
 import { Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { Route, Navigate } from 'react-router-dom'; 
+import {HashRouter as Route, Navigate, Link } from 'react-router-dom'; 
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
