@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import CSS from 'bootstrap/dist/css/bootstrap.min.css';
 
 export const SignupView = () => {
     const [Username, setUsername] = useState("");
@@ -10,7 +9,6 @@ export const SignupView = () => {
     const [Email, setEmail] = useState("");
     const [showEmail, setShowEmail] = useState("")
     const [Birthday, setBirthday] = useState("");
-    const [showBirthday, setShowBirthday] = useState("")
   
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,7 +20,7 @@ export const SignupView = () => {
           Birthday: Birthday,
         };
     
-        fetch("https://movies-flex-6e317721b427.herokuapp.com/api/create", {
+        fetch("https://movies-flex-6e317721b427.herokuapp.com/create", {
           method: "POST",
           body: JSON.stringify(data),
           headers: {
@@ -40,25 +38,30 @@ export const SignupView = () => {
   
       return (
         <Form 
-        onSubmit={handleSubmit}>
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+        >
           <Form.Group>
             <Form.Label>Username:</Form.Label>
             <Form.Control
+              placeholder="Stevenson"
               className="input-bg"
               type="text"
               value={Username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              minLength="3" 
+              minLength="5" 
             />
           </Form.Group>
     
           <Form.Group>
             <Form.Label>Password:</Form.Label>
             <Form.Control
+              placeholder="EmpireStar#384"
              type={
               showPassword ? "text" : "password"
              }
+
               value={Password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -76,6 +79,7 @@ export const SignupView = () => {
           <Form.Group>
             <Form.Label>Email:</Form.Label>
             <Form.Control
+               placeholder="stevenson@gmail.com"
              type={
               showEmail ? "text" : "password"
              }
@@ -96,22 +100,13 @@ export const SignupView = () => {
           <Form.Group>
             <Form.Label>Birthday:</Form.Label>
             <Form.Control
-             type={
-              showBirthday ? "date" : "password"
-             }
+              type="date"
               value={Birthday}
               onChange={(e) => setBirthday(e.target.value)}
               required
             />
-            <label>Show Birthday</label>
-              <input
-                  type="checkbox"
-                  value={showBirthday}
-                  onChange={() =>
-                      setShowBirthday((prev) => !prev)
-                  }
-              />
           </Form.Group>
+          <br />
           <Button variant="primary" type="submit">
             Create Account
           </Button>
@@ -120,3 +115,5 @@ export const SignupView = () => {
         </Form>
       );
     };
+    
+    export default SignupView
