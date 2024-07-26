@@ -112,6 +112,7 @@ return false; // Exclude movie if none of the conditions match
           onLoggedOut={() => {
             setUser(null);
             localStorage.removeItem('token');
+            localStorage.removeItem('user')
           }}
     />
  
