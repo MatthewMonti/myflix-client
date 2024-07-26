@@ -549,81 +549,79 @@ return false; // Exclude movie if none of the conditions match
               </>
             }
           />
-            <Route
-            path="/movies"
-            element={
-              <>
-                <h1 className="text-center">Reel Cinema Database</h1>
-                <br />
-                <br /> 
-                <SearchBar 
-                filterText={filterText}
-                onFilterTextChange={handleFilterTextChange}
-                />
-                <h6 className="text-center">Input Category then search item</h6>
-                <br />
-                <br />
-                <h5>Film Genre</h5>
-                <Nav className="me-auto">
-                  <Nav.Link as={Link} to="/movies/Action">
-                    Action
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Adventure">
-                    Adventure
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Anime">
-                    Anime
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Comedy">
-                    Comedy
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Drama">
-                    Drama
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Family">
-                    Family
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Historical">
-                    Historical
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Horror">
-                    Horror
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Musical">
-                    Musical
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Mystery">
-                    Mystery 
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Science Fiction">
-                    Science Fiction
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/War">
-                    War
-                  </Nav.Link>
-                  <Nav.Link as={Link} to="/movies/Western">
-                    Western
-                  </Nav.Link>
-                </Nav>
-               {!user ? (
-                  <Navigate to="/" />
-                ): ( user ? (
-                  <Navigate to="/movies"/>
-                ) : (
-                  <>
-                  {filteredMovies
-                    .filter(movie => movie.Title) // Filter out movies with no title (you can adjust this condition as needed)
-                    .sort((a, b) => a.Title.localeCompare(b.Title)) // Sort movies alphabetically by title
-                    .map((movie) => (
-                      <Col className="mx-auto" key={movie._id}>
-                        <MovieCard user={user} movie={movie} />
-                      </Col>
-                    ))}
-                </>
-              ))}
-          </>
-            }
-          />
+  <Route
+  path="/movies"
+  element={
+    <>
+      <h1 className="text-center">Reel Cinema Database</h1>
+      <br />
+      <br />
+      <SearchBar 
+        filterText={filterText}
+        onFilterTextChange={handleFilterTextChange}
+      />
+      <h6 className="text-center">Input Category then search item</h6>
+      <br />
+      <br />
+      <h5>Film Genre</h5>
+      <Nav className="me-auto">
+        <Nav.Link as={Link} to="/movies/Action">
+          Action
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Adventure">
+          Adventure
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Anime">
+          Anime
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Comedy">
+          Comedy
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Drama">
+          Drama
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Family">
+          Family
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Historical">
+          Historical
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Horror">
+          Horror
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Musical">
+          Musical
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Mystery">
+          Mystery 
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Science Fiction">
+          Science Fiction
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/War">
+          War
+        </Nav.Link>
+        <Nav.Link as={Link} to="/movies/Western">
+          Western
+        </Nav.Link>
+      </Nav>
+      {!user ? (
+        <Navigate to="/" />
+      ) : (
+        <>
+          {filteredMovies
+            .filter(movie => movie.Title)
+            .sort((a, b) => a.Title.localeCompare(b.Title))
+            .map(movie => (
+              <Col className="mx-auto" key={movie._id}>
+                <MovieCard user={user} movie={movie} />
+              </Col>
+            ))}
+        </>
+      )}
+    </>
+  }
+/>
         </Routes>
       </Row>
     </BrowserRouter>
