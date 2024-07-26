@@ -14,7 +14,8 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../index.scss'
 import { Nav } from "react-bootstrap";
-import {Route, Navigate, Link } from 'react-router-dom'; 
+import { Link } from "react-router-dom";
+import { Route, Navigate } from 'react-router-dom'; 
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -121,7 +122,6 @@ return false; // Exclude movie if none of the conditions match
             path="/signup"
             element={
               <>
-                <h4>Create Account</h4>
                 {user ? (
                   <Navigate to="/" />
                 ) : (
