@@ -127,7 +127,12 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/movies" replace />
                 ) : (
                   <Col mx={5}>
-                    <SignupView />
+                    <SignupView
+                     onLoggedIn={(user, token) => {
+                      setUser(user);
+                      setToken(token);
+                    }}
+                    />
                   </Col>
                 )}
               </>

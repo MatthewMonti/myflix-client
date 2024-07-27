@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import { useNavigate } from "react-router-dom";
 export const SignupView = () => {
   const [username, setUsername] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [showEmail, setShowEmail] = useState(false);
   const [birthday, setBirthday] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUserInfo(storedUser);
+      setUsername(storedUser.Username || ""); //
+      setPassword(storedUser.Password || "");
+      setEmail(storedUser.Email ||"");
+      setBirthday(storedUser.Birthday || "")
+    }
+  }, []);;
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(storedToken? storedToken : null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +46,7 @@ export const SignupView = () => {
       .then((response) => {
         if (response.ok) {
           alert("Signup successful!"); // Optional alert for success
-          window.location.href = '/movies'; // Redirect to homepage or another route
+          navigate('/movies');
         } else {
           alert("Signup failed");
         }
@@ -42,7 +58,9 @@ export const SignupView = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}
+     encType="multipart/form-data"
+    >
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control

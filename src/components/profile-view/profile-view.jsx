@@ -27,8 +27,7 @@ export const UserInfoComponent = () => {
         setEmail(storedUser.Email ||"");
         setBirthday(storedUser.Birthday || "")
       }
-    }, []);
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+    }, []);;
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(storedToken? storedToken : null);
