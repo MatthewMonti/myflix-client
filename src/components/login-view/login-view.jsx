@@ -33,6 +33,7 @@ export const LoginView = ({ onLoggedIn }) => {
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", data.token);
         onLoggedIn(data.user, data.token);
+        alert("Successful Logged In!!")
       } else {
         alert("No such user");
       }

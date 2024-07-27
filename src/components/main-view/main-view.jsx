@@ -28,6 +28,10 @@ export const MainView = () => {
   const userInput = "SearchTerm";
   const filteredText = userInput.toLowerCase();
   
+  const handleLoggedIn = (loggedInUser, authToken) => {
+    setUser(loggedInUser);
+    setToken(authToken);
+  };
 
 
   useEffect(() => {
@@ -121,17 +125,13 @@ return false; // Exclude movie if none of the conditions match
          <Route
             path="/signup"
             element={
-              <>
-                <h4>Create Account</h4>
+            <>
+              <h4>Create Account</h4>
                 {user ? (
-                  <Navigate to="/movies" replace />
+                  <Navigate to="/movies" />
                 ) : (
                   <Col mx={5}>
-                    <SignupView
-                     onLoggedIn={(user, token) => {
-                      setUser(user);
-                      setToken(token);
-                    }}
+                    <SignupView onLoggedIn={handleLoggedIn} 
                     />
                   </Col>
                 )}
@@ -143,7 +143,7 @@ return false; // Exclude movie if none of the conditions match
             element={
               <>
                 {!user ? (
-                  <Navigate to="/" replace />
+                  <Navigate to="/"  />
                 ) : (
                   <Col md={5}>
                     <UserInfoComponent key={user._id} user={user} />

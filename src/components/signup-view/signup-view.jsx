@@ -1,30 +1,18 @@
+// SignupView.js
+
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-export const SignupView = () => {
+
+export const SignupView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
-  const [userInfo, setUserInfo] = useState(null);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [showEmail, setShowEmail] = useState(false);
   const [birthday, setBirthday] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      setUserInfo(storedUser);
-      setUsername(storedUser.Username || ""); //
-      setPassword(storedUser.Password || "");
-      setEmail(storedUser.Email ||"");
-      setBirthday(storedUser.Birthday || "")
-    }
-  }, []);;
-  const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(storedToken? storedToken : null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,10 +31,11 @@ export const SignupView = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
-        if (response.ok) {
-          alert("Signup successful!"); // Optional alert for success
-          navigate('/movies');
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          alert("Signup successful");
+          handleLogin(); // Attempt to log in after signup
         } else {
           alert("Signup failed");
         }
@@ -57,10 +46,58 @@ export const SignupView = () => {
       });
   };
 
+  const handleLogin = () => {
+    const data = {
+      Username: username,
+      Password: password,
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Login response: ", data);
+        if (data.user && data.token) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
+          if (typeof onLoggedIn === "function") {
+            onLoggedIn(data.user, data.token);
+            navigate("/movies");
+          } else {
+            console.error("onLoggedIn is not a function or is undefined");
+          }
+        } else {
+          alert("Login failed: Invalid user or token");
+        }
+      })
+      .catch((e) => {
+        console.error("Login error:", e);
+        alert("Something went wrong during login: " + e.message);
+      });
+  };
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUsername(storedUser.Username || "");
+      setPassword(storedUser.Password || "");
+      setEmail(storedUser.Email || "");
+      setBirthday(storedUser.Birthday || "");
+    }
+  }, []);
+
   return (
-    <Form onSubmit={handleSubmit}
-     encType="multipart/form-data"
-    >
+    <Form onSubmit={handleSubmit} encType="multipart/form-data">
       <Form.Group>
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -75,46 +112,38 @@ export const SignupView = () => {
       </Form.Group>
 
       <Form.Group>
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-          placeholder="EmpireStar#384"
-           type={
-            showPassword ? "text" : "password"
-           }
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <label>Show Password</label>
-            <input
-                type="checkbox"
-                value={showPassword}
-                onChange={() =>
-                    setShowPassword((prev) => !prev)
-                }
-            />
-        </Form.Group>
+        <Form.Label>Password:</Form.Label>
+        <Form.Control
+          placeholder="Enter your password"
+          type={showPassword ? "text" : "password"}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <label>Show Password</label>
+        <input
+          type="checkbox"
+          checked={showPassword}
+          onChange={() => setShowPassword((prev) => !prev)}
+        />
+      </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Email:</Form.Label>
-          <Form.Control
-            placeholder="stevenson@gmail.com"
-           type={
-            showEmail ? "text" : "password"
-           }
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <label>Show Email</label>
-            <input
-                type="checkbox"
-                value={showEmail}
-                onChange={() =>
-                    setShowEmail((prev) => !prev)
-                }
-            />
-        </Form.Group>
+      <Form.Group>
+        <Form.Label>Email:</Form.Label>
+        <Form.Control
+          placeholder="Enter your email"
+          type={showEmail ? "text" : "password"}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <label>Show Email</label>
+        <input
+          type="checkbox"
+          checked={showEmail}
+          onChange={() => setShowEmail((prev) => !prev)}
+        />
+      </Form.Group>
 
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
