@@ -84,7 +84,7 @@ export const UserInfoComponent = () => {
         setUser(null); 
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        navigate('/'); 
+        window.location.href = "/"; 
       } else {
         alert("User account failed to delete");
       }
