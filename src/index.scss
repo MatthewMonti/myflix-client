@@ -12,10 +12,13 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    margin: 0 auto;
-    height:275px;
-    width:275px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height:500px;
+    width:500px;
   }
+  
 }
 @media (min-width: 768px) {
 
@@ -28,8 +31,11 @@ $body-bg: rgb(0, 0, 0);
 
   .icon{
     margin:center;
-    height:275px;
-    width:275px;
+    height:475px;
+    width:475x;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -44,8 +50,8 @@ $body-bg: rgb(0, 0, 0);
 
   .icon{
     margin:center;
-    height:375px;
-    width:375px;
+    height:500px;
+    width:500px;
   }
 }
 @media (min-width: 1200px) {
