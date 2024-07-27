@@ -126,7 +126,7 @@ return false; // Exclude movie if none of the conditions match
                 {user ? (
                   <Navigate to="/movies" replace />
                 ) : (
-                  <Col>
+                  <Col md={5}>
                     <SignupView />
                   </Col>
                 )}
@@ -140,7 +140,7 @@ return false; // Exclude movie if none of the conditions match
                 {!user ? (
                   <Navigate to="/" replace />
                 ) : (
-                  <Col>
+                  <Col md={5}>
                     <UserInfoComponent key={user._id} user={user} />
                   </Col>
                 )}
@@ -184,7 +184,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Action")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -212,7 +212,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Adventure")
                     .sort((a, b) => a.Release.localeCompare(b.Release)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -240,7 +240,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Anime")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -268,7 +268,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Comedy")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -295,7 +295,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Drama")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -322,7 +322,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Family")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -349,7 +349,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Historical")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -376,7 +376,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Horror")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto"key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -403,7 +403,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Musical")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -430,7 +430,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Mystery")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -457,7 +457,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Science Fiction")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -484,7 +484,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre War")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -511,7 +511,7 @@ return false; // Exclude movie if none of the conditions match
                     .filter(movie => movie.Genre.Name === "Genre Western")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
-                      <Col key={movie._id}>
+                      <Col className="mx-auto" key={movie._id}>
                         {movie.Title && movie.Image && movie.Director && ( // Add additional checks as needed
                           <FilterCard
                             user={user}
@@ -533,9 +533,9 @@ return false; // Exclude movie if none of the conditions match
                 {!user ? (
                   <Navigate to="/" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col >The list is empty!</Col>
                 ) : (
-                  <Col>
+                  <Col className="mx-auto">
                     <MovieView user= {user} movies = {movies} />
                   </Col>
                 )}
