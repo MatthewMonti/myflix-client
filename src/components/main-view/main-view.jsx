@@ -126,7 +126,7 @@ return false; // Exclude movie if none of the conditions match
                 {user ? (
                   <Navigate to="/movies" replace />
                 ) : (
-                  <Col md={5}>
+                  <Col mx={5}>
                     <SignupView />
                   </Col>
                 )}
@@ -150,7 +150,7 @@ return false; // Exclude movie if none of the conditions match
           <Route
             path="/"
             element={
-              <Col md={5}>
+              <Col mx={5}>
               <h3 id="intro">Welcome to Reel Cinema Database</h3>
               <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
 
