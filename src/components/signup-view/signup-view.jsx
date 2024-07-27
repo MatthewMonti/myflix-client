@@ -30,7 +30,7 @@ export const SignupView = () => {
       .then((response) => {
         if (response.ok) {
           alert("Signup successful!"); // Optional alert for success
-          window.location.href = '/'; // Redirect to homepage or another route
+          window.location.href = '/movies'; // Redirect to homepage or another route
         } else {
           alert("Signup failed");
         }

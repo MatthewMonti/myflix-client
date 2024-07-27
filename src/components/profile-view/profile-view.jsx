@@ -53,7 +53,7 @@ export const UserInfoComponent = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Update user successful");
-        navigate('/movies'); 
+        navigate('/'); 
       } else {
         alert("Update user failed");
       }
