@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const UserInfoComponent = () => {
   const navigate = useNavigate()
+  const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [Email, setEmail] = useState("");
@@ -16,7 +17,6 @@ export const UserInfoComponent = () => {
   const [showBirthday, setShowBirthday] = useState("")
   const [Favorite] = useState("");
   const [userInfo, setUserInfo] = useState(null);
-  const [Username, setUsername] = useState("");
 
     useEffect(() => {
       const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -84,7 +84,6 @@ export const UserInfoComponent = () => {
         setUser(null); 
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.reload();
         navigate('/'); 
       } else {
         alert("User account failed to delete");
