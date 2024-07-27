@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from 'react-router-dom';
 
 export const UserInfoComponent = () => {
+  const navigate = useNavigate()
   const [Password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [Email, setEmail] = useState("");
@@ -51,7 +53,7 @@ export const UserInfoComponent = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Update user successful");
-        window.location.reload();
+        navigate('/'); 
       } else {
         alert("Update user failed");
       }
@@ -80,7 +82,11 @@ export const UserInfoComponent = () => {
     }).then((response) => {
       if (response.ok) {
         alert("User account successfully deleted");
+        setUser(null); 
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
         window.location.reload();
+        navigate('/'); 
       } else {
         alert("User account failed to delete");
       }
