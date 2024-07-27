@@ -30,7 +30,6 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    margin:center;
     height:475px;
     width:475x;
     display: block;
@@ -49,9 +48,11 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    margin:center;
     height:500px;
     width:500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 @media (min-width: 1200px) {
@@ -64,7 +65,9 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    margin:center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height:450px;
     width:450px;
   }
@@ -80,7 +83,9 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    margin:center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     height:375px;
     width:525px;
   }
