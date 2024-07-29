@@ -148,7 +148,6 @@ export const UserInfoComponent = () => {
            type={
             showPassword ? "text" : "password"
            }
-            value={Password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
