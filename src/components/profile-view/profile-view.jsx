@@ -42,7 +42,7 @@ export const UserInfoComponent = () => {
       Birthday: Birthday
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/update", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/update", {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -51,8 +51,8 @@ export const UserInfoComponent = () => {
       }
     }).then((response) => {
       if (response.ok) {
+        window.location.reload(false);
         alert("Update user successful");
-        navigate('/'); 
       } else {
         alert("Update user failed");
       }
@@ -71,7 +71,7 @@ export const UserInfoComponent = () => {
       Favorite: Favorite
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/delete", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/delete", {
       method: "DELETE",
       body: JSON.stringify(data),
       headers: {
@@ -95,7 +95,7 @@ export const UserInfoComponent = () => {
     const fetchUserInfo = async () => {
       try {
         const token = localStorage.getItem('token'); // Assuming you store token in localStorage
-        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user', {
+        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user/info', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -120,13 +120,11 @@ export const UserInfoComponent = () => {
           <h5>Username: </h5> <p>{userInfo.Username}</p>
           <h5>Email: </h5> <p>{userInfo.Email}</p>
           <h5>Birthday: </h5> <p>{userInfo.Birthday}</p>
-          <h5>Favorites: </h5> <p> {userInfo.Favorite && userInfo.Favorite.join(', ')}</p>
+          <h5>Favorites: </h5> <p> {userInfo.Favorites && userInfo.Favorites.join(', ')}</p>
         </div>
       )}
-      <Form 
-      onSubmit={handleSubmit}
-      onReset={handleReset}
-      encType="multipart/form-data"
+      <Form
+        onSubmit={handleSubmit}
       >
         <Form.Group>
           <Form.Label>Username:</Form.Label>
@@ -140,71 +138,64 @@ export const UserInfoComponent = () => {
             placeholder="Stevenson"
           />
         </Form.Group>
-  
+        <br />
+        <Button  variant="primary" type="submit">
+          Update Username
+        </Button>
+      </Form>
+      <Form
+        onSubmit={handleSubmit}
+      >
         <Form.Group>
           <Form.Label>Password:</Form.Label>
           <Form.Control
-          placeholder="EmpireStar#384"
            type={
             showPassword ? "text" : "password"
            }
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <label>Show Password</label>
-            <input
-                type="checkbox"
-                value={showPassword}
-                onChange={() =>
-                    setShowPassword((prev) => !prev)
-                }
-            />
         </Form.Group>
-  
+        <br />
+        <Button  variant="primary" type="submit">
+          Update Password
+        </Button>
+      </Form>
+      <Form
+        onSubmit={handleSubmit}
+      >
         <Form.Group>
           <Form.Label>Email:</Form.Label>
           <Form.Control
-            placeholder="stevenson@gmail.com"
-           type={
-            showEmail ? "text" : "password"
-           }
             value={Email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <label>Show Email</label>
-            <input
-                type="checkbox"
-                value={showEmail}
-                onChange={() =>
-                    setShowEmail((prev) => !prev)
-                }
-            />
         </Form.Group>
+        <br />
+        <Button  variant="primary" type="submit">
+          Update Email
+        </Button>
+      </Form>
+      <Form
+        onSubmit={handleSubmit}
+      >
         <Form.Group>
           <Form.Label>Birthday:</Form.Label>
           <Form.Control
-            placeholder="####-##-##"
-           type={
-            showBirthday ? "text" : "date"
-           }
             value={Birthday}
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
-          <label>Show Birthday</label>
-            <input
-                type="checkbox"
-                value={showBirthday}
-                onChange={() =>
-                    setShowBirthday((prev) => !prev)
-                }
-            />
         </Form.Group>
-        <br />
         <Button  variant="primary" type="submit">
-          Update Account
+          Update Birthday
         </Button>
+      </Form>
+
+      <Form 
+      onReset={handleReset}
+      encType="multipart/form-data">
         <br />
         <Button
           className="mt-2"
@@ -215,5 +206,4 @@ export const UserInfoComponent = () => {
     </div>
   );
 };
-
 export default UserInfoComponent;

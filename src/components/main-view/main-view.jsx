@@ -12,7 +12,8 @@ import Col from "react-bootstrap/Col";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import '../../index.scss'
+import '../../index.scss';
+import "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Route, Navigate } from 'react-router-dom'; 
@@ -101,7 +102,7 @@ if (
   (movie.Release.includes( filterText)) || // Convert Release to string for comparison
   (movie.Director.Name && movie.Director.Name.toLowerCase() === filterLowerCase) ||
   (movie.Rated && movie.Rated.toLowerCase() === filterLowerCase) ||
-  (movie.Rating && movie.Rating.toLowerCase === filterLowerCase) // Convert Rating to string for comparison
+  (movie.Rating && movie.Rating.toLowerCase() === filterLowerCase) // Convert Rating to string for comparison
 ) {
   return true; // Include movie if any of the above conditions match
 }
@@ -152,30 +153,31 @@ return false; // Exclude movie if none of the conditions match
               </>
             }
           />
-          <Route
-            path="/"
-            element={
-              <Col mx={5}>
-              <h3 id="intro">Welcome to Reel Cinema Database</h3>
-              <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running"/>
+<Route
+  path="/"
+  element={
+    <Row>
+      <Col lg={10}>
+        <h3 id="intro">Welcome to Reel Cinema Database</h3>
+        <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running" />
 
-              <h4>Login</h4>
-                {user ? (
-                  <Navigate to="/movies" />
-                ) : (
-                  <>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
-                  </>
-                )}
-              </Col>
-
-            }
-          />   
+        <h4>Login</h4>
+        {user ? (
+          <Navigate to="/movies" />
+        ) : (
+          <Col lg={8} >
+            <LoginView
+              onLoggedIn={(user, token) => {
+                setUser(user);
+                setToken(token);
+              }}
+            />
+          </Col>
+        )}
+      </Col>
+    </Row>
+  }
+/>
           <Route
           path="/movies/Action"
           element={

@@ -2,6 +2,16 @@
 $primary: rgba(255, 0, 0, 0.804);
 $body-bg: rgb(0, 0, 0);
 
+label.form-label,.form-horizon .control-label{
+  text-align:left;
+}
+
+
+
+
+
+
+
 @media (min-width: 320px) {
 
   .Video{
@@ -13,10 +23,9 @@ $body-bg: rgb(0, 0, 0);
 
   .icon{
     display: block;
-    margin-left: auto;
     margin-right: auto;
-    height:500px;
-    width:500px;
+    height:200px;
+    width:200px;
   }
   
 }
@@ -30,8 +39,8 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    height:475px;
-    width:475x;
+    height:200px;
+    width:200px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -48,8 +57,8 @@ $body-bg: rgb(0, 0, 0);
   }
 
   .icon{
-    height:500px;
-    width:500px;
+    height:200px;
+    width:200px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -68,8 +77,8 @@ $body-bg: rgb(0, 0, 0);
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height:450px;
-    width:450px;
+    height:250px;
+    width:250px;
   }
 }
   
@@ -86,8 +95,8 @@ $body-bg: rgb(0, 0, 0);
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height:375px;
-    width:525px;
+    height:300px;
+    width:300px;
   }
 }
 .movie-box{

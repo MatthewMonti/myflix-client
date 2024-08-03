@@ -21,10 +21,10 @@ export const MovieCard = ({ movie, user }) => {
   const handleAddFavorite = () => {
     const data = {
       Username: user.Username,
-      Favorite: movie.Title,
+      Favorites: movie.Title,
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites/add", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -48,10 +48,10 @@ export const MovieCard = ({ movie, user }) => {
   const handleDeleteFavorite = () => {
     const data = {
       Username: user.Username,
-      Favorite: movie.Title,
+      Favorites: movie.Title,
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites/delete", {
       method: "DELETE",
       body: JSON.stringify(data),
       headers: {
