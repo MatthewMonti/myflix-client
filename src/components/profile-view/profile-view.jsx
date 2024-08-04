@@ -188,7 +188,7 @@ export const UserInfoComponent = () => {
       .then((response) => {
         if (response.ok) {
           setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Favorites }));
-          window.location.reload(false);
+          fetchUserInfo()
           alert("Favorite deleted successfully");
         } else {
           alert("Failed to delete favorite");
