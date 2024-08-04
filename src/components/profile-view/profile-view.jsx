@@ -18,31 +18,111 @@ export const UserInfoComponent = () => {
   const [Favorite] = useState("");
   const [userInfo, setUserInfo] = useState(null);
 
-    useEffect(() => {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
-      if (storedUser) {
-        setUserInfo(storedUser);
-        setUsername(storedUser.Username || ""); //
-        setPassword(storedUser.Password || "");
-        setEmail(storedUser.Email ||"");
-        setBirthday(storedUser.Birthday || "")
-      }
-    }, []);;
-  const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(storedToken? storedToken : null);
+  const token = localStorage.getItem('token');
 
-  const handleSubmit = (event) => {
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user/info', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        const data = await response.json();
+        setUserInfo(data);
+        setUsername(data.Username || "");
+        setEmail(data.Email || "");
+        setBirthday(data.Birthday || "");
+        setPassword(data.Password || "");
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    };
+
+    fetchUserInfo();
+  }, [token]);
+
+  const handleUsernameUpdate = (event) => {
     event.preventDefault();
 
     const data = {
-      Username: Username,
-      Password: Password,
-      Email: Email,
+      Username: Username
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/username", {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.ok) {
+        setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Username }));
+        alert("Update Username successful");
+      } else {
+        alert("Update Username failed");
+      }
+    });
+  };
+
+  const handlePasswordUpdate = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Password: Password
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/password", {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.ok) {
+        alert("Update Password successful");
+      } else {
+        alert("Update Password failed");
+      }
+    });
+  };
+
+  const handleEmailUpdate = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Email: Email
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/email", {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }).then((response) => {
+      if (response.ok) {
+        setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Email }));
+        alert("Update email successful");
+      } else {
+        alert("Update email failed");
+      }
+    });
+  };
+
+  const handleBirthdayUpdate = (event) => {
+    event.preventDefault();
+
+    const data = {
       Birthday: Birthday
     };
 
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/update", {
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/user/birthday", {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -52,9 +132,9 @@ export const UserInfoComponent = () => {
     }).then((response) => {
       if (response.ok) {
         window.location.reload(false);
-        alert("Update user successful");
+        alert("Update birthday successful");
       } else {
-        alert("Update user failed");
+        alert("Update birthday failed");
       }
     });
   };
@@ -91,27 +171,6 @@ export const UserInfoComponent = () => {
     });
   };
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const token = localStorage.getItem('token'); // Assuming you store token in localStorage
-        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user/info', {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
-        setUserInfo(data);
-      } catch (error) {
-        console.error('Error fetching user info:', error);
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
-
   return (
     <div>
       {userInfo && (
@@ -124,7 +183,7 @@ export const UserInfoComponent = () => {
         </div>
       )}
       <Form
-        onSubmit={handleSubmit}
+        onSubmit={handleUsernameUpdate}
       >
         <Form.Group>
           <Form.Label>Username:</Form.Label>
@@ -135,7 +194,6 @@ export const UserInfoComponent = () => {
             onChange={(e) => setUsername(e.target.value)}
             required
             minLength="5" 
-            placeholder="Stevenson"
           />
         </Form.Group>
         <br />
@@ -144,14 +202,11 @@ export const UserInfoComponent = () => {
         </Button>
       </Form>
       <Form
-        onSubmit={handleSubmit}
+        onSubmit={handlePasswordUpdate}
       >
         <Form.Group>
           <Form.Label>Password:</Form.Label>
           <Form.Control
-           type={
-            showPassword ? "text" : "password"
-           }
             onChange={(e) => setPassword(e.target.value)}
             required
           />
@@ -162,7 +217,7 @@ export const UserInfoComponent = () => {
         </Button>
       </Form>
       <Form
-        onSubmit={handleSubmit}
+        onSubmit={handleEmailUpdate}
       >
         <Form.Group>
           <Form.Label>Email:</Form.Label>
@@ -178,7 +233,7 @@ export const UserInfoComponent = () => {
         </Button>
       </Form>
       <Form
-        onSubmit={handleSubmit}
+        onSubmit={handleBirthdayUpdate}
       >
         <Form.Group>
           <Form.Label>Birthday:</Form.Label>
