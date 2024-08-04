@@ -15,7 +15,7 @@ export const UserInfoComponent = () => {
   const [showEmail, setShowEmail] = useState("")
   const [Birthday, setBirthday] = useState("");
   const [showBirthday, setShowBirthday] = useState("")
-  const [Favorite] = useState("");
+  const [Favorites, setFavorite] = useState("");
   const [userInfo, setUserInfo] = useState(null);
 
   const token = localStorage.getItem('token');
@@ -131,12 +131,71 @@ export const UserInfoComponent = () => {
       }
     }).then((response) => {
       if (response.ok) {
-        window.location.reload(false);
+        setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Birthday}));
         alert("Update birthday successful");
       } else {
         alert("Update birthday failed");
       }
     });
+  };
+
+
+  const handleAddFavorite = (event) => {
+    event.preventDefault(event);
+    const data = {
+      Username: Username,
+      Favorites: Favorites,
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites/add", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Favorites }));
+          window.location.reload(false);
+          alert("Favorite added successfully");
+        } else {
+          alert("Failed to add favorite");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding favorite:", error);
+      });
+  };
+
+  const handleDeleteFavorite = (event) => {
+    event.preventDefault(event);
+    const data = {
+      Username: Username,
+      Favorites: Favorites,
+    };
+
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites/delete", {
+      method: "DELETE",
+      body: JSON.stringify(data),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Favorites }));
+          window.location.reload(false);
+          alert("Favorite deleted successfully");
+        } else {
+          alert("Failed to delete favorite");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting favorite:", error);
+      });
   };
   
 
@@ -148,7 +207,7 @@ export const UserInfoComponent = () => {
       Password: Password,
       Email: Email,
       Birthday: Birthday,
-      Favorite: Favorite
+      Favorite: Favorites
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/user/delete", {
@@ -179,7 +238,7 @@ export const UserInfoComponent = () => {
           <h5>Username: </h5> <p>{userInfo.Username}</p>
           <h5>Email: </h5> <p>{userInfo.Email}</p>
           <h5>Birthday: </h5> <p>{userInfo.Birthday}</p>
-          <h5>Favorites: </h5> <p> {userInfo.Favorites && userInfo.Favorites.join(', ')}</p>
+          <h5>Favorites: </h5><p> {Array.isArray(userInfo.Favorites) ? userInfo.Favorites.join(', ') : 'No favorites available'}</p>
         </div>
       )}
       <Form
@@ -245,6 +304,27 @@ export const UserInfoComponent = () => {
         </Form.Group>
         <Button  variant="primary" type="submit">
           Update Birthday
+        </Button>
+      </Form>
+      <Form>
+        <Form.Group>
+          <Form.Label>Favorite:</Form.Label>
+          <Form.Control
+            onChange={(e) => setFavorite(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Button  
+        onClick={handleAddFavorite}
+        variant="primary" 
+        type="submit">
+          Add Favorite
+        </Button>
+        <Button    
+        onClick={handleDeleteFavorite}
+        variant="primary" 
+        type="submit">
+          Delete Favorite
         </Button>
       </Form>
 
