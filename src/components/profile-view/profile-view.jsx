@@ -20,27 +20,28 @@ export const UserInfoComponent = () => {
 
   const token = localStorage.getItem('token');
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user/info', {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
-        setUserInfo(data);
-        setUsername(data.Username || "");
-        setEmail(data.Email || "");
-        setBirthday(data.Birthday || "");
-        setPassword(data.Password || "");
-      } catch (error) {
-        console.error('Error fetching user info:', error);
-      }
-    };
+  
+  const fetchUserInfo = async () => {
+    try {
+      const response = await fetch('https://movies-flex-6e317721b427.herokuapp.com/user/info', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setUserInfo(data);
+      setUsername(data.Username || "");
+      setEmail(data.Email || "");
+      setBirthday(data.Birthday || "");
+      setPassword(data.Password || "");
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchUserInfo();
   }, [token]);
 
@@ -158,7 +159,7 @@ export const UserInfoComponent = () => {
       .then((response) => {
         if (response.ok) {
           setUserInfo((prevUserInfo) => ({ ...prevUserInfo, Favorites }));
-          window.location.reload(false);
+          fetchUserInfo()
           alert("Favorite added successfully");
         } else {
           alert("Failed to add favorite");
