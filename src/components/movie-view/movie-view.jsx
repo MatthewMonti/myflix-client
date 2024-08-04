@@ -28,7 +28,7 @@ export const MovieView = ({ movies, user }) => {
 
     const data = {
       Username: user.Username,
-      Favorite: movie.Title,
+      Favorites: movie.Title,
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites/add", {
@@ -60,7 +60,7 @@ export const MovieView = ({ movies, user }) => {
 
     const data = {
       Username: user.Username,
-      Favorite: movie.Title,
+      Favorites: movie.Title,
     };
 
     fetch("https://movies-flex-6e317721b427.herokuapp.com/favorites/delete", {
