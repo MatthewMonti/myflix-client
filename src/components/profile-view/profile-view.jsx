@@ -221,7 +221,6 @@ export const UserInfoComponent = () => {
     }).then((response) => {
       if (response.ok) {
         alert("User account successfully deleted");
-        setUser(null); 
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         
