@@ -560,9 +560,9 @@ return false; // Exclude movie if none of the conditions match
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
                 />
+                <br />
+                <br />
                 <h6 className="text-center">Input Category then search item</h6>
-                <br />
-                <br />
                 <h5>Film Genre</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
