@@ -224,7 +224,13 @@ export const UserInfoComponent = () => {
         setUser(null); 
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.href = "/"; 
+        
+        try {
+          window.location.href = "/"; 
+        } catch (error) {
+          alert("Redirection failed. Please navigate to the home page manually.");
+        }
+        
       } else {
         alert("User account failed to delete");
       }
