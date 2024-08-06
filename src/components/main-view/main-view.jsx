@@ -35,13 +35,12 @@ export const MainView = () => {
   };
 
 
-  useEffect(() => {
+  const fetchMovies = (token, setMovies) => {
     if (!token) {
       return;
     }
-
-    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies",
-     {
+  
+    fetch("https://movies-flex-6e317721b427.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -51,27 +50,31 @@ export const MainView = () => {
             _id: doc._id,
             Title: doc.Title,
             Release: doc.Release,
-            Actors: [doc.Actors.join(', ')],
+            Actors: [doc.Actors.join(", ")],
             Rated: doc.Rated,
             Rating: doc.Rating,
             Description: doc.Description,
             Genre: {
               Name: doc.Genre.Name,
-              Description: doc.Genre.Description
+              Description: doc.Genre.Description,
             },
             Director: {
               Name: doc.Director.Name,
               Bio: doc.Director.Bio,
               Birth: doc.Director.Birth,
-              Death: doc.Director.Death
-          },
+              Death: doc.Director.Death,
+            },
             Image: doc.Image,
             Featured: doc.Featured,
-            url: doc.url
+            url: doc.url,
           };
         });
         setMovies(moviesFromApi);
       });
+  };
+  
+  useEffect(() => {
+    fetchMovies(token, setMovies);
   }, [token]);
 
   const handleFilterTextChange = (text) => {
