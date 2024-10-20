@@ -315,6 +315,7 @@ export const UserInfoComponent = () => {
           <Form.Control
             onChange={(e) => setFavorite(e.target.value)}
             required
+            placeholder="type film to added or delete to favorites array"
           />
         </Form.Group>
         <Button  

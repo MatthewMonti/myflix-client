@@ -163,7 +163,8 @@ h1.text.center{
 
 }
 /* Change placeholder text color */
-.searchbar::placeholder {
+.searchbar::placeholder,
+.form-control::placeholder {
   color: black; /* Adjust this color as needed */
   opacity: 1;  /* Ensure full opacity for the placeholder */
 }
