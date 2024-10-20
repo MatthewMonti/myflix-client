@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import {FaSearch} from "react-icons/fa"
 const SearchBar = ({ filterText, onFilterTextChange }) => {
   const handleChange = (e) => {
     onFilterTextChange(e.target.value);
@@ -7,13 +7,14 @@ const SearchBar = ({ filterText, onFilterTextChange }) => {
 
   return (
     <div>
-      <input
-        className="searchbar"
-        type="text"
-        placeholder="Search..."
-        value={filterText}
-        onChange={handleChange}
-      />
+      <FaSearch id="search-icon"/>
+        <input
+          className="searchbar"
+          type="text"
+          placeholder="Search..."
+          value={filterText}
+          onChange={handleChange}
+        />
     </div>
   );
 };
