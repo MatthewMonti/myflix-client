@@ -261,8 +261,7 @@ export const UserInfoComponent = () => {
             minLength="5" 
           />
         </Form.Group>
-        <br />
-        <Button  variant="primary" type="submit">
+        <Button  className="button-profile" variant="primary" type="submit">
           Update Username
         </Button>
       </Form>
@@ -276,8 +275,7 @@ export const UserInfoComponent = () => {
             required
           />
         </Form.Group>
-        <br />
-        <Button  variant="primary" type="submit">
+        <Button  className="button-profile" variant="primary" type="submit">
           Update Password
         </Button>
       </Form>
@@ -292,8 +290,7 @@ export const UserInfoComponent = () => {
             required
           />
         </Form.Group>
-        <br />
-        <Button  variant="primary" type="submit">
+        <Button  className="button-profile"variant="primary" type="submit">
           Update Email
         </Button>
       </Form>
@@ -308,7 +305,7 @@ export const UserInfoComponent = () => {
             required
           />
         </Form.Group>
-        <Button  variant="primary" type="submit">
+        <Button className="button-profile" variant="primary" type="submit">
           Update Birthday
         </Button>
       </Form>
@@ -321,12 +318,15 @@ export const UserInfoComponent = () => {
           />
         </Form.Group>
         <Button  
+        className="button-profile"
+        id="space-button"
         onClick={handleAddFavorite}
         variant="primary" 
         type="submit">
           Add Favorite
         </Button>
         <Button    
+        className="button-profile"
         onClick={handleDeleteFavorite}
         variant="primary" 
         type="submit">
@@ -337,9 +337,8 @@ export const UserInfoComponent = () => {
       <Form 
       onReset={handleReset}
       encType="multipart/form-data">
-        <br />
         <Button
-          className="mt-2"
+          id="submit-button"
           variant="primary" type="reset">
             Erase Account
         </Button>

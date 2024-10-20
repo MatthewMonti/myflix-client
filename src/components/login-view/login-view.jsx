@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
-import "react-bootstrap"
+import "react-bootstrap";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -37,8 +37,6 @@ export const LoginView = ({ onLoggedIn }) => {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
-          console.log(data.user, "Bob")
-          console.log(data.token)
           alert("Successfully Logged In!!");
         } else {
           alert("No such user");
@@ -71,13 +69,18 @@ export const LoginView = ({ onLoggedIn }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <label>Show Password</label>
-        <input
-          type="checkbox"
-          checked={showPassword}
-          onChange={() => setShowPassword((prev) => !prev)}
-        />
+        <label className="custom-checkbox-label">
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={showPassword}
+            onChange={() => setShowPassword((prev) => !prev)}
+          />
+          <span className="custom-checkmark"></span>
+          Show Password
+        </label>
       </Form.Group>
+
       <br />
       <Button variant="primary" type="submit">
         Login
