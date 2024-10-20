@@ -161,7 +161,7 @@ return false; // Exclude movie if none of the conditions match
   element={
     <Row>
       <Col lg={10}>
-        <h3 id="intro">Welcome to Reel Cinema Database</h3>
+        <h1 id="intro">Welcome to Reel Cinema Database</h1>
         <img className="icon" src="https://cdn.dribbble.com/users/1913706/screenshots/4353135/reel-alwin.gif" alt="gif file old projector is running" />
 
         <h4>Login</h4>
@@ -185,6 +185,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Action"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -232,7 +233,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Action Films</h3>
+            <h2 className="text-center">Action Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -260,6 +261,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Adventure"
           element={
             <>
+            <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -307,7 +309,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Adventure Films</h3>
+            <h2 className="text-center">Adventure Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -335,6 +337,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Anime"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -382,7 +385,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Anime Films</h3>
+            <h2 className="text-center">Anime Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -410,6 +413,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Comedy"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -457,7 +461,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Comedy Films</h3>
+            <h2 className="text-center">Comedy Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -484,6 +488,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Drama"
           element={
             <>
+            <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -531,7 +536,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Drama Films</h3>
+            <h2 className="text-center">Drama Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -558,6 +563,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Family"
           element={
             <>
+             <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -605,7 +611,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Family Films</h3>
+            <h2 className="text-center">Family Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -632,6 +638,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Historical"
           element={
             <>
+            <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -679,7 +686,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Historical Films</h3>
+            <h2 className="text-center">Historical Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -706,6 +713,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Horror"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -753,7 +761,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Horror Films</h3>
+            <h2 className="text-center">Horror Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -780,6 +788,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Musical"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -827,7 +836,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Musical Films</h3>
+            <h2 className="text-center">Musical Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -854,6 +863,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Mystery"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -901,7 +911,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Mystery Films</h3>
+            <h2 className="text-center">Mystery Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -928,6 +938,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Science Fiction"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -975,7 +986,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">Science Fiction Films</h3>
+            <h2 className="text-center">Science Fiction Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -1002,6 +1013,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/War"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -1049,7 +1061,7 @@ return false; // Exclude movie if none of the conditions match
                     Western
                   </Nav.Link>
                 </Nav>
-            <h3 id="intro">War Films</h3>
+            <h2 className="text-center">War Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -1076,6 +1088,7 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Western"
           element={
             <>
+              <h1 id="intro" className="text-center">Reel Cinema Database</h1>
               <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
@@ -1123,7 +1136,7 @@ return false; // Exclude movie if none of the conditions match
                 Western
               </Nav.Link>
             </Nav>
-            <h3 id="intro">Western Films</h3>
+            <h2 className="text-center">Western Films</h2>
             {!user ? (
                   <Navigate to="/" />
                 ): (
@@ -1167,7 +1180,7 @@ return false; // Exclude movie if none of the conditions match
             path="/movies"
             element={
               <>
-                <h1 id="title" className="text-center">Reel Cinema Database</h1>
+                <h1 id="intro" className="text-center">Reel Cinema Database</h1>
                 <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
