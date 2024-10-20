@@ -556,16 +556,12 @@ return false; // Exclude movie if none of the conditions match
             path="/movies"
             element={
               <>
-                <h1 className="text-center">Reel Cinema Database</h1>
-                <br />
-                <br /> 
+                <h1 id="title" className="text-center">Reel Cinema Database</h1>
                 <SearchBar 
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
                 />
-                <br />
-                <br />
-                <h6 className="text-center">Input Category then search item</h6>
+                <h6 id="search-help" className="text-center">Input Category then search item</h6>
                 <h5>Film Genre</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
