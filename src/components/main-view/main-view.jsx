@@ -185,6 +185,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Action"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+            <h6 id="search-help" className="text-center">Search Within Action Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Action Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -213,6 +260,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Adventure"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+            <h6 id="search-help" className="text-center">Search Within Adventure Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Adventure Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -241,6 +335,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Anime"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Anime Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Anime Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -269,6 +410,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Comedy"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Comedy Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Comedy Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -296,6 +484,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Drama"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Drama Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Drama Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -323,6 +558,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Family"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Family Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Family Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -350,6 +632,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Historical"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Historical Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Historical Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -377,6 +706,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Horror"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Horror Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Horror Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -404,6 +780,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Musical"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Musical Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Musical Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -431,6 +854,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Mystery"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Mystery Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Mystery Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -454,10 +924,57 @@ return false; // Exclude movie if none of the conditions match
             </>
           }
         />
-               <Route
+        <Route
           path="/movies/Science Fiction"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Science Fiction Films</h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">Science Fiction Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -481,10 +998,57 @@ return false; // Exclude movie if none of the conditions match
             </>
           }
         />
-                      <Route
+        <Route
           path="/movies/War"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within War Films </h6>
+            <h5>Film Genre</h5>
+                <Nav className="me-auto">
+                  <Nav.Link as={Link} to="/movies/Action">
+                    Action
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Adventure">
+                    Adventure
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Anime">
+                    Anime
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Comedy">
+                    Comedy
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Drama">
+                    Drama
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Family">
+                    Family
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Historical">
+                    Historical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Horror">
+                    Horror
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Musical">
+                    Musical
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Mystery">
+                    Mystery 
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Science Fiction">
+                    Science Fiction
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/War">
+                    War
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/movies/Western">
+                    Western
+                  </Nav.Link>
+                </Nav>
             <h3 id="intro">War Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -512,6 +1076,53 @@ return false; // Exclude movie if none of the conditions match
           path="/movies/Western"
           element={
             <>
+              <SearchBar 
+                filterText={filterText}
+                onFilterTextChange={handleFilterTextChange}
+              />
+              <h6 id="search-help" className="text-center">Search Within Western Films</h6>
+            <h5>Film Genre</h5>
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/movies/Action">
+                Action
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Adventure">
+                Adventure
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Anime">
+                Anime
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Comedy">
+                Comedy
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Drama">
+                Drama
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Family">
+                Family
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Historical">
+                Historical
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Horror">
+                Horror
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Musical">
+                Musical
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Mystery">
+                Mystery 
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Science Fiction">
+                Science Fiction
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/War">
+                War
+              </Nav.Link>
+              <Nav.Link as={Link} to="/movies/Western">
+                Western
+              </Nav.Link>
+            </Nav>
             <h3 id="intro">Western Films</h3>
             {!user ? (
                   <Navigate to="/" />
@@ -561,7 +1172,7 @@ return false; // Exclude movie if none of the conditions match
                 filterText={filterText}
                 onFilterTextChange={handleFilterTextChange}
                 />
-                <h6 id="search-help" className="text-center">Input Category then search item</h6>
+                <h6 id="search-help" className="text-center">Search Entire Catalog</h6>
                 <h5>Film Genre</h5>
                 <Nav className="me-auto">
                   <Nav.Link as={Link} to="/movies/Action">
