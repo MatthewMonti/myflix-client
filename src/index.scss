@@ -169,6 +169,13 @@ h1.text.center{
   opacity: 1;  /* Ensure full opacity for the placeholder */
 }
 
+.full-page-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  background-color: #f8f9fa; /* Light background color */
+}
 
 
 .search-icon {

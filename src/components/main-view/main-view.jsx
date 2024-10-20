@@ -168,14 +168,12 @@ return false; // Exclude movie if none of the conditions match
         {user ? (
           <Navigate to="/movies" />
         ) : (
-          <Col lg={8} >
             <LoginView
               onLoggedIn={(user, token) => {
                 setUser(user);
                 setToken(token);
               }}
             />
-          </Col>
         )}
       </Col>
     </Row>

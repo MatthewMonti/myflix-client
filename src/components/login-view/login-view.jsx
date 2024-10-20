@@ -48,6 +48,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
+  <div>
     <Form onSubmit={handleSubmit} encType="multipart/form-data">
       <Form.Group>
         <Form.Label>Username:</Form.Label>
@@ -92,6 +93,7 @@ export const LoginView = ({ onLoggedIn }) => {
       </Link>
       <br />
     </Form>
+  </div>
   );
 };
 
