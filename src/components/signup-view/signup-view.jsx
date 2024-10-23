@@ -15,9 +15,21 @@ export const SignupView = ({ onLoggedIn }) => {
   const [showBirthday, setShowBirthday] = useState(false)
   const navigate = useNavigate();
 
+    // Helper function to format date to MM/DD/YYYY
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${month}/${day}/${year}`;
+    };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Convert birthday to ISO format (YYYY-MM-DD) for submission
+    const formattedBirthday = new Date(birthday).toISOString().split("T")[0];
+    
     const data = {
       Username: username,
       Password: password,
@@ -168,7 +180,7 @@ export const SignupView = ({ onLoggedIn }) => {
             onChange={() => setShowBirthday((prev) => !prev)}
           />
           <span className="custom-checkmark"></span>
-          Show Email
+          Show Birthday
         </label>
       </Form.Group>
       <br />

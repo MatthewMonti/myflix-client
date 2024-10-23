@@ -240,10 +240,8 @@ export const UserInfoComponent = () => {
     <div>
       {userInfo && (
         <div>
-          <h3>User Information</h3>
-          <h5>Username: </h5> <p>{userInfo.Username}</p>
-          <h5>Email: </h5> <p>{userInfo.Email}</p>
-          <h5>Birthday: </h5> <p>{userInfo.Birthday}</p>
+          <h3>Profile Update Info</h3>
+          <h5>Username: </h5> <p>{userInfo.Username}</p> 
           <h5>Favorites: </h5><p> {Array.isArray(userInfo.Favorites) ? userInfo.Favorites.join(', ') : 'No favorites available'}</p>
         </div>
       )}
@@ -271,9 +269,11 @@ export const UserInfoComponent = () => {
         <Form.Group>
           <Form.Label>Password:</Form.Label>
           <Form.Control
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          className="input-bg"
+          type="text"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         </Form.Group>
         <Button  className="button-profile" variant="primary" type="submit">
           Update Password
@@ -285,10 +285,21 @@ export const UserInfoComponent = () => {
         <Form.Group>
           <Form.Label>Email:</Form.Label>
           <Form.Control
-            value={Email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+          type={showEmail ? "text" : "Password"}
+          value={Email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <label className="custom-checkbox-label">
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={showEmail}
+            onChange={() => setShowEmail((prev) => !prev)}
           />
+          <span className="custom-checkmark"></span>
+          Show Email
+        </label>
         </Form.Group>
         <Button  className="button-profile"variant="primary" type="submit">
           Update Email
@@ -300,10 +311,21 @@ export const UserInfoComponent = () => {
         <Form.Group>
           <Form.Label>Birthday:</Form.Label>
           <Form.Control
-            value={Birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-            required
+          type={showBirthday ? "text" : "Password"}
+          value={new Date(Birthday).toLocaleDateString('en-GB')}
+          onChange={(e) => setBirthday(e.target.value)}
+          required
+        />
+        <label className="custom-checkbox-label">
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={showBirthday}
+            onChange={() => setShowBirthday((prev) => !prev)}
           />
+          <span className="custom-checkmark"></span>
+          Show Email
+        </label>
         </Form.Group>
         <Button className="button-profile" variant="primary" type="submit">
           Update Birthday

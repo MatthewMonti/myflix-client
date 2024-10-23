@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
@@ -113,4 +113,8 @@ const retrievedSessionToken = sessionStorage.getItem('movieToken');
   );
 };
 
+FilterCard.propTypes = {
+  movie: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+};
 export default FilterCard

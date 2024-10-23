@@ -24,10 +24,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [filterText, setFilterText] = useState('');
-  const userInput = "SearchTerm";
-  const filteredText = userInput.toLowerCase();
   
   const handleLoggedIn = (loggedInUser, authToken) => {
     setUser(loggedInUser);
@@ -82,21 +79,7 @@ export const MainView = () => {
   };
 
   const filteredMovies = movies.filter((movie) => {
-
 const filterLowerCase = filterText.toLowerCase();
-
-
-
-
-
-const RatedMovies = movies.filter(movie => movie.Rated === filterText);
-
-const ReleaseYRSMovies = movies.filter(movies=> movies.Release == (filterText));
-
-const RatingofMovies = movies.filter(movies => movies.Rating === (filterText))
-
-
-
 // Check if Title, Director's Name, or any Actor's Name matches filterText
 if (
   (movie.Genre && movie.Genre.Name && movie.Genre.Name.toLowerCase().includes(filterLowerCase)) ||
@@ -236,7 +219,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Action")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -312,7 +295,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Adventure")
                     .sort((a, b) => a.Release.localeCompare(b.Release)) //
                     .map((movie) => (
@@ -388,7 +371,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Anime")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -464,7 +447,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Comedy")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -539,7 +522,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Drama")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -614,7 +597,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Family")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -689,7 +672,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Historical")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -764,7 +747,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Horror")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -839,7 +822,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Musical")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -914,7 +897,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Mystery")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -989,7 +972,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Science Fiction")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -1064,7 +1047,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre War")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
@@ -1139,7 +1122,7 @@ return false; // Exclude movie if none of the conditions match
                   <Navigate to="/" />
                 ): (
                   <Row>
-                  {movies
+                  {filteredMovies
                     .filter(movie => movie.Genre.Name === "Genre Western")
                     .sort((a, b) => a.Title.localeCompare(b.Title)) //
                     .map((movie) => (
