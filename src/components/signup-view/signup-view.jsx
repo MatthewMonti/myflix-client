@@ -12,6 +12,7 @@ export const SignupView = ({ onLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [showEmail, setShowEmail] = useState(false);
   const [birthday, setBirthday] = useState("");
+  const [showBirthday, setShowBirthday] = useState(false)
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -114,45 +115,61 @@ export const SignupView = ({ onLoggedIn }) => {
       <Form.Group>
         <Form.Label>Password:</Form.Label>
         <Form.Control
-          placeholder="Enter your password"
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <label>Show Password</label>
-        <input
-          type="checkbox"
-          checked={showPassword}
-          onChange={() => setShowPassword((prev) => !prev)}
-        />
+        <label className="custom-checkbox-label">
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={showPassword}
+            onChange={() => setShowPassword((prev) => !prev)}
+          />
+          <span className="custom-checkmark"></span>
+          Show Password
+        </label>
       </Form.Group>
 
       <Form.Group>
         <Form.Label>Email:</Form.Label>
         <Form.Control
-          placeholder="Enter your email"
           type={showEmail ? "text" : "password"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label>Show Email</label>
-        <input
-          type="checkbox"
-          checked={showEmail}
-          onChange={() => setShowEmail((prev) => !prev)}
-        />
+        <label className="custom-checkbox-label">
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={showEmail}
+            onChange={() => setShowEmail((prev) => !prev)}
+          />
+          <span className="custom-checkmark"></span>
+          Show Email
+        </label>
       </Form.Group>
 
       <Form.Group>
         <Form.Label>Birthday:</Form.Label>
         <Form.Control
-          type="date"
+          type={showBirthday ? "date" : "password"}
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
           required
         />
+        <label className="custom-checkbox-label">
+          <input
+            type="checkbox"
+            className="custom-checkbox"
+            checked={showBirthday}
+            onChange={() => setShowBirthday((prev) => !prev)}
+          />
+          <span className="custom-checkmark"></span>
+          Show Email
+        </label>
       </Form.Group>
       <br />
       <Button variant="primary" type="submit">
